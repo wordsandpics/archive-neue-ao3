@@ -1,6 +1,6 @@
 <img src="screenshots/header.png" alt="Archive Neue: a minimal userstyle for AO3" width="100%">
 
-A quiet, minimal look for [Archive of Our Own](https://archiveofourown.org) (AO3).
+A minimal, typography-first reading theme for [Archive of Our Own](https://archiveofourown.org) (AO3). Airy and discreet. Light, dark or follows your system.
 
 - **Desktop style.** Installs with the free [Stylus](https://add0n.com/stylus.html) browser extension.
 - **Phone skin.** A simpler version you paste into AO3's own skin settings. No extension needed.
