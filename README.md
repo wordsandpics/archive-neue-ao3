@@ -49,6 +49,7 @@ Notes:
 This is a work in progress. Not every page and element is styled yet.
 
 - Tested in Chrome, Brave and Firefox (with Stylus). Edge is untested.
+- In Firefox the web fonts (Bitter and Instrument Sans) don't load, so your system's fonts are used instead. Everything else works.
 - The phone skin has been checked on a limited set of pages.
 
 Found something that looks wrong? Open an [issue](https://github.com/wordsandpics/archive-neue-ao3/issues) with a screenshot and the page address.
