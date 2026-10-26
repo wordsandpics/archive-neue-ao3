@@ -614,6 +614,10 @@ ul.news li.post blockquote.userstuff, ul.news li.post blockquote.userstuff p:fir
 .blurb .header.module { margin: 0 0 0.35rem !important; padding: 0 !important; }
 /* Bookmarker's tags: AO3's own rule made them inline, which stacked the badges; lay them out in a row */
 .bookmark .user ul.meta.tags { display: flex; margin-top: 0.5rem; }
+/* Bookmarker's tags and collections: AO3 sets these in Georgia; use the interface font like every other tag, and a small label */
+:is(li.user.short.blurb, .bookmark .user.module) h6.meta.heading { display: block !important; margin: 0.9rem 0 0.4rem !important; font-family: var(--f-ui) !important; font-size: 0.75rem !important; font-weight: 500 !important; line-height: 1.4 !important; letter-spacing: 0.06em; text-transform: uppercase; color: var(--soft, var(--muted)) !important; }
+:is(li.user.short.blurb, .bookmark .user.module) ul.meta.tags { margin: 0 !important; font-family: var(--f-ui) !important; }
+:is(li.user.short.blurb, .bookmark .user.module) ul.meta.tags li, :is(li.user.short.blurb, .bookmark .user.module) ul.meta.tags li a.tag { font-family: var(--f-ui) !important; font-size: 0.8125rem !important; }
 .blurb div.user.module, .blurb .module.group.user { margin: 0.9rem 0 0 !important; padding: 0 !important; background: none !important; border: 0 !important; box-shadow: none !important; }
 .blurb h4.viewed, .blurb .viewed { background: none !important; font-size: 0.875rem !important; font-weight: 400 !important; line-height: 1.6; color: var(--muted); margin: 0 !important; padding: 0 !important; letter-spacing: 0; }
 .blurb .actions input[type="submit"], .blurb .actions button, .blurb ul.actions input[type="submit"] { background: var(--bg) !important; color: var(--ink) !important; border: 1px solid var(--line-2) !important; }
