@@ -321,7 +321,7 @@ form dd { margin: 0.25rem 0 0.5rem; }
   justify-content: center; align-items: start;
 }
 #main.filtered > * { grid-column: 1; }
-#main.filtered > form.filters, #main.filtered > #work-filters { grid-column: 2; grid-row: 1 / span 20; position: sticky; top: 1rem; float: none !important; width: auto !important; margin: 0 !important; }
+#main.filtered > form.filters, #main.filtered > #work-filters { grid-column: 2; grid-row: 1 / span 20; float: none !important; width: auto !important; margin: 0 !important; }
 }
 #main:not(.filtered):not(.works-show):not(.chapters-show):not(.series-show) { max-width: 44rem; }
 
@@ -669,7 +669,7 @@ ul.navigation.actions li.module a, ul.navigation.actions li.module button, ul.na
 /* Dashboard, profile, bookmarks, history: left menu + content (+ filters) */
 #outer:has(#dashboard) { max-width: 72rem; }
 #inner:has(#dashboard) { display: grid; grid-template-columns: 10rem minmax(0, 1fr); column-gap: 2.5rem; align-items: start; }
-#dashboard { float: none !important; width: auto !important; margin: 2rem 0 0 !important; padding: 0 !important; background: none !important; border: 0 !important; box-shadow: none !important; position: sticky; top: 1rem; }
+#dashboard { float: none !important; width: auto !important; margin: 2rem 0 0 !important; padding: 0 !important; background: none !important; border: 0 !important; box-shadow: none !important; }
 #dashboard::before, #dashboard::after, #dashboard h4.landmark::before, #dashboard h4.landmark::after { content: none !important; display: none !important; }
 #dashboard ul.navigation.actions { display: block; list-style: none; margin: 0 0 1.25rem; padding: 0 0 1.25rem; border: 0 !important; border-bottom: 1px solid var(--line) !important; background: none !important; float: none; text-align: left; }
 #dashboard ul.navigation.actions:last-of-type { border-bottom: 0 !important; }
