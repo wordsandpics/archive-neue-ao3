@@ -1,0 +1,167 @@
+/* Archive Neue, minimal phone skin.
+   A small, plain-CSS version for AO3's own Site Skin feature (works in any browser, including Brave on iOS).
+   It gives the base look: quiet header, readable type, no icon squares. Where the Stylus userstyle is also
+   installed (desktop), that layers on top and adds web fonts and the finer details.
+   Plain CSS only: no variables, no web fonts, no newer selectors. Colours are filled in by build-skin.py. */
+
+body { background: {{bg}}; color: {{ink}}; margin: 0; font-family: -apple-system, system-ui, "Helvetica Neue", sans-serif; font-size: 16px; font-weight: 400; line-height: 1.55; -webkit-text-size-adjust: 100%; }
+html { background: {{bg}}; }
+#outer, #inner, #main, #header, #footer, .wrapper { background: none; border: 0; box-shadow: none; text-shadow: none; }
+#outer { max-width: 44rem; width: auto; margin: 0 auto; padding: 0 1rem; box-sizing: border-box; }
+#inner { margin: 0; padding: 0; }
+#main { margin: 0; padding: 1.25rem 0 3rem; float: none; width: auto; }
+
+a, a:link, a:visited { color: {{link}}; text-decoration: none; border: 0; }
+a:hover, a:focus { color: {{link}}; text-decoration: underline; background: none; border: 0; }
+h1, h2, h3, h4, h5, h6, .heading, .heading a { font-family: -apple-system, system-ui, "Helvetica Neue", sans-serif; color: {{ink}}; font-weight: 600; line-height: 1.25; background: none; border: 0; }
+h2.heading { font-size: 1.4rem; margin: 0 0 1rem; }
+hr { border: 0; border-top: 1px solid {{line}}; }
+
+/* Header: no logo, quiet links */
+#header { float: none; height: auto; margin: 0; padding: 0.9rem 0 0.6rem; border-bottom: 1px solid {{line}}; background: none; }
+#header h1.heading { margin: 0 0 0.4rem; padding: 0; float: none; font-size: 1rem; }
+#header h1.heading a { font-size: 0; display: inline-block; background: none; padding: 0; height: auto; width: auto; }
+#header h1.heading a img.logo, #header h1.heading a span, #header h1.heading sup { display: none; }
+#header h1.heading a:after { content: "Home"; font-size: 1rem; font-weight: 600; color: {{ink}}; }
+#header nav, #header ul.navigation, #header .navigation li, #header #login, #header #greeting { background: none; border: 0; box-shadow: none; float: none; border-radius: 0; height: auto; }
+#header .navigation li { display: inline-block; margin: 0 1rem 0 0; padding: 0; }
+#header .navigation a, #header #login a, #header #greeting a { background: none; border: 0; box-shadow: none; padding: 0.25rem 0; color: {{muted}}; font-weight: 500; font-size: 0.95rem; }
+#header li.search { display: block; margin: 0.5rem 0 0; }
+#header li.search label.landmark { position: absolute; left: -999em; } /* the hidden label otherwise adds an empty line above the box */
+#header li.search form, #header li.search fieldset, #header li.search p { margin: 0; padding: 0; border: 0; background: none; display: block; width: 100%; }
+#header li.search .tip, #header li.search .submit { display: none; }
+#site_search, #header li.search input.text { display: block; width: 100%; max-width: 100%; height: 2.75rem; margin: 0; box-sizing: border-box; border: 1px solid {{line2}}; border-radius: 8px; background: {{bg}}; color: {{ink}}; box-shadow: none; padding: 0 0.8rem; font-size: 1rem; }
+#greeting img, #greeting img.icon { width: 1.5rem; height: 1.5rem; border-radius: 50%; vertical-align: middle; }
+.dropdown .menu, .dropdown ul.menu { background: {{bg}}; background-image: none; border: 1px solid {{line2}}; border-radius: 8px; box-shadow: none; padding: 0.35rem; }
+.dropdown .menu li, .dropdown .menu li a { display: block; background: none; background-image: none; border: 0; box-shadow: none; color: {{ink}}; }
+.dropdown .menu li a { padding: 0.45rem 0.65rem; }
+
+/* Phone header and option rows: left-aligned like "Home", and the avatar stays in the flow instead of floating off the right edge */
+#header, #header nav, #header ul, #header li, #header #greeting, #header #greeting ul { text-align: left; }
+#header #greeting p, #header #greeting p.icon { float: none; position: static; display: inline-block; width: auto; height: auto; margin: 0 0 0 0.25rem; padding: 0; vertical-align: middle; background: none; border: 0; }
+#header #greeting p.icon a { display: inline-block; padding: 0; border: 0; background: none; }
+#header #greeting img, #header #greeting img.icon { width: 1.75rem; height: 1.75rem; border-radius: 50%; vertical-align: middle; }
+ul.work.navigation, ul.navigation.actions, #main ul.navigation.actions, #main div.navigation.actions, #main .navigation.actions.module ul { text-align: left; }
+/* Header menus (opened by tapping the greeting): a vertical list that fits the page width. The selectors are long on purpose, to beat the header link rules above */
+#header .dropdown .menu { box-sizing: border-box; left: 0; right: auto; width: 100%; margin: 0.25rem 0 0; }
+#header .dropdown .menu li { display: block; float: none; margin: 0; padding: 0; border: 0; }
+#header .dropdown .menu li a { display: block; padding: 0.45rem 0.65rem; color: {{ink}}; font-size: 1rem; font-weight: 400; }
+/* The avatar sits after "Log Out" on the same line (AO3 skins may not use gap, flex or order, so the list is inline) */
+#header #greeting ul.user { display: inline-block; vertical-align: middle; }
+#header #greeting p.icon { margin: 0 0 0 0.6rem; }
+/* AO3 draws thick red bars around the dashboard menu; use plain hairlines */
+#dashboard, #dashboard.own { border: 0; border-top: 1px solid {{line}}; border-bottom: 1px solid {{line}}; border-radius: 0; padding: 0.5rem 0; margin: 0 0 1rem; }
+#main ul.navigation.actions li, #main .navigation.actions.module li, ul.work.navigation li { text-align: left; }
+
+/* Inputs and buttons */
+input[type="text"], input[type="search"], input[type="password"], input[type="email"], input[type="number"], textarea, select { font-family: -apple-system, system-ui, "Helvetica Neue", sans-serif; font-size: 1rem; color: {{ink}}; background: {{bg}}; border: 1px solid {{line2}}; border-radius: 6px; box-shadow: none; padding: 0.45rem 0.6rem; max-width: 100%; }
+textarea { width: 100%; box-sizing: border-box; }
+button, input[type="submit"], .actions a, .actions button, a.action { font-family: -apple-system, system-ui, "Helvetica Neue", sans-serif; font-size: 0.9rem; font-weight: 500; line-height: 1.2; color: {{ink}}; background: {{bg}}; background-image: none; border: 1px solid {{line2}}; border-radius: 6px; box-shadow: none; text-shadow: none; padding: 0.5rem 0.8rem; }
+input[type="submit"] { background: {{ink}}; color: {{bg}}; border-color: {{ink}}; }
+fieldset { border: 0; border-top: 1px solid {{line}}; border-radius: 0; box-shadow: none; background: none; }
+legend { background: none; border: 0; box-shadow: none; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; color: {{muted}}; }
+/* The comment box at the end of a work: AO3's pale 1px outline is too bright on a dark page */
+div.post.comment, .post.comment { background: none; border: 1px solid {{line}}; border-radius: 10px; box-shadow: none; }
+div.flash { background: none; border: 0; padding: 0; margin: 0; } /* AO3 always draws an empty one at the top of the page */
+.flash.notice, .flash.error, .flash.caution, div.notice, div.error, p.notice { background: {{bg2}}; border: 1px solid {{line}}; border-radius: 8px; color: {{ink}}; }
+
+/* Filters (the panel behind the "Filters" button): headings, toggles, fields and the button each look different */
+form.filters { background: none; border: 0; box-shadow: none; padding: 0; }
+form.filters dt.filter-toggle { margin: 0; padding: 0; background: none; border: 0; }
+form.filters button.expander, form.filters dt.filter-toggle button { display: block; width: 100%; text-align: left; background: none; background-image: none; border: 0; border-top: 1px solid {{line}}; border-radius: 0; box-shadow: none; padding: 0.8rem 0; margin: 0; font-weight: 600; font-size: 1rem; color: {{ink}}; }
+form.filters h4.heading { margin: 1.75rem 0 0.25rem; font-size: 0.75rem; letter-spacing: 0.06em; text-transform: uppercase; color: {{muted}}; font-weight: 500; border: 0; }
+form.filters dt label, form.filters dt.sort label { display: block; margin: 1rem 0 0.35rem; font-size: 0.8125rem; font-weight: 500; color: {{muted}}; }
+form.filters dd.submit.actions input[type="submit"] { width: 100%; padding: 0.8rem 1rem; font-size: 1rem; }
+form.filters select, form.filters input.text, form.filters input[type="text"] { width: 100%; box-sizing: border-box; height: 2.75rem; padding: 0 0.8rem; font-size: 1rem; }
+
+/* Lists of works */
+ol.index, ul.index, ol.work.index, ol.bookmark.index { list-style: none; margin: 0; padding: 0; width: auto; float: none; }
+li.blurb { background: none; border: 0; border-bottom: 1px solid {{line2}}; border-radius: 0; box-shadow: none; margin: 0; padding: 2rem 0; float: none; width: auto; list-style: none; min-height: 0; }
+.blurb .header.module { margin: 0 0 0.35rem; padding: 0; min-height: 0; background: none; border: 0; }
+.blurb h4.heading, .blurb h5.heading, .blurb .datetime, .blurb ul.tags, .blurb dl.stats { margin-left: 0; padding-left: 0; }
+.blurb h4.heading { font-size: 1rem; font-weight: 400; margin-top: 0; margin-bottom: 0; color: {{muted}}; }
+.blurb h4.heading a { color: {{muted}}; }
+.blurb h4.heading a:first-child { color: {{ink}}; font-weight: 650; font-size: 1.75rem; line-height: 1.2; }
+.blurb h5.fandoms.heading { font-size: 0.875rem; font-weight: 500; margin: 0.4rem 0 0; }
+.blurb h5.fandoms a { color: {{muted}}; }
+.blurb .datetime { position: static; float: none; margin: 0.2rem 0 0; font-size: 0.8rem; color: {{muted}}; font-family: -apple-system, system-ui, "Helvetica Neue", sans-serif; }
+ul.required-tags { position: static; float: none; width: auto; height: auto; list-style: none; margin: 0.4rem 0 0; padding: 0; font-size: 0.8rem; color: {{muted}}; }
+ul.required-tags li { display: inline; float: none; position: static; width: auto; height: auto; margin: 0; padding: 0; background: none; visibility: visible; }
+ul.required-tags a, ul.required-tags span { display: inline; position: static; width: auto; height: auto; margin: 0; padding: 0; background: none; border: 0; text-indent: 0; color: {{muted}}; visibility: visible; }
+ul.required-tags span.text { display: inline; font-size: 0.8rem; line-height: 1.4; margin-right: 0.9rem; }
+ul.required-tags span.warnings { display: none; }
+ul.required-tags .rating .text { color: {{ink}}; font-weight: 500; }
+.blurb ul.tags { list-style: none; float: none; width: auto; margin: 0.9rem 0 0; padding: 0; }
+.blurb ul.tags li:after { content: none; }
+.blurb ul.tags li { display: inline-block; background: none; border: 0; padding: 0; margin: 0 0.3rem 0.3rem 0; font-size: 0.8rem; }
+.blurb ul.tags li a.tag, .blurb ul.tags li strong a.tag { display: inline-block; padding: 0.1rem 0.55rem; border: 1px solid {{line}}; border-radius: 5px; background: none; color: {{muted}}; font-weight: 400; }
+.blurb ul.tags li.relationships a.tag { color: {{ink}}; border-color: {{line2}}; }
+.blurb blockquote.summary, .blurb blockquote.userstuff { font-family: -apple-system, system-ui, "Helvetica Neue", sans-serif; font-size: 1rem; font-weight: 400; line-height: 1.6; margin: 0.8rem 0 0; padding: 0; border: 0; background: none; text-align: left; }
+dl.stats { float: none; width: auto; margin: 0.9rem 0 0; padding: 0; font-size: 0.8rem; line-height: 1.8; color: {{muted}}; text-align: left; }
+dl.stats dt { display: inline-block; float: none; margin: 0 0.25rem 0 0; font-weight: 400; }
+dl.stats dd { display: inline-block; float: none; margin: 0 0.9rem 0 0; }
+dl.stats dd a { color: {{muted}}; }
+dl.stats dt.language, dl.stats dd.language { display: none; }
+ol.pagination { list-style: none; margin: 1.25rem 0; padding: 0; float: none; text-align: left; }
+ol.pagination li { display: inline-block; float: none; margin: 0 0.2rem 0.3rem 0; padding: 0; background: none; border: 0; }
+ol.pagination a, ol.pagination span { display: inline-block; padding: 0.4rem 0.7rem; background: none; border: 0; box-shadow: none; color: {{muted}}; border-radius: 6px; }
+ol.pagination a.current { background: {{ink}}; color: {{bg}}; }
+/* The page you are on in a row of options (e.g. "Works") looks like the other buttons, but filled */
+.actions span.current, ul.navigation.actions span.current, #main .navigation.actions span.current { display: inline-block; font-family: -apple-system, system-ui, "Helvetica Neue", sans-serif; font-size: 0.9rem; font-weight: 500; line-height: 1.2; color: {{bg}}; background: {{ink}}; background-image: none; border: 1px solid {{ink}}; border-radius: 6px; box-shadow: none; text-shadow: none; padding: 0.5rem 0.8rem; }
+
+/* A work */
+ul.work.navigation { list-style: none; float: none; margin: 0 0 1.25rem; padding: 0 0 1rem; border-bottom: 1px solid {{line}}; }
+ul.work.navigation li { display: inline-block; float: none; margin: 0 1rem 0 0; padding: 0; }
+ul.work.navigation li a, ul.work.navigation li button, ul.work.navigation li input { background: none; border: 0; box-shadow: none; padding: 0.2rem 0; color: {{muted}}; font-weight: 500; font-size: 0.9rem; }
+dl.work.meta { background: none; border: 0; border-bottom: 1px solid {{line}}; box-shadow: none; float: none; width: auto; margin: 0 0 1.5rem; padding: 0 0 1rem; font-size: 0.9rem; }
+dl.work.meta > dt { float: none; width: auto; margin: 0.6rem 0 0; padding: 0; color: {{muted}}; font-weight: 400; text-align: left; }
+dl.work.meta > dd { float: none; width: auto; margin: 0; padding: 0; }
+dl.work.meta ul { list-style: none; margin: 0; padding: 0; display: inline; }
+dl.work.meta li { display: inline; background: none; border: 0; padding: 0; margin: 0; }
+dl.work.meta a.tag { color: {{ink}}; }
+dl.work.meta dt.stats { display: none; }
+dl.work.meta dd.stats dl.stats { margin: 0.5rem 0 0; font-size: 0.8rem; }
+dl.work.meta dd.stats dl.stats dt { display: inline-block; margin: 0 0.25rem 0 0; padding: 0; color: {{muted}}; }
+dl.work.meta dd.stats dl.stats dd { display: inline-block; margin: 0 0.9rem 0 0; padding: 0; }
+#workskin .preface, #workskin .preface.group { text-align: left; margin: 0 0 2rem; padding: 0; border: 0; background: none; }
+#workskin .preface .title.heading, #workskin h2.title { font-size: 1.7rem; font-weight: 650; line-height: 1.15; margin: 0 0 0.4rem; text-align: left; }
+#workskin .byline.heading, #workskin h3.byline { font-size: 1rem; font-weight: 400; color: {{muted}}; margin: 0 0 1.5rem; text-align: left; }
+#workskin .summary.module, #workskin .notes.module, #workskin .end.notes.module { background: none; border: 0; border-left: 2px solid {{line}}; border-radius: 0; margin: 0 0 2.5rem; padding: 0 0 0 1rem; float: none; width: auto; }
+#workskin .module > h3.heading { border: 0; font-size: 0.75rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: {{muted}}; margin: 0 0 0.4rem; }
+#workskin .module blockquote.userstuff { margin: 0; padding: 0; border: 0; background: none; font-size: 1rem; line-height: 1.6; }
+#chapters .chapter.preface, .chapter .preface.group { margin: 2.5rem 0 1.25rem; text-align: left; }
+#chapters h3.title, .chapter h3.title { font-size: 1.4rem; font-weight: 650; line-height: 1.25; color: {{ink}}; margin: 0; text-align: left; }
+#chapters h3.title a, .chapter h3.title a { color: {{ink}}; }
+#workskin .userstuff, .chapter .userstuff.module, #chapters .userstuff { font-family: -apple-system, system-ui, "Helvetica Neue", sans-serif; font-size: 1.125rem; line-height: 1.7; color: {{ink}}; background: none; border: 0; padding: 0; margin: 0; overflow-wrap: break-word; }
+#chapters .userstuff p { margin: 0 0 1em; padding: 0; text-align: left; }
+#chapters .userstuff h3.landmark { display: none; }
+#chapters .userstuff blockquote { margin: 1.4em 0; padding: 0 0 0 1em; border-left: 2px solid {{line2}}; }
+#chapters .userstuff hr { width: 3rem; margin: 2.2em auto; border: 0; border-top: 1px solid {{line2}}; }
+#feedback { border-top: 1px solid {{line}}; margin-top: 2.5rem; padding-top: 1.25rem; }
+#feedback ul.actions, #feedback ul.actions li { text-align: left; } /* AO3 centres this row; it should line up with the text above */
+#feedback ul.actions li { display: inline-block; float: none; margin: 0 1rem 0 0; padding: 0; }
+#feedback ul.actions a, #feedback ul.actions button { background: none; border: 0; padding: 0.15rem 0; color: {{muted}}; box-shadow: none; }
+
+/* Comments */
+ol.thread, ol.thread ol.thread { list-style: none; margin: 0; padding: 0; }
+ol.thread ol.thread { margin-left: 0.5rem; padding-left: 0.75rem; border-left: 3px solid {{line2}}; }
+li.comment, li.comment.group { background: none; border: 0; border-top: 1px solid {{line}}; border-radius: 0; box-shadow: none; padding: 1.2rem 0 0.4rem; margin: 0; }
+li.comment h4.heading.byline, li.comment .header { background: none; border: 0; padding: 0; margin: 0 0 0.4rem; font-size: 0.875rem; font-weight: 400; color: {{muted}}; }
+li.comment h4.byline a:first-child { font-size: 1.0625rem; font-weight: 700; }
+li.comment .icon, li.comment div.icon { float: left; width: 2.25rem; height: 2.25rem; margin: 0 0.75rem 0.25rem 0; background: none; border: 0; box-shadow: none; }
+li.comment .icon img { width: 2.25rem; height: 2.25rem; border-radius: 50%; border: 0; box-shadow: none; }
+li.comment blockquote.userstuff { font-family: -apple-system, system-ui, "Helvetica Neue", sans-serif; font-size: 1rem; font-weight: 400; line-height: 1.6; margin: 0 0 0.6rem; padding: 0; border: 0; background: none; }
+li.comment ul.actions { clear: both; list-style: none; margin: 0.25rem 0 0.5rem; padding: 0; }
+li.comment ul.actions li { display: inline-block; float: none; margin: 0 1rem 0 0; padding: 0; }
+li.comment ul.actions a, li.comment ul.actions button, li.comment ul.actions input { background: none; border: 0; padding: 0; color: {{muted}}; font-size: 0.85rem; box-shadow: none; }
+
+/* Footer */
+#footer { margin: 2.5rem 0 0; padding: 1.25rem 0 2.5rem; border-top: 1px solid {{line}}; color: {{muted}}; font-size: 0.8rem; float: none; }
+/* Footer: one plain column of links (the four-column layout is far too cramped on a phone) */
+#footer ul.navigation, #footer li.module, #footer ul.menu, #footer ul.menu li { display: block; float: none; width: auto; margin: 0; padding: 0; background: none; background-image: none; border: 0; box-shadow: none; position: static; }
+#footer li.module { margin: 0 0 1.5rem; max-width: none; min-width: 0; }
+#footer ul.menu, #footer ul.menu li { max-width: none; min-width: 0; height: auto; line-height: 1.4; }
+#footer h4.heading, #footer h3.heading { margin: 0 0 0.4rem; font-size: 0.75rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: {{muted}}; }
+#footer ul.menu li a, #footer ul.menu li button, #footer li.module a, #footer li.module button { display: block; width: auto; margin: 0; padding: 0.4rem 0; background: none; background-image: none; border: 0; border-radius: 0; box-shadow: none; color: {{muted}}; font-size: 0.95rem; font-weight: 400; text-align: left; text-decoration: none; }
+#footer a { color: {{muted}}; border: 0; }
+#footer ul { list-style: none; }

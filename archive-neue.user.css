@@ -1,0 +1,1036 @@
+/* ==UserStyle==
+@name           Archive Neue
+@namespace      https://github.com/wordsandpics/archive-neue-ao3
+@version        0.6.2
+@description    A quiet, Swiss-style reading theme for Archive of Our Own (AO3). Unofficial. No logo, no icon squares, comfortable line length and spacing. Light, dark or follow-the-system.
+@author         wordsandpics
+@homepageURL    https://github.com/wordsandpics/archive-neue-ao3
+@supportURL     https://github.com/wordsandpics/archive-neue-ao3/issues
+@updateURL      https://raw.githubusercontent.com/wordsandpics/archive-neue-ao3/main/archive-neue.user.css
+@license        MIT
+@preprocessor   default
+@var text   reading-font "Reading font (chapter text, summaries)" "'Bitter', 'Iowan Old Style', Charter, Georgia, serif"
+@var text   ui-font      "Interface font" "'Instrument Sans', system-ui, -apple-system, 'Segoe UI', sans-serif"
+@var range  reading-size "Reading size" [18, 15, 26, 0.5, 'px']
+@var range  reading-lh   "Reading line height" [1.7, 1.3, 2.2, 0.05, '']
+@var range  text-width   "Text column width" [40, 28, 60, 1, 'rem']
+@var select theme        "Colour theme" ["0:Follow system*", "1:Always light", "2:Always dark"]
+@var color  accent       "Accent colour" #2f54eb
+==/UserStyle== */
+
+@import url("https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,300..700;1,300..700&family=Instrument+Sans:wght@400..700&display=swap");
+
+@-moz-document domain("archiveofourown.org"), domain("archiveofourown.gay"), domain("archive.transformativeworks.org") {
+
+/* ------------------------------------------------------------------ *
+ * 1. Tokens. Edit these (or use the Stylus settings panel) to taste.
+ * ------------------------------------------------------------------ */
+:root {
+  color-scheme: light dark;
+
+  --f-read: var(--reading-font, 'Bitter', 'Iowan Old Style', Charter, Georgia, serif);
+  --f-ui:   var(--ui-font, 'Instrument Sans', system-ui, -apple-system, 'Segoe UI', sans-serif);
+  --read-size: var(--reading-size, 18px);
+  --read-lh:   var(--reading-lh, 1.7);
+  --col:       var(--text-width, 40rem);
+  --hue:       var(--accent, #2f54eb);
+
+  /* Light / dark switch. --mode comes from the style's "Colour theme" setting (stored as 0 follow the system,
+     1 always light, 2 always dark; Stylus option names can't be negative, so we subtract 1):
+     -1 follow the system, 0 always light, 1 always dark. --sys is 1 when the system is dark.
+     --dark works out to 0 (light) or 1 (dark); each colour mixes its light and dark value by it. */
+  --sys: 0;
+  --mode: calc(var(--theme, 0) - 1);
+  --dark: calc((var(--mode) * (var(--mode) + 1) / 2) + (var(--mode) * (var(--mode) - 1) / 2) * var(--sys));
+
+  --bg:     color-mix(in srgb, #111113 calc(var(--dark) * 100%), #ffffff);
+  --bg-2:   color-mix(in srgb, #19191c calc(var(--dark) * 100%), #f6f6f4);
+  --ink:    color-mix(in srgb, #e9e9ea calc(var(--dark) * 100%), #17171a);
+  --muted:  color-mix(in srgb, #9b9ba3 calc(var(--dark) * 100%), #6b6b73);
+  /* between --muted and --ink in light mode (a bit more contrast for small text); same as --muted in dark */
+  --soft:   color-mix(in srgb, var(--muted) calc(100% - (1 - var(--dark)) * 30%), var(--ink));
+  --line:   color-mix(in srgb, #303036 calc(var(--dark) * 100%), #e6e6e8);
+  --line-2: color-mix(in srgb, #4b4b53 calc(var(--dark) * 100%), #cfcfd4);
+  --link:   color-mix(in srgb, color-mix(in srgb, var(--hue) 55%, white) calc(var(--dark) * 100%), var(--hue));
+}
+@media (prefers-color-scheme: dark) {
+  :root { --sys: 1; }
+}
+
+/* ------------------------------------------------------------------ *
+ * 2. Base
+ * ------------------------------------------------------------------ */
+html { background: var(--bg); -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font: 400 1rem/1.55 var(--f-ui);
+  font-optical-sizing: auto;
+  font-kerning: normal;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+body * { font-family: inherit; }
+.heading, .heading a, h1, h2, h3, h4, h5, h6 { font-family: var(--f-ui); }
+#outer, #inner, #main, #header, #footer, .wrapper {
+  background: none; border: 0; box-shadow: none; text-shadow: none;
+}
+.wrapper { box-shadow: none !important; border: 0 !important; }
+#outer { max-width: 62rem; margin: 0 auto; padding: 0 1.5rem; }
+#inner { margin: 0; padding: 0; }
+#main  { margin: 0 auto; padding: 2rem 0 4rem; float: none; width: auto; }
+
+/* Links: black and plain when the link is the thing you came to click (titles, menus, tags).
+   Links inside a sentence (notes, summaries, comments, "Part 1 of ...") are black too, but underlined;
+   the accent colour only appears on hover. */
+a, a:link, a:visited { color: var(--ink); text-decoration: none; }
+.userstuff a,
+.notes a,
+.summary a,
+#series.module a,
+#children.module a,
+#kudos a,
+p.kudos a,
+.flash a,
+.notice a,
+.error a,
+.caution a,
+.kudos_notice a,
+.kudos_error a,
+.faq a,
+.splash .news a,
+#main p.message a,
+dl.work.meta dd.series a,
+.userstuff a:visited,
+.notes a:visited,
+.summary a:visited,
+#series.module a:visited,
+#children.module a:visited,
+#kudos a:visited,
+p.kudos a:visited,
+.flash a:visited,
+.notice a:visited,
+.error a:visited,
+.caution a:visited,
+.kudos_notice a:visited,
+.kudos_error a:visited,
+.faq a:visited,
+.splash .news a:visited,
+#main p.message a:visited,
+dl.work.meta dd.series a:visited { color: var(--ink); text-decoration: underline; text-decoration-color: var(--line-2); text-decoration-thickness: 1px; text-underline-offset: 0.2em; }
+.userstuff a:hover,
+.notes a:hover,
+.summary a:hover,
+#series.module a:hover,
+#children.module a:hover,
+#kudos a:hover,
+p.kudos a:hover,
+.flash a:hover,
+.notice a:hover,
+.error a:hover,
+.caution a:hover,
+.kudos_notice a:hover,
+.kudos_error a:hover,
+.faq a:hover,
+.splash .news a:hover,
+#main p.message a:hover,
+dl.work.meta dd.series a:hover,
+.userstuff a:focus,
+.notes a:focus,
+.summary a:focus,
+#series.module a:focus,
+#children.module a:focus,
+#kudos a:focus,
+p.kudos a:focus,
+.flash a:focus,
+.notice a:focus,
+.error a:focus,
+.caution a:focus,
+.kudos_notice a:focus,
+.kudos_error a:focus,
+.faq a:focus,
+.splash .news a:focus,
+#main p.message a:focus,
+dl.work.meta dd.series a:focus { color: var(--link); text-decoration-color: var(--link); }
+a, a:link, a:visited, a:hover, a:focus, a:active { border: 0; box-shadow: none; }
+a:hover, a:focus, a:active { background: none; }
+a.tag:hover, a.tag:focus, h5.fandoms a:hover, h5.fandoms a:focus { background: none !important; color: var(--ink) !important; text-decoration: underline; text-underline-offset: 0.2em; }
+a:hover, a:focus { color: var(--link); text-decoration: underline; text-underline-offset: 0.2em; }
+:focus-visible { outline: 2px solid var(--link); outline-offset: 2px; border-radius: 3px; }
+::selection { background: color-mix(in srgb, var(--hue) 28%, transparent); }
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--f-ui); color: var(--ink); font-weight: 600;
+  line-height: 1.25; letter-spacing: -0.01em; text-wrap: balance;
+  background: none; border: 0; padding: 0;
+}
+h2.heading { font-size: 1.5rem; margin: 0 0 1rem; letter-spacing: -0.02em; }
+/* Page titles that sit above a row of options get more room */
+h2.heading:has(+ .navigation.actions, + .landmark.heading + .navigation.actions) { display: block !important; margin-bottom: 1.5rem !important; } /* AO3 makes some of these titles inline, which ignores the margin */
+h3.heading { font-size: 1.125rem; margin: 1.5rem 0 0.5rem; }
+p { margin: 0 0 1em; }
+hr { border: 0; border-top: 1px solid var(--line); margin: 2rem 0; }
+ul, ol, dl, dd { margin: 0; padding: 0; }
+dt { font-weight: 500; }
+.landmark, .hidden.landmark { /* keep screen-reader text hidden, as AO3 does */ }
+
+/* ------------------------------------------------------------------ *
+ * 3. Header: no logo, quiet text navigation
+ * ------------------------------------------------------------------ */
+#header {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 2rem;
+  float: none; height: auto; margin: 0; padding: 1.25rem 0;
+  border-bottom: 1px solid var(--line);
+}
+#header .clear { display: none; }
+#header h1.heading { margin: 0; padding: 0; float: none; order: 1; font-size: 1rem; }
+#header h1.heading a { font-size: 0; display: inline-block; background: none; padding: 0; height: auto; width: auto; }
+#header h1.heading a img.logo, #header h1.heading a span, #header h1.heading sup { display: none; }
+#header h1.heading a::after {
+  content: "Home"; font-size: 1rem; font-weight: 600; color: var(--ink); letter-spacing: -0.01em;
+}
+#header nav, #header ul.primary.navigation, #header .navigation { background: none; border: 0; box-shadow: none; border-radius: 0; height: auto; }
+#header nav { order: 2; flex: 1 1 auto; float: none; margin: 0; padding: 0; background: none; }
+#header ul.primary.navigation { display: flex; flex-wrap: wrap; align-items: center; gap: 0.25rem 1.5rem; float: none; margin: 0; }
+#header #login, #header #login.dropdown { order: 3; float: none; margin: 0; background: none !important; box-shadow: none !important; border: 0 !important; }
+#header #login p.user, #header #login-dropdown, #header #login a { background: none !important; border: 0 !important; box-shadow: none !important; color: var(--muted); padding: 0.25rem 0; float: none; }
+#header .navigation li, #header .actions li { float: none; margin: 0; padding: 0; background: none; border: 0; }
+#header .navigation a, #header .user a, #header #login > p a {
+  background: none; border: 0; box-shadow: none; padding: 0.25rem 0;
+  color: var(--muted); font-weight: 500; border-radius: 0;
+}
+#header .navigation a:hover, #header .user a:hover { color: var(--ink); text-decoration: none; }
+#header li.search { margin-left: auto; }
+#header li.search form, #header li.search fieldset, #header li.search p { margin: 0; padding: 0; border: 0; display: block; }
+#header li.search .tip, #header li.search .submit { display: none; }
+#site_search, #header li.search input.text { width: 13rem; height: auto; background: var(--bg) !important; border: 1px solid var(--line-2) !important; border-radius: 6px !important; box-shadow: none !important; color: var(--ink); padding: 0.4rem 0.6rem !important; }
+#header li.search .submit, #header li.search input[type="submit"] { display: none !important; }
+
+.dropdown .menu, .dropdown ul.menu, #small_login, ul.expandable.secondary {
+  background: var(--bg); border: 1px solid var(--line-2); border-radius: 8px;
+  box-shadow: 0 8px 24px rgb(0 0 0 / 0.12); padding: 0.4rem; margin-top: 0.25rem; min-width: 12rem;
+}
+.dropdown .menu li a, ul.expandable.secondary li a {
+  display: block; padding: 0.35rem 0.6rem; border-radius: 5px; color: var(--ink); background: none;
+}
+.dropdown .menu li a:hover, ul.expandable.secondary li a:hover { background: var(--bg-2); text-decoration: none; }
+#small_login { padding: 1rem; }
+
+/* Header, tightened: Home, the menus, search and "Hi, name! / Post / Log Out" share one row
+   on an ordinary desktop window (they used to wrap onto a second line). */
+#header { gap: 0.5rem 1.25rem !important; }
+#header ul.primary.navigation { gap: 0.25rem 1.25rem !important; }
+#header nav:not(#greeting) { flex: 1 1 0 !important; min-width: 0 !important; }
+#header #greeting { flex: 0 0 auto !important; }
+#site_search, #header li.search input.text { width: 9rem !important; }
+#header li.search fieldset, #header li.search form { border: 0 !important; padding: 0 !important; margin: 0 !important; }
+
+/* Logged-in header: "Hi, name!", Post and Log Out sit in one row on the right;
+   every dropdown is one quiet card. */
+#header #greeting {
+  order: 3; margin: 0 0 0 auto; float: none; display: flex; flex-wrap: wrap; align-items: center; gap: 0.25rem 1.25rem;
+  background: none !important; border: 0 !important; box-shadow: none !important; padding: 0; width: auto; height: auto;
+}
+#header #greeting p, #header #greeting .icon { margin: 0; padding: 0; float: none; display: inline-flex; align-items: center; background: none; }
+#header #greeting img, #header #greeting img.icon { width: 1.5rem !important; height: 1.5rem !important; border-radius: 50%; margin: 0 0.5rem 0 0; vertical-align: middle; }
+#header #greeting > ul { display: flex; flex-wrap: wrap; align-items: center; gap: 0.25rem 1.25rem; list-style: none; margin: 0; padding: 0; float: none; background: none !important; border: 0; box-shadow: none; }
+#header #greeting li { float: none; margin: 0; padding: 0; position: relative; display: block; background: none !important; border: 0 !important; box-shadow: none !important; width: auto; height: auto; }
+#header #greeting a, #header #greeting li > a {
+  display: inline-block; background: none !important; border: 0 !important; box-shadow: none !important; text-shadow: none;
+  padding: 0.25rem 0; color: var(--muted); font-weight: 500; border-radius: 0; width: auto; height: auto;
+}
+#header #greeting a:hover, #header #greeting a:focus { color: var(--ink); text-decoration: none; }
+
+#header li.dropdown, #header .dropdown { position: relative; }
+#header .dropdown > a, #header .dropdown:hover > a, #header .dropdown.open > a, #header .dropdown:focus-within > a {
+  background: none !important; box-shadow: none !important; border: 0 !important; text-shadow: none;
+}
+#header .dropdown:hover > a, #header .dropdown:focus-within > a { color: var(--ink) !important; }
+#header .dropdown .menu, #header .dropdown ul.menu, #header .dropdown-menu {
+  position: absolute; top: 100%; left: 0; right: auto; width: max-content; min-width: 12rem; max-width: 22rem;
+  margin: 0; padding: 0.35rem; z-index: 100; list-style: none; text-align: left;
+  background: var(--bg) !important; background-image: none !important; border: 1px solid var(--line-2) !important;
+  border-radius: 8px; box-shadow: 0 8px 24px rgb(0 0 0 / 0.14) !important;
+}
+#header #greeting .menu, #header #greeting ul.menu { left: auto; right: 0; }
+#header .dropdown .menu li, #header .dropdown ul.menu li {
+  float: none; display: block; width: auto; height: auto; margin: 0; padding: 0;
+  background: none !important; background-image: none !important; border: 0 !important; box-shadow: none !important;
+}
+#header .dropdown .menu li a, #header .dropdown ul.menu li a {
+  display: block; padding: 0.4rem 0.65rem; border-radius: 5px; color: var(--ink) !important; font-weight: 400;
+  white-space: nowrap; background: none !important; background-image: none !important; box-shadow: none !important; border: 0 !important; text-shadow: none;
+}
+#header #greeting .menu li a, #header #greeting ul.menu li a { display: block; padding: 0.4rem 0.65rem; border-radius: 5px; font-weight: 400; color: var(--ink) !important; }
+#header .dropdown .menu li a:hover, #header .dropdown .menu li a:focus {
+  background: var(--bg-2) !important; color: var(--ink) !important; text-decoration: none;
+}
+
+/* ------------------------------------------------------------------ *
+ * 4. Forms and buttons
+ * ------------------------------------------------------------------ */
+input[type="text"], input[type="search"], input[type="password"], input[type="email"],
+input[type="number"], input[type="url"], input[type="date"], input:not([type]), textarea, select {
+  font: inherit; color: var(--ink); background: var(--bg);
+  border: 1px solid var(--line-2); border-radius: 6px; box-shadow: none;
+  padding: 0.4rem 0.6rem; max-width: 100%; box-sizing: border-box;
+}
+input:focus, textarea:focus, select:focus { outline: none; border-color: var(--link); box-shadow: inset 0 0 0 1px var(--link); } /* inside the box: some AO3 containers clip anything drawn outside */
+textarea { width: 100%; line-height: 1.5; }
+input::placeholder, textarea::placeholder { color: var(--muted); }
+
+button, input[type="submit"], input[type="button"], input[type="reset"],
+.actions a, .actions button, a.action, .action {
+  font: 500 0.9375rem/1.2 var(--f-ui); color: var(--ink);
+  background: var(--bg); background-image: none; border: 1px solid var(--line-2); border-radius: 6px;
+  box-shadow: none; text-shadow: none; padding: 0.45rem 0.8rem; cursor: pointer;
+}
+button:hover, input[type="submit"]:hover, input[type="button"]:hover, .actions a:hover, a.action:hover {
+  background: var(--bg-2); text-decoration: none; color: var(--ink);
+}
+input[type="submit"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+input[type="submit"]:hover { background: var(--ink); color: var(--bg); opacity: 0.88; }
+fieldset { border: 1px solid var(--line); border-radius: 8px; padding: 1rem; margin: 0 0 1rem; background: none; }
+legend { font-weight: 600; padding: 0 0.4rem; }
+label { font-weight: 500; }
+form dl dt { margin-top: 0.75rem; }
+form dd { margin: 0.25rem 0 0.5rem; }
+.required, abbr[title] { text-decoration: none; }
+
+/* Flash messages and notices */
+.flash, div.notice, div.error, .comment_error, ul.notes {
+  background: var(--bg-2); border: 1px solid var(--line); border-radius: 8px;
+  color: var(--ink); padding: 0.75rem 1rem; margin: 0 0 1rem;
+}
+.flash:empty { display: none; }
+/* Notices ("Thank you for leaving kudos!", errors): flat, no inner glow or gradient */
+.flash, .flash.notice, .flash.error, .flash.caution, div.notice, p.notice, div.error, .notice, .error, .caution, .kudos_error, .kudos_notice, ul.notes {
+  box-shadow: none !important; background-image: none !important; text-shadow: none !important;
+  background-color: var(--bg-2) !important; border: 1px solid var(--line) !important; border-radius: 8px !important; color: var(--ink) !important;
+}
+
+/* ------------------------------------------------------------------ *
+ * 5. Lists of works (browse, search, bookmarks, series)
+ * ------------------------------------------------------------------ */
+.index.group, ol.work.index, ol.bookmark.index, ol.series.index, ul.index, ol.index { list-style: none; margin: 0 !important; padding: 0 !important; width: auto !important; float: none !important; }
+
+@media (min-width: 1100px) {
+#main.filtered, #main.works-index.filtered {
+  display: grid; grid-template-columns: minmax(0, 44rem) 15rem; column-gap: 4rem;
+  justify-content: center; align-items: start;
+}
+#main.filtered > * { grid-column: 1; }
+#main.filtered > form.filters, #main.filtered > #work-filters { grid-column: 2; grid-row: 1 / span 20; position: sticky; top: 1rem; float: none !important; width: auto !important; margin: 0 !important; }
+}
+#main:not(.filtered):not(.works-show):not(.chapters-show):not(.series-show) { max-width: 44rem; }
+
+li.blurb, li.work.blurb, li.bookmark.blurb, li.series.blurb {
+  background: none; border: 0; border-bottom: 1px solid var(--line-2); border-radius: 0;
+  box-shadow: none; margin: 0 !important; padding: 2.5rem 0 !important; list-style: none; float: none !important; width: auto !important; min-height: 0;
+}
+li.blurb:first-child { padding-top: 0.75rem !important; }
+.blurb .header.module { position: static; margin: 0 0 0.35rem; padding: 0; min-height: 0; background: none; border: 0; }
+.blurb h4.heading, .blurb h5.heading, .blurb .datetime, .blurb ul.tags, .blurb dl.stats { margin-left: 0 !important; padding-left: 0 !important; }
+.blurb .datetime { font-family: var(--f-ui) !important; }
+.blurb h4.heading { margin-right: 0 !important; text-wrap: wrap !important; } /* AO3 reserves ~84px for the icon squares; balanced wrapping also made titles break early */
+.blurb dl.stats { float: none !important; width: auto !important; clear: both; }
+.blurb h4.heading { font-size: 1.0625rem; font-weight: 400; line-height: 1.4; margin: 0; letter-spacing: 0; color: var(--muted); }
+.blurb h4.heading a:first-child { color: var(--ink); font-weight: 650; font-size: 1.5625rem; line-height: 1.2; letter-spacing: -0.02em;  margin-right: 0.4rem;}
+.blurb h4.heading a[rel="author"] { color: var(--muted); font-weight: 400; font-size: 1.0625rem; letter-spacing: 0; }
+.blurb h5.fandoms.heading { font-size: 1rem; font-weight: 500; color: var(--muted); margin: 0.4rem 0 0; }
+.blurb h5.fandoms a { color: var(--muted); }
+.blurb .datetime { position: static; float: none; margin: 0.25rem 0 0; font-size: 0.9375rem; color: var(--muted); font-variant-numeric: tabular-nums; }
+
+/* The four-square symbols become plain words: "Explicit  M/M  Work in progress" */
+ul.required-tags { display: flex !important; flex-wrap: wrap; gap: 0; list-style: none; margin: 0.35rem 0 0; padding: 0; float: none; position: static !important; width: auto !important; height: auto !important; font-size: 0.875rem; line-height: 1.9; color: var(--soft); }
+ul.required-tags li { display: block !important; float: none !important; margin: 0 !important; padding: 0 !important; width: auto !important; height: auto !important; background: none; position: static !important; visibility: visible !important; }
+ul.required-tags li:not(:first-child)::before { content: "\00a0\00a0|\00a0\00a0"; color: var(--line-2); font-weight: 300; white-space: pre; } /* same bar and spacing as the stats row */
+ul.required-tags li:has(.warnings) { display: none !important; } /* warnings already appear in the tag list below */
+ul.required-tags a.help, ul.required-tags a.symbol {
+  display: inline !important; background: none !important; border: 0 !important; padding: 0 !important; margin: 0 !important; width: auto !important; height: auto !important; max-width: none !important;
+  color: inherit; pointer-events: none; text-decoration: none; position: static !important; visibility: visible !important;
+}
+ul.required-tags span {
+  display: inline; background: none !important; border: 0; padding: 0; margin: 0;
+  width: auto !important; height: auto !important; text-indent: 0; position: static !important; visibility: visible !important; color: inherit; box-shadow: none;
+}
+ul.required-tags span.text { display: inline !important; visibility: visible !important; color: inherit !important; font-size: inherit; clip: auto; overflow: visible; }
+ul.required-tags .rating .text { color: var(--ink) !important; font-weight: 500; }
+/* The little "?" help-icon rule (further down) was shrinking this line's text to 11px; the line is meant to match the stats row: 14px, same line height */
+ul.required-tags { line-height: 1.5 !important; }
+ul.required-tags a.help.symbol.question, ul.required-tags a.help.symbol.question span, ul.required-tags a.help.symbol.question span.text { font-size: 1em !important; line-height: inherit !important; }
+/* any stray symbol icons elsewhere */
+.symbol .text { display: inline; }
+
+.blurb ul.tags { display: flex; flex-wrap: wrap; gap: 0.25rem 0.3rem; list-style: none; margin: 1rem 0 0; padding: 0; float: none; width: auto; }
+.blurb ul.tags li { display: block; background: none !important; border: 0; padding: 0; margin: 0; float: none; font-size: 0.8125rem; line-height: 1.3; }
+.blurb ul.tags li::after { content: none; }
+.blurb ul.tags li a.tag, .blurb ul.tags li strong a.tag {
+  display: inline-block; padding: 0.04rem 0.45rem; border: 1px solid var(--line) !important; border-radius: 5px;
+  background: none !important; color: var(--soft); font-weight: 400; text-decoration: none;
+}
+.blurb ul.tags li.relationships a.tag { color: var(--ink); border-color: var(--line-2) !important; }
+.blurb ul.tags li.warnings a.tag { color: var(--ink); font-weight: 500; }
+.blurb ul.tags li a.tag:hover, .blurb ul.tags li a.tag:focus {
+  background: var(--bg-2) !important; color: var(--ink); border-color: var(--line-2) !important; text-decoration: none;
+}
+
+.blurb blockquote.summary, .blurb blockquote.userstuff {
+  font: 400 0.96875rem/1.6 var(--f-read); margin: 0.9rem 0 0; padding: 0; border: 0; background: none; max-width: 40rem;
+}
+.blurb blockquote.summary p { margin: 0 0 0.6em; }
+
+dl.stats {
+  display: block !important; margin: 1rem 0 0; padding: 0; font-size: 0.875rem; color: var(--muted); font-variant-numeric: tabular-nums;
+  float: none; width: auto; text-align: left; line-height: 1.9; border: 0; background: none;
+}
+/* Label and value stay together; a thin bar separates one stat from the next and never starts a line */
+dl.stats dt { display: inline !important; float: none !important; width: auto !important; margin: 0 0.3rem 0 0 !important; padding: 0 !important; border: 0 !important; font-weight: 400; white-space: nowrap; line-height: inherit; }
+dl.stats dd { display: inline !important; float: none !important; width: auto !important; margin: 0 !important; padding: 0 !important; border: 0 !important; white-space: nowrap; line-height: inherit; }
+dl.stats dd a { color: inherit; }
+dl.stats dd::after { content: "\00a0\00a0|\00a0\00a0\200b"; color: var(--line-2); font-weight: 300; }
+dl.stats dd:last-of-type::after { content: none; }
+dl.stats dt.language, dl.stats dd.language { display: none !important; }
+
+/* Pagination */
+ol.pagination { display: flex; flex-wrap: wrap; justify-content: flex-start; gap: 0.25rem; list-style: none; margin: 1rem 0; padding: 0; float: none; }
+ol.pagination li { float: none; margin: 0; padding: 0; background: none; border: 0; }
+#main ol.pagination li a, #main ol.pagination li span, ol.pagination a, ol.pagination span {
+  display: inline-block; min-width: 1.5rem; padding: 0.35rem 0.6rem; text-align: center; border-radius: 6px;
+  background: none; border: 0; color: var(--muted); box-shadow: none;
+}
+#main ol.pagination li a:hover, ol.pagination a:hover { background: var(--bg-2); color: var(--ink); text-decoration: none; }
+#main ol.pagination li a.current, #main ol.pagination li a[aria-current], #main ol.pagination li span.current { background: var(--ink); color: var(--bg); }
+ol.pagination .disabled, ol.pagination .gap { opacity: 0.5; }
+
+/* The Works / Bookmarks / RSS tabs above a list */
+#main div.navigation.actions.module { margin-bottom: 0; }
+.landmark.heading { margin: 0 !important; } /* hidden headings should not add their margins to the page */
+#main div.navigation.actions ul, #main .navigation.actions.module ul { display: flex; flex-wrap: wrap; gap: 0.25rem 1.25rem; list-style: none; margin: 0 0 0.5rem; padding: 0; float: none; }
+#main .navigation.actions.module li { float: none; margin: 0; padding: 0; background: none; border: 0; }
+#main .navigation.actions.module a, #main .navigation.actions.module span {
+  background: none; border: 0; box-shadow: none; padding: 0.15rem 0; border-radius: 0; color: var(--muted); font-weight: 500;
+}
+#main .navigation.actions.module a:hover, #main .navigation.actions.module a:focus { color: var(--ink) !important; background: none !important; box-shadow: inset 0 -2px 0 var(--line-2) !important; text-decoration: none; }
+#main .navigation.actions.module .current, #main .navigation.actions.module li.current a, #main .navigation.actions.module a.current { color: var(--ink); background: none; box-shadow: inset 0 -2px 0 var(--ink); }
+#main .navigation.actions.module .rss img { display: none; }
+
+/* Filters (sidebar form on browse / search pages) */
+form.filters { font-size: 0.9375rem; background: none !important; border: 0 !important; box-shadow: none !important; padding: 0 !important; }
+form.filters .heading, form.filters h3, form.filters legend, form.filters dt, form.filters label { font-family: var(--f-ui); font-size: 0.875rem; font-weight: 500; color: var(--muted); border: 0 !important; background: none !important; text-decoration: none; letter-spacing: 0; margin-bottom: 0.25rem; }
+form.filters .expander, form.filters a.expander { color: var(--ink); }
+form.filters dd, form.filters dl, form.filters ul { background: none; border: 0; }
+form.filters fieldset { border: 0; border-top: 1px solid var(--line); border-radius: 0; box-shadow: none !important; background: none !important; padding: 0.75rem 0 0.25rem; margin: 0 0 0.5rem; }
+form.filters dl dt { margin-top: 0.5rem; }
+form.filters input[type="text"], form.filters select { width: 100%; }
+form.filters .submit input { width: 100%; }
+
+/* ------------------------------------------------------------------ *
+ * 6. A work: this is where the reading happens
+ * ------------------------------------------------------------------ */
+/* The action row and the info box use the full page width; from the title down, the text keeps the reading width */
+#main:is(.works-show, .chapters-show) { max-width: none; }
+#main:is(.works-show, .chapters-show) > .work > #work-skin, #main:is(.works-show, .chapters-show) > #feedback { max-width: var(--col); margin-left: auto !important; margin-right: auto !important; }
+
+ul.work.navigation { display: flex; flex-wrap: wrap; gap: 0.25rem 1rem; list-style: none; margin: 0 0 1.5rem; padding: 0; float: none; }
+ul.work.navigation li { float: none; margin: 0; padding: 0; }
+ul.work.navigation li a, ul.work.navigation li button {
+  background: none; border: 0; padding: 0.15rem 0; color: var(--muted); font-weight: 500; font-size: 0.9375rem; border-radius: 0;
+}
+ul.work.navigation li a:hover, ul.work.navigation li button:hover { color: var(--ink); background: none; text-decoration: none; }
+ul.work.navigation li.download { position: relative; }
+/* The action row belongs to the work: it sits right above the info box (which has its own border), without a line of its own */
+ul.work.navigation { align-items: center; padding-bottom: 0; margin-bottom: 1rem; border-bottom: 0; }
+ul.work.navigation li a, ul.work.navigation li button { font-size: 0.875rem; }
+#main:is(.works-show, .chapters-show) { padding-top: 1rem; }
+ul.work.navigation > li { display: flex; align-items: center; }
+ul.work.navigation li.download { position: relative; }
+ul.work.navigation ul.expandable.secondary { position: absolute; top: 100%; left: 0; z-index: 50; width: max-content; min-width: 8rem; margin: 0.25rem 0 0; padding: 0.35rem; list-style: none; }
+ul.work.navigation ul.expandable.secondary li { display: block !important; float: none; margin: 0; padding: 0; width: auto; background: none; border: 0; }
+ul.work.navigation ul.expandable.secondary li a { display: block; padding: 0.4rem 0.65rem; color: var(--ink) !important; box-shadow: none !important; border-radius: 5px; }
+ul.work.navigation ul.expandable.secondary li a:hover { background: var(--bg-2) !important; box-shadow: none !important; }
+ul.work.navigation li a, ul.work.navigation li a:hover, ul.work.navigation li a:focus, ul.work.navigation li button:hover, ul.work.navigation li button:focus { background: none !important; background-image: none !important; box-shadow: none !important; border: 0 !important; text-shadow: none; border-radius: 0 !important; }
+ul.work.navigation li a:hover, ul.work.navigation li a:focus, ul.work.navigation li button:hover { color: var(--ink) !important; text-decoration: none; box-shadow: inset 0 -2px 0 var(--line-2) !important; }
+ul.work.navigation li input[type="submit"], ul.work.navigation li button { font: 500 0.9375rem/1.5 var(--f-ui) !important; height: auto; margin: 0; }
+
+dl.work.meta {
+  display: grid; grid-template-columns: max-content 1fr; gap: 0.4rem 1.5rem;
+  margin: 0 0 2rem; padding: 0 0 1.5rem; border: 0; border-bottom: 1px solid var(--line);
+  background: none; font-size: 0.9375rem; float: none; width: auto; box-shadow: none !important; border-radius: 0;
+}
+dl.work.meta > dt { margin: 0; padding: 0; float: none; width: auto; color: var(--muted); font-weight: 400; text-align: left; }
+dl.work.meta > dd { margin: 0; padding: 0; float: none; width: auto; }
+dl.work.meta ul.commas, dl.work.meta ul { list-style: none; margin: 0; padding: 0; display: inline; }
+dl.work.meta li { display: inline; padding: 0; margin: 0; background: none; border: 0; float: none; }
+dl.work.meta li::after { content: ", "; }
+dl.work.meta li:last-child::after { content: ""; }
+dl.work.meta dt.stats { display: none; }
+dl.work.meta dd.stats { grid-column: 1 / -1; margin-top: 1rem !important; padding-top: 0.9rem !important; border-top: 1px solid var(--line); }
+/* Series row in the work info box: same thin separator as the series block at the end, and links like any sentence */
+dl.work.meta dd.series span.divider::before { content: none; }
+dl.work.meta dd.series span.divider::after { content: "|"; color: var(--line-2); margin: 0 0.5em; }
+dl.work.meta dd.stats dl.stats { margin: 0; font-size: 0.875rem; }
+dl.work.meta dd.stats dl.stats dt.language, dl.work.meta dd.stats dl.stats dd.language { display: none; }
+dl.work.meta a.tag { color: var(--ink); }
+dl.work.meta a.tag:hover { color: var(--link); }
+
+#workskin .preface.group, #workskin .preface { text-align: left; margin: 0 0 2.5rem; padding: 0; border: 0; background: none; }
+#workskin .preface .title.heading, #workskin h2.title {
+  font-family: var(--f-ui); font-size: 2rem; font-weight: 650; letter-spacing: -0.025em; line-height: 1.15;
+  margin: 0 0 0.5rem; text-align: left; text-wrap: balance;
+}
+#workskin .byline.heading, #workskin h3.byline { font-size: 1rem; font-weight: 400; color: var(--muted); margin: 0 0 1.75rem; text-align: left; letter-spacing: 0; }
+#workskin .byline a { color: var(--muted); }
+#workskin .byline a:hover { color: var(--link); }
+
+#workskin .summary.module, #workskin .notes.module, #workskin .end.notes.module, .afterword .module {
+  background: none; border: 0; border-left: 2px solid var(--line); border-radius: 0;
+  margin: 0 0 1.25rem; padding: 0 0 0 1.25rem; float: none; width: auto;
+}
+/* Dividers and breathing room between summary, notes and chapters */
+#workskin .summary.module, #workskin .notes.module, #workskin .end.notes.module, .chapter .summary.module, .chapter .notes.module, .afterword .module { position: relative; margin: 0 0 3.5rem !important; }
+#workskin .summary.module::after, #workskin .notes.module::after, .chapter .summary.module::after, .chapter .notes.module::after { content: ""; position: absolute; left: -1.25rem; right: 0; bottom: -1.75rem; border-bottom: 1px solid var(--line); }
+#workskin .end.notes.module, .afterword .module { margin-top: 3.5rem !important; }
+#workskin .end.notes.module::before, .afterword .module::before { content: ""; position: absolute; left: -1.25rem; right: 0; top: -1.75rem; border-top: 1px solid var(--line); }
+#chapters .chapter .chapter.preface { margin: 3rem 0 2rem; }
+#workskin #chapters .chapter.preface .notes.module, #workskin #chapters .chapter.preface .summary.module, #chapters .chapter.preface .notes.module, #chapters .chapter.preface .summary.module { margin-top: 1.5rem !important; }
+#chapters .chapter.preface h3.title { margin-bottom: 0; }
+#workskin .module > h3.heading { border: 0 !important; font-family: var(--f-ui); font-size: 0.8125rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); margin: 0 0 0.4rem; }
+/* "Works inspired by this one" and "Series this work belongs to" match the notes blocks: same bar, indent and heading */
+#children.module, #series.module { background: none; border: 0; border-left: 2px solid var(--line); border-radius: 0; float: none; width: auto; margin: 2.5rem 0 1.25rem; padding: 0 0 0 1.25rem; }
+#children.module > h3.heading, #series.module > h3.heading { border: 0 !important; font-family: var(--f-ui); font-size: 0.8125rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); margin: 0 0 0.4rem; padding: 0; }
+#children.module ul, #series.module ul { list-style: none; margin: 0; padding: 0; }
+#children.module li, #series.module li { margin: 0 0 0.25rem; padding: 0; font-size: 1rem; line-height: 1.6; }
+#series.module span.divider::before { content: none; }
+#series.module a.previous, #series.module a.next, dl.work.meta dd.series a.previous, dl.work.meta dd.series a.next { white-space: nowrap; }
+#series.module span.divider::after { content: "|"; color: var(--line-2); margin: 0 0.5em; }
+/* Restricted-work padlock: AO3's blue bitmap becomes an outlined icon in the text colour */
+img[src*="lockblue"] { width: 0.85em !important; height: 0.85em !important; margin: 0 0 0 0.4em; vertical-align: -0.1em !important; object-fit: none; object-position: 9999px 0 !important; background-color: var(--muted); -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='6' y='11' width='12' height='10' rx='2'/%3E%3Cpath d='M8.5 11V8a3.5 3.5 0 0 1 7 0v3'/%3E%3C/svg%3E") center / contain no-repeat; mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='6' y='11' width='12' height='10' rx='2'/%3E%3Cpath d='M8.5 11V8a3.5 3.5 0 0 1 7 0v3'/%3E%3C/svg%3E") center / contain no-repeat; }
+/* On work pages AO3 puts the padlock before the title; move it after */
+h2.heading:has(> img[src*="lockblue"]) { display: flex; align-items: center; flex-wrap: wrap; }
+h2.heading > img[src*="lockblue"] { order: 1; margin: 0 0 0 0.5em; }
+#workskin .module blockquote.userstuff { margin: 0; padding: 0; border: 0; background: none; font-size: 1rem; line-height: 1.6; }
+
+#chapters .chapter.preface, .chapter .preface.group { margin: 2.5rem 0 1.5rem; text-align: left; }
+#chapters h3.title, .chapter h3.title { font-family: var(--f-ui); font-size: 1.5rem; font-weight: 650; line-height: 1.25; letter-spacing: -0.02em; text-transform: none; color: var(--ink); margin: 0; text-align: left; text-wrap: balance; }
+#chapters h3.title a, .chapter h3.title a { color: var(--ink); }
+#chapters h3.title a:hover, .chapter h3.title a:hover { color: var(--link); text-decoration: none; }
+#chapters .chapter .chapter.preface .notes, #chapters .chapter .chapter.preface .summary { margin-top: 1.25rem; }
+#chapters > .chapter + .chapter { border-top: 1px solid var(--line); margin-top: 3.5rem; }
+.chapter .preface .byline { display: none; }
+
+/* The reading column */
+#workskin .userstuff, .chapter .userstuff.module, #chapters .userstuff {
+  font-family: var(--f-read); font-size: var(--read-size); line-height: var(--read-lh);
+  font-weight: 400; color: var(--ink); background: none; border: 0; padding: 0; margin: 0;
+  hyphens: manual; text-wrap: pretty; font-variant-ligatures: common-ligatures; font-feature-settings: "kern", "liga", "calt";
+  overflow-wrap: break-word;
+}
+#chapters .userstuff p, #workskin .userstuff.module p { margin: 0 0 1em; padding: 0; text-indent: 0; text-align: left; }
+#chapters .userstuff h3.landmark { display: none; }
+#chapters .userstuff blockquote { margin: 1.5em 0; padding: 0 0 0 1.25em; border-left: 2px solid var(--line-2); }
+#chapters .userstuff hr { width: 3rem; margin: 2.5em auto; border: 0; border-top: 1px solid var(--line-2); }
+#chapters .userstuff h1, #chapters .userstuff h2, #chapters .userstuff h3, #chapters .userstuff h4 { font-family: var(--f-read); margin: 2em 0 0.6em; }
+#chapters .userstuff em, #chapters .userstuff i { font-style: italic; }
+#chapters .userstuff a { text-decoration: underline; text-underline-offset: 0.18em; text-decoration-thickness: 1px; }
+#chapters .userstuff ul, #chapters .userstuff ol { margin: 0 0 1em 1.5em; padding: 0; }
+
+/* End of chapter / work */
+div.end.notes, #work_endnotes { margin-top: 2.5rem; }
+ul.work.navigation.actions.bottom { margin-top: 2.5rem; }
+#feedback { margin-top: 1.5rem; }
+#feedback { border-top: 1px solid var(--line); padding-top: 1rem; }
+#feedback p.kudos { margin: 0 0 1.25rem; } /* AO3 puts 30px above the kudos names */
+#feedback ul.actions { display: flex; flex-wrap: wrap; gap: 0.5rem; list-style: none; margin: 0 0 1rem; padding: 0; }
+#feedback ul.actions li { float: none; margin: 0; padding: 0; }
+#kudos, .kudos_notice, p.kudos { color: var(--muted); font-size: 0.9375rem; }
+
+/* ------------------------------------------------------------------ *
+ * 7. Comments
+ * ------------------------------------------------------------------ */
+ol.thread, ol.thread ol.thread { list-style: none; margin: 0; padding: 0; }
+ol.thread ol.thread { margin-left: 0.75rem; padding-left: 1rem; border-left: 3px solid var(--line); }
+li.comment, li.comment.group { background: none; border: 0; border-top: 1px solid var(--line); border-radius: 0; box-shadow: none; padding: 1.1rem 0 0.5rem; margin: 0; }
+ol.thread ol.thread > li.comment { border-top: 0; }
+li.comment .header, li.comment h4.heading { font-size: 0.9375rem; margin: 0 0 0.4rem; font-weight: 600; }
+li.comment .datetime, li.comment .posted { color: var(--muted); font-weight: 400; font-size: 0.875rem; }
+li.comment blockquote.userstuff { font: 400 1rem/1.6 var(--f-ui); margin: 0 0 0.6rem; padding: 0; border: 0; background: none; max-width: 40rem; }
+li.comment ul.actions { display: flex; flex-wrap: wrap; gap: 0.75rem; list-style: none; margin: 0.25rem 0 0.5rem; padding: 0; }
+li.comment ul.actions li { float: none; margin: 0; padding: 0; }
+li.comment ul.actions a, li.comment ul.actions button { background: none; border: 0; padding: 0; color: var(--muted); font-size: 0.875rem; border-radius: 0; }
+li.comment ul.actions a:hover { color: var(--link); background: none; }
+li.comment .icon, li.comment .user .icon, .icon img { border-radius: 50%; }
+
+/* ------------------------------------------------------------------ *
+ * 8. Tables, code, footer
+ * ------------------------------------------------------------------ */
+/* ------------------------------------------------------------------ *
+ * 7b. Home page (logged in): one calm column of labelled sections
+ * ------------------------------------------------------------------ */
+#main.system.docs.index, #main.system.docs { max-width: 44rem; }
+.splash { display: block; float: none; width: auto; margin: 0; padding: 0; }
+.splash .module {
+  float: none !important; width: auto !important; clear: both; margin: 0 0 3rem !important; padding: 0 !important;
+  background: none !important; border: 0 !important; box-shadow: none !important;
+}
+.splash .module > h3.heading {
+  display: flex; justify-content: space-between; align-items: baseline; margin: 0 0 1rem; padding: 0 0 0.5rem;
+  border: 0 !important; border-bottom: 1px solid var(--line) !important; background: none !important;
+  font-size: 0.8125rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted);
+}
+.splash .module > h3.heading .title, .splash .module > h3.heading span { color: inherit; font: inherit; letter-spacing: inherit; text-transform: inherit; }
+.splash .module > h3.heading span.link, .splash .module > h3.heading span.link a { text-transform: none; letter-spacing: 0; font-size: 0.875rem; font-weight: 400; }
+.splash ul { list-style: none; margin: 0; padding: 0; }
+.splash .favorite ul li { background: none !important; border: 0; padding: 0.25rem 0; margin: 0; float: none; }
+.splash .favorite ul li a.tag { display: inline-block; padding: 0.2rem 0.6rem; border: 1px solid var(--line) !important; border-radius: 5px; background: none !important; color: var(--ink); font-size: 0.9375rem; }
+.splash .favorite ul { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.splash .favorite ul li a.tag:hover { background: var(--bg-2) !important; border-color: var(--line-2) !important; text-decoration: none; }
+.splash p.note { color: var(--muted); font-size: 0.9375rem; margin: 0 0 1rem; }
+
+/* News posts */
+ul.news li.post { background: none; border: 0; border-bottom: 1px solid var(--line); border-radius: 0; box-shadow: none; margin: 0; padding: 1.5rem 0; float: none; width: auto; }
+ul.news li.post .header.module { margin: 0 0 0.5rem; padding: 0; background: none; border: 0; }
+ul.news li.post h4.heading { font-size: 1.125rem; font-weight: 600; margin: 0; line-height: 1.3; letter-spacing: -0.01em; }
+ul.news li.post h4.heading a { color: var(--ink); }
+ul.news li.post p.meta, ul.news li.post .meta span { font-family: var(--f-ui) !important; font-size: 0.875rem; color: var(--muted); margin: 0.25rem 0 0; }
+ul.news li.post blockquote.userstuff { font: 400 0.96875rem/1.6 var(--f-read); margin: 0.5rem 0 0; padding: 0; border: 0; background: none; }
+ul.news li.post p.jump { margin: 0.5rem 0 0; font-size: 0.9375rem; text-align: left; }
+
+/* Unread messages / "Is it later already?" reuse the comment and work-list styles above */
+.splash ul.abbreviated.comment li.comment, .splash ul.abbreviated li.comment { padding: 1.25rem 0; }
+.splash ol.reading li.blurb { padding: 1.75rem 0 !important; }
+
+/* ------------------------------------------------------------------ *
+ * 7c. Fixes found on the real logged-in pages
+ * ------------------------------------------------------------------ */
+ul.news li.post .header.module { margin: 0 0 0.25rem !important; }
+ul.news li.post p.meta { margin: 0.25rem 0 0 !important; padding: 0 !important; }
+ul.news li.post blockquote.userstuff, ul.news li.post blockquote.userstuff p:first-child { margin-top: 0 !important; }
+
+/* Blurb spacing (AO3 gives .module a big bottom margin) and the "Last visited" block in history lists */
+.blurb .header.module { margin: 0 0 0.35rem !important; padding: 0 !important; }
+/* Bookmarker's tags: AO3's own rule made them inline, which stacked the badges; lay them out in a row */
+.bookmark .user ul.meta.tags { display: flex; margin-top: 0.5rem; }
+.blurb div.user.module, .blurb .module.group.user { margin: 0.9rem 0 0 !important; padding: 0 !important; background: none !important; border: 0 !important; box-shadow: none !important; }
+.blurb h4.viewed, .blurb .viewed { background: none !important; font-size: 0.875rem !important; font-weight: 400 !important; line-height: 1.6; color: var(--muted); margin: 0 !important; padding: 0 !important; letter-spacing: 0; }
+.blurb .actions input[type="submit"], .blurb .actions button, .blurb ul.actions input[type="submit"] { background: var(--bg) !important; color: var(--ink) !important; border: 1px solid var(--line-2) !important; }
+.blurb .actions input[type="submit"]:hover { background: var(--bg-2) !important; opacity: 1; }
+
+/* Comments: small round avatar on the left, quiet text actions */
+li.comment, li.comment.group { position: relative; padding-left: 3.4rem !important; padding-top: 1.6rem !important; }
+li.comment h4.heading.byline, li.comment .header { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0 0.35rem; background: none !important; border: 0 !important; padding: 0 !important; margin: 0 0 0.4rem !important; font-size: 0.9375rem; font-weight: 400; color: var(--muted); }
+li.comment h4.byline a { font-weight: 600; }
+li.comment h4.byline > a:first-child, li.comment h4.byline a[rel="author"] { font-size: 1.0625rem; font-weight: 700; letter-spacing: -0.005em; }
+li.comment h4.byline .datetime, li.comment h4.byline .posted { margin-left: auto; background: none !important; font-size: 0.875rem; color: var(--muted); padding: 0 !important; }
+li.comment div.icon { position: absolute !important; left: 0; top: 1.6rem; float: none !important; width: 2.5rem !important; height: 2.5rem !important; margin: 0 !important; padding: 0 !important; background: none !important; border: 0 !important; box-shadow: none !important; }
+li.comment .icon img, li.comment img.icon { width: 2.5rem !important; height: 2.5rem !important; object-fit: cover; border-radius: 50%; border: 0 !important; box-shadow: none !important; }
+li.comment blockquote.userstuff { margin-left: 0 !important; padding: 0 !important; background: none !important; }
+li.comment blockquote.userstuff p:last-child { margin-bottom: 0.4rem; }
+li.comment ul.actions { gap: 0.25rem 1rem; align-items: center; }
+li.comment ul.actions li a, li.comment ul.actions li button, li.comment ul.actions li input[type="submit"], li.comment ul.actions li input[type="button"] { background: none !important; border: 0 !important; box-shadow: none !important; padding: 0 !important; color: var(--muted) !important; font-size: 0.875rem; font-weight: 500; border-radius: 0; }
+li.comment ul.actions li a:hover, li.comment ul.actions li button:hover, li.comment ul.actions li input[type="submit"]:hover { color: var(--ink) !important; background: none !important; text-decoration: underline; opacity: 1; }
+
+/* Footer social buttons: outlined, readable */
+.resp-sharing-button, .resp-sharing-button__link { background: none !important; color: var(--ink) !important; border-radius: 6px !important; }
+.resp-sharing-button { border: 1px solid var(--line-2); }
+.resp-sharing-button:hover { background: var(--bg-2) !important; }
+.resp-sharing-button__icon svg { fill: currentColor; }
+
+/* Work page: action bars, kudos, comment form */
+.datetime, .posted, li.comment .datetime { font-family: var(--f-ui) !important; }
+ul.work.navigation li input[type="submit"], ul.work.navigation li button { background: none !important; color: var(--muted) !important; border: 0 !important; padding: 0.15rem 0 !important; font-size: 0.9375rem; font-weight: 500; box-shadow: none !important; }
+ul.work.navigation li input[type="submit"]:hover { color: var(--ink) !important; background: none !important; opacity: 1; }
+#feedback ul.actions li a, #feedback ul.actions li button, #feedback ul.actions li input[type="submit"]:not(#kudo_submit),
+ul.navigation.actions li.module a, ul.navigation.actions li.module button, ul.navigation.actions li.module input[type="submit"]:not(#kudo_submit) {
+  background: none !important; border: 0 !important; box-shadow: none !important; padding: 0.15rem 0 !important;
+  color: var(--muted) !important; font-size: 0.9375rem; font-weight: 500; border-radius: 0; text-shadow: none;
+}
+#feedback ul.actions li a:hover, #feedback ul.actions li button:hover, ul.navigation.actions li.module a:hover { color: var(--ink) !important; background: none !important; text-decoration: none; }
+#feedback ul.actions, ul.navigation.actions:has(li.module) { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 1.25rem; list-style: none; margin: 0 0 0.75rem; padding: 0; float: none; }
+#feedback ul.actions li, ul.navigation.actions li.module { float: none; margin: 0; padding: 0; background: none; border: 0; }
+#kudo_submit { background: var(--ink) !important; color: var(--bg) !important; border: 1px solid var(--ink) !important; border-radius: 6px; padding: 0.4rem 0.9rem !important; }
+#kudos, #kudos p.kudos, p.kudos, .kudos_notice { background-image: none !important; padding-left: 0 !important; min-height: 0 !important; margin-left: 0 !important; text-align: left; }
+#add_comment_placeholder, #add_comment_placeholder fieldset, #add_comment_placeholder form, #add_comment_placeholder .comment-form, #feedback fieldset { border: 0 !important; box-shadow: none !important; background: none !important; padding: 0 !important; border-radius: 0 !important; }
+#add_comment_placeholder h4.heading { font-size: 0.875rem; font-weight: 500; color: var(--muted); }
+#add_comment_placeholder div.post.comment, #add_comment_placeholder div[id^="comment_form"] { border: 1px solid var(--line) !important; border-radius: 10px !important; padding: 1.25rem 1.5rem !important; background: none !important; box-shadow: none !important; margin: 0 0 1.5rem !important; }
+#add_comment_placeholder fieldset { display: grid !important; grid-template-columns: 1fr auto; column-gap: 1rem; row-gap: 0.75rem; align-items: center; }
+#add_comment_placeholder fieldset > legend { grid-column: 1 / -1; }
+#add_comment_placeholder fieldset > h4.heading { grid-column: 1; margin: 0 !important; padding: 0 !important; }
+#add_comment_placeholder fieldset > p.footnote { grid-column: 2; margin: 0 !important; padding: 0 !important; text-align: right; display: flex; align-items: center; gap: 0.4rem; justify-content: flex-end; }
+#add_comment_placeholder fieldset > p:not(.footnote):not(.character_counter):not(.submit):not(.notice) { grid-column: 1 / -1; margin: 0 !important; padding: 0 !important; }
+#add_comment_placeholder fieldset > p.notice { grid-column: 1 / -1; margin: 0 !important; padding: 0.75rem 1rem !important; }
+#add_comment_placeholder fieldset > p.character_counter { grid-column: 1; margin: 0 !important; padding: 0 !important; text-align: left; }
+#add_comment_placeholder fieldset > p.submit.actions { grid-column: 2; margin: 0 !important; padding: 0 !important; justify-self: end; }
+#add_comment_placeholder textarea { min-height: 7rem; }
+
+/* Dashboard, profile, bookmarks, history: left menu + content (+ filters) */
+#outer:has(#dashboard) { max-width: 72rem; }
+#inner:has(#dashboard) { display: grid; grid-template-columns: 10rem minmax(0, 1fr); column-gap: 2.5rem; align-items: start; }
+#dashboard { float: none !important; width: auto !important; margin: 2rem 0 0 !important; padding: 0 !important; background: none !important; border: 0 !important; box-shadow: none !important; position: sticky; top: 1rem; }
+#dashboard::before, #dashboard::after, #dashboard h4.landmark::before, #dashboard h4.landmark::after { content: none !important; display: none !important; }
+#dashboard ul.navigation.actions { display: block; list-style: none; margin: 0 0 1.25rem; padding: 0 0 1.25rem; border: 0 !important; border-bottom: 1px solid var(--line) !important; background: none !important; float: none; text-align: left; }
+#dashboard ul.navigation.actions:last-of-type { border-bottom: 0 !important; }
+#dashboard ul li { float: none; display: block; margin: 0; padding: 0; background: none !important; border: 0 !important; box-shadow: none !important; text-align: left; }
+#dashboard ul li a, #dashboard ul li span { display: block; padding: 0.3rem 0 0.3rem 0.75rem; border: 0 !important; border-left: 2px solid transparent !important; background: none !important; box-shadow: none !important; color: var(--muted); font-weight: 500; border-radius: 0; text-align: left; }
+#dashboard ul li a:hover { color: var(--ink); text-decoration: none; }
+#dashboard ul li span.current, #dashboard ul li.current a { color: var(--ink); border-left-color: var(--ink) !important; }
+#main.dashboard.filtered { justify-content: start !important; grid-template-columns: minmax(0, 38rem) 14rem !important; column-gap: 3rem !important; }
+#main.dashboard { max-width: none; }
+#inner:has(#dashboard) > #main { margin: 0 !important; justify-self: stretch; min-width: 0; }
+#main ul.navigation.actions { text-align: left; }
+.blurb h4.heading a:not(:first-child):not([rel="author"]) { color: var(--muted); }
+.blurb p.status { position: static !important; float: none !important; width: auto !important; height: auto !important; margin: 0 0 0.35rem !important; padding: 0 !important; font-size: 0.875rem; color: var(--muted); background: none !important; }
+.blurb p.status span, .blurb p.status a { display: inline !important; background: none !important; width: auto !important; height: auto !important; text-indent: 0 !important; position: static !important; padding: 0 !important; margin: 0 0.5rem 0 0 !important; color: inherit; border: 0 !important; }
+.blurb p.status span.text { display: inline !important; visibility: visible !important; font-size: inherit !important; color: inherit !important; }
+
+/* User dashboard / profile home */
+#main.users-show { max-width: 46rem; }
+.user.home > .primary.header { display: grid; grid-template-columns: 4rem 1fr; grid-template-areas: 'icon name' 'icon actions'; column-gap: 1.25rem; align-items: center; background: none !important; border: 0 !important; box-shadow: none !important; padding: 0 !important; margin: 0 0 2.5rem !important; }
+.user.home h2.heading { grid-area: name; text-align: left; margin: 0; padding: 0; border: 0 !important; font-size: 1.75rem; font-weight: 650; letter-spacing: -0.02em; background: none; }
+.user.home p.icon { grid-area: icon; margin: 0; padding: 0; float: none; }
+.user.home p.icon img, .user.home p.icon a { width: 4rem !important; height: 4rem !important; border-radius: 50%; border: 0 !important; box-shadow: none !important; display: block; object-fit: cover; }
+.user.home > .primary.header ul.navigation.actions { grid-area: actions; display: flex; flex-wrap: wrap; gap: 0.5rem; list-style: none; margin: 0.5rem 0 0; padding: 0; float: none; text-align: left; }
+.user.home > .primary.header ul.navigation.actions li { float: none; margin: 0; padding: 0; }
+.user.home > .primary.header ul.navigation.actions a, .user.home > .primary.header ul.navigation.actions input[type="submit"],
+.blurb ul.actions li a, .blurb ul.actions li button, .blurb ul.actions li input[type="submit"] {
+  background: var(--bg) !important; background-image: none !important; color: var(--ink) !important; border: 1px solid var(--line-2) !important;
+  border-radius: 6px !important; box-shadow: none !important; padding: 0.45rem 0.8rem !important; font: 500 0.9375rem/1.2 var(--f-ui) !important; text-shadow: none; opacity: 1;
+}
+.blurb ul.actions li a:hover, .blurb ul.actions li button:hover, .user.home > .primary.header ul.navigation.actions a:hover { background: var(--bg-2) !important; text-decoration: none; }
+.blurb ul.actions { display: flex; flex-wrap: wrap; gap: 0.5rem; list-style: none; margin: 1rem 0 0; padding: 0; float: none; }
+.blurb ul.actions li { float: none; margin: 0; padding: 0; }
+.listbox, .listbox.group { background: none !important; border: 0 !important; box-shadow: none !important; padding: 0 !important; margin: 0 0 3rem !important; float: none !important; width: auto !important; }
+#user-fandoms, .fandom.listbox { width: auto !important; max-width: none !important; margin-left: 0 !important; margin-right: 0 !important; position: static !important; overflow: visible !important; }
+#main .listbox > h3.heading { display: block !important; width: 100% !important; min-width: 0 !important; max-width: none !important; margin: 0 0 1rem !important; padding: 0 0 0.5rem; border: 0 !important; border-bottom: 1px solid var(--line) !important; background: none !important; position: static !important; float: none !important; text-indent: 0 !important; font-size: 0.8125rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); text-align: left; }
+.listbox > h3.heading a { text-transform: none; letter-spacing: 0; font-size: 0.875rem; font-weight: 400; }
+.listbox ol.index, .listbox ul.index { margin: 0 !important; padding: 0 !important; background: none !important; border: 0 !important; box-shadow: none !important; }
+.listbox ol.index.group li:not(.blurb) { background: none !important; border: 0 !important; padding: 0.15rem 0; }
+.listbox ul.actions { display: flex; gap: 0.5rem; list-style: none; margin: 1rem 0 0; padding: 0; float: none; }
+.listbox ul.actions li { float: none; margin: 0; padding: 0; }
+
+/* Forms (post a work, preferences, etc.): flat sections with small labels */
+form fieldset { border: 0 !important; border-top: 1px solid var(--line) !important; border-radius: 0 !important; box-shadow: none !important; background: none !important; padding: 1.25rem 0 0.5rem !important; margin: 0 0 1.5rem !important; }
+form fieldset fieldset { border-top: 0 !important; padding: 0 !important; margin: 0 !important; }
+form.filters fieldset { padding: 0.75rem 0 0.25rem !important; margin: 0 0 0.5rem !important; }
+form fieldset > legend, form legend { background: none !important; border: 0 !important; box-shadow: none !important; padding: 0 0.5rem 0 0 !important; margin: 0 0 0.75rem; font-size: 0.8125rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); position: static; float: none; }
+form dt, form dt label, form dl dt label, form label { border: 0 !important; text-decoration: none !important; background: none !important; box-shadow: none !important; }
+form dt.required label, form label.required, form .required { color: var(--ink); }
+p.required.notice, p.notice, .required.notice { background: var(--bg-2) !important; border: 1px solid var(--line) !important; border-radius: 8px; color: var(--muted); padding: 0.6rem 1rem; margin: 0 0 1rem; font-size: 0.9375rem; }
+p.required.notice .required, p.notice .required { color: var(--ink); }
+span.question, a.help.symbol.question, a.help .symbol.question, .symbol.question { background: none !important; background-image: none !important; border: 1px solid var(--line-2) !important; color: var(--muted) !important; box-shadow: none !important; text-shadow: none !important; width: 1.1rem !important; height: 1.1rem !important; min-width: 0; line-height: 1.05rem !important; border-radius: 50% !important; font-size: 0.7rem !important; font-weight: 500; text-align: center; display: inline-block !important; vertical-align: middle; padding: 0 !important; text-indent: 0 !important; }
+a.help.symbol.question { border: 0 !important; width: auto !important; height: auto !important; }
+ul.options, form ul.options, .options { border: 1px solid var(--line) !important; border-radius: 6px; box-shadow: none !important; background: none !important; }
+.hint, dd .footnote, p.footnote, span.hint, form dd.hint, form p.character_counter, .character_counter { font-size: 0.875rem; color: var(--muted); }
+form dl dt, form dl dd { margin-top: 0.3rem !important; margin-bottom: 0.3rem !important; }
+form input[type="checkbox"], form input[type="radio"] { margin: 0.15rem 0.4rem 0 0; accent-color: var(--ink); }
+#main form ul.actions li a {
+  background: var(--bg) !important; background-image: none !important; color: var(--ink) !important; border: 1px solid var(--line-2) !important;
+  border-radius: 6px !important; box-shadow: none !important; padding: 0.45rem 0.8rem !important; font: 500 0.9375rem/1.2 var(--f-ui) !important; text-shadow: none;
+}
+#main form ul.actions li a:hover { background: var(--bg-2) !important; text-decoration: none; }
+#footer form.button_to button, #footer ul.menu button { background: none !important; border: 0 !important; padding: 0 !important; color: var(--muted) !important; font: inherit !important; text-decoration: none !important; box-shadow: none !important; }
+#footer ul.menu button:hover { color: var(--ink) !important; text-decoration: underline !important; }
+
+/* History, series, collections, inbox */
+/* Series title: larger and light, so it reads differently from a work title */
+#main.series-show > h2.heading { font-size: 2.25rem; font-weight: 400; line-height: 1.15; letter-spacing: -0.025em; margin: 0 0 1.5rem; }
+/* Series page: title and info box use the full width, the list of works keeps its reading width, centred.
+   "Series" is only a label (the current page), so it is muted; the actions go to the right. */
+#main.series-show { max-width: none; }
+#main.series-show > ul.series.work.index, #main.series-show > #bookmark_form_placement { max-width: 44rem; margin-left: auto !important; margin-right: auto !important; }
+#main.series-show > ul.navigation.actions > li:first-child > span.current { color: var(--muted) !important; font-weight: 400 !important; border-bottom-color: transparent !important; }
+#main.series-show > ul.navigation.actions > li:first-child + li { margin-left: auto !important; }
+.blurb blockquote.userstuff, .blurb blockquote.summary, .blurb blockquote.userstuff p, .blurb blockquote.summary p { text-align: left !important; }
+.blurb ul.actions li a, .blurb .actions a, .blurb p.actions a, .blurb span.actions a, .blurb a.action { background: var(--bg) !important; background-image: none !important; color: var(--ink) !important; border: 1px solid var(--line-2) !important; border-radius: 6px !important; box-shadow: none !important; padding: 0.45rem 0.8rem !important; font: 500 0.9375rem/1.2 var(--f-ui) !important; text-shadow: none; }
+fieldset.actions { border: 0 !important; padding: 0 !important; margin: 0 0 1rem !important; }
+fieldset.actions ul { display: flex; flex-wrap: wrap; gap: 0.5rem; list-style: none; margin: 0; padding: 0; float: none; }
+fieldset.actions li, ul.actions li { float: none; margin: 0; padding: 0; background: none; }
+fieldset.actions input[type="submit"], fieldset.actions input[type="button"], ul.actions li input[type="submit"], ul.actions li input[type="button"], ul.actions li button {
+  background: var(--bg) !important; background-image: none !important; color: var(--ink) !important; border: 1px solid var(--line-2) !important; border-radius: 6px !important; box-shadow: none !important; opacity: 1;
+}
+fieldset.actions input[type="submit"]:hover, ul.actions li input[type="submit"]:hover { background: var(--bg-2) !important; }
+/* Unread marker: a small accent dot and plain text, not a bordered badge (that looked like a button); it sits at the end of the row */
+li.comment span.unread, span.unread { background: none !important; border: 0 !important; color: var(--ink) !important; padding: 0 !important; font-size: 0.8125rem; font-weight: 500; text-transform: none; letter-spacing: 0; box-shadow: none !important; display: inline-flex; align-items: center; gap: 0.4rem; }
+li.comment span.unread::before, span.unread::before { content: ""; width: 0.5rem; height: 0.5rem; border-radius: 50%; background: var(--link); }
+li.comment ul.actions li:has(> span.unread) { order: 1; margin-left: auto; }
+li.comment ul.actions label { color: var(--muted); font-size: 0.875rem; font-weight: 500; }
+/* Rows of page options (Series | Subscribe | Bookmark Series, History, Stats...): same quiet text row as the top of a work */
+#main > ul.navigation.actions { display: flex; flex-wrap: wrap; align-items: center; gap: 0.25rem 1.25rem; list-style: none; margin: 0 0 1.5rem; padding: 0 0 0.5625rem; border-bottom: 1px solid var(--line); float: none; text-align: left; }
+#main > ul.navigation.actions > li { display: flex; align-items: center; float: none; margin: 0; padding: 0; background: none; border: 0; }
+#main > ul.navigation.actions > li form { margin: 0; padding: 0; display: flex; align-items: center; }
+#main > ul.navigation.actions > li > a, #main > ul.navigation.actions > li > span.current, #main > ul.navigation.actions > li input[type="submit"], #main > ul.navigation.actions > li button { margin: 0 !important; height: auto !important; min-height: 0 !important; line-height: 1.5 !important; vertical-align: middle; } /* links, the current tab and the Subscribe/Unsubscribe button all sit on one line */
+#main > ul.navigation.actions > li > a, #main > ul.navigation.actions > li > span.current, #main > ul.navigation.actions > li input[type="submit"], #main > ul.navigation.actions > li button {
+  background: none !important; background-image: none !important; border: 0 !important; box-shadow: none !important; padding: 0.15rem 0 !important; border-radius: 0 !important;
+  color: var(--muted) !important; font: 500 0.9375rem/1.5 var(--f-ui) !important; text-shadow: none; opacity: 1;
+}
+#main > ul.navigation.actions > li > a:hover, #main > ul.navigation.actions > li input[type="submit"]:hover, #main > ul.navigation.actions > li button:hover { color: var(--ink) !important; background: none !important; box-shadow: inset 0 -2px 0 var(--line-2) !important; text-decoration: none; }
+#main > ul.navigation.actions > li > span.current { color: var(--ink) !important; font-weight: 650 !important; box-shadow: none !important; } /* only real tabs (Works|Bookmarks, History|Marked for Later, Stats|Edit Works, subscriptions) get an underline */
+
+/* Works | Bookmarks tabs on tag, user and collection pages: real tabs with a line underneath;
+   "Favorite Tag" and RSS sit on the right. */
+:is(#main ul.navigation.actions:has(#go_to_filters), #main.readings-index > ul.navigation.actions, #main.stats-index > ul.navigation.actions) { display: flex !important; flex-wrap: wrap; align-items: flex-end; gap: 0 1.75rem; list-style: none; margin: 0 0 1.5rem !important; padding: 0 !important; border: 0 !important; border-bottom: 1px solid var(--line) !important; float: none; background: none !important; }
+:is(#main ul.navigation.actions:has(#go_to_filters), #main.readings-index > ul.navigation.actions, #main.stats-index > ul.navigation.actions) > li:not(.hidden) { display: flex; align-items: center; float: none; margin: 0 !important; padding: 0 !important; background: none !important; border: 0 !important; }
+:is(#main ul.navigation.actions:has(#go_to_filters), #main.readings-index > ul.navigation.actions, #main.stats-index > ul.navigation.actions) > li > a:not(.rss), :is(#main ul.navigation.actions:has(#go_to_filters), #main.readings-index > ul.navigation.actions, #main.stats-index > ul.navigation.actions) > li > span.current {
+  display: inline-block; padding: 0.6rem 0 !important; margin: 0 0 -1px !important; border: 0 !important; border-bottom: 2px solid transparent !important; background: none !important; box-shadow: none !important;
+  border-radius: 0 !important; color: var(--muted) !important; font: 500 1rem/1.2 var(--f-ui) !important; text-decoration: none; text-shadow: none;
+}
+:is(#main ul.navigation.actions:has(#go_to_filters), #main.readings-index > ul.navigation.actions, #main.stats-index > ul.navigation.actions) > li > a:not(.rss):hover, :is(#main ul.navigation.actions:has(#go_to_filters), #main.readings-index > ul.navigation.actions, #main.stats-index > ul.navigation.actions) > li > a:not(.rss):focus { color: var(--ink) !important; border-bottom-color: var(--line-2) !important; background: none !important; box-shadow: none !important; }
+:is(#main ul.navigation.actions:has(#go_to_filters), #main.readings-index > ul.navigation.actions, #main.stats-index > ul.navigation.actions) > li > span.current { color: var(--ink) !important; border-bottom-color: var(--ink) !important; }
+:is(#main ul.navigation.actions:has(#go_to_filters), #main.readings-index > ul.navigation.actions, #main.stats-index > ul.navigation.actions) > li:not(.hidden):has(form) { margin-left: auto !important; }
+:is(#main ul.navigation.actions:has(#go_to_filters), #main.readings-index > ul.navigation.actions, #main.stats-index > ul.navigation.actions) > li form { margin: 0; padding: 0; }
+:is(#main ul.navigation.actions:has(#go_to_filters), #main.readings-index > ul.navigation.actions, #main.stats-index > ul.navigation.actions) > li input[type="submit"] { padding: 0.3rem 0.75rem !important; font-size: 0.875rem !important; margin: 0 0 0.3rem; }
+:is(#main ul.navigation.actions:has(#go_to_filters), #main.readings-index > ul.navigation.actions, #main.stats-index > ul.navigation.actions) > li > a.rss { padding: 0.6rem 0 !important; font-size: 0.875rem; color: var(--muted) !important; background: none !important; border: 0 !important; box-shadow: none !important; }
+:is(#main ul.navigation.actions:has(#go_to_filters), #main.readings-index > ul.navigation.actions, #main.stats-index > ul.navigation.actions) > li:not(.hidden):has(form) + li { margin-left: 1.25rem !important; }
+
+/* Collection blurbs: avatar tucked to the right, name on its own line */
+li.collection.blurb { position: relative; }
+li.collection.blurb .header .icon, li.collection.blurb div.icon { position: absolute !important; right: 0; top: 2.6rem; float: none !important; width: 3rem !important; height: 3rem !important; margin: 0 !important; padding: 0 !important; background: none !important; border: 0 !important; box-shadow: none !important; }
+li.collection.blurb .icon img { width: 3rem !important; height: 3rem !important; border-radius: 50%; object-fit: cover; border: 0 !important; box-shadow: none !important; }
+li.collection.blurb h4.heading span.name { display: block; font-size: 1rem; color: var(--muted); font-weight: 400; letter-spacing: 0; margin: 0.15rem 0; }
+li.collection.blurb p.type { color: var(--muted); font-size: 0.875rem; margin: 0.75rem 0 0; }
+
+/* Statistics page */
+#main.stats-index { max-width: 46rem; }
+#main.stats-index > h3.heading { display: block; margin: 2rem 0 0.75rem; padding: 0 0 0.5rem; border: 0 !important; border-bottom: 1px solid var(--line) !important; font-size: 0.8125rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); background: none !important; }
+#main ol.year.actions { display: flex; flex-wrap: wrap; gap: 0.5rem; list-style: none; margin: 0 0 1.5rem; padding: 0; float: none; text-align: left; }
+#main ol.year.actions li { float: none; margin: 0; padding: 0; background: none; border: 0; }
+#main ol.year.actions li a, #main ol.year.actions li span { display: inline-block; background: var(--bg) !important; background-image: none !important; color: var(--ink) !important; border: 1px solid var(--line-2) !important; border-radius: 6px !important; box-shadow: none !important; padding: 0.35rem 0.8rem !important; font: 500 0.9375rem/1.2 var(--f-ui) !important; text-shadow: none; }
+#main ol.year.actions li span.current { background: var(--bg-2) !important; font-weight: 650 !important; }
+#main .wrapper dl.statistics, #main dl.statistics.meta, #main .wrapper > dl { background: none !important; border: 1px solid var(--line) !important; border-radius: 10px; box-shadow: none !important; padding: 1rem 1.25rem; margin: 0 0 2rem; display: grid; grid-template-columns: max-content 1fr; gap: 0.35rem 1.5rem; font-size: 1rem; }
+#main .wrapper dl.statistics dt, #main .wrapper > dl dt { float: none; width: auto; margin: 0; padding: 0; color: var(--muted); font-weight: 400; text-align: left; }
+#main .wrapper dl.statistics dd, #main .wrapper > dl dd { float: none; width: auto; margin: 0; padding: 0; font-variant-numeric: tabular-nums; font-weight: 500; }
+#main div.actions.module { background: none !important; border: 0 !important; box-shadow: none !important; padding: 0 !important; margin: 0 0 2rem; text-align: left; }
+#main div.actions.module ul, #main div.actions.module ol { display: flex; flex-wrap: wrap; gap: 0.4rem; list-style: none; margin: 0 0 0.75rem; padding: 0; float: none; text-align: left; }
+#main div.actions.module li { float: none; margin: 0; padding: 0; background: none; border: 0; }
+#main div.actions.module a, #main div.actions.module span, #main div.actions.module button { display: inline-block; background: var(--bg) !important; background-image: none !important; color: var(--ink) !important; border: 1px solid var(--line-2) !important; border-radius: 6px !important; box-shadow: none !important; padding: 0.3rem 0.7rem !important; font: 500 0.875rem/1.2 var(--f-ui) !important; text-shadow: none; }
+#main div.actions.module span.current, #main div.actions.module a.current, #main div.actions.module .current { background: var(--bg-2) !important; font-weight: 650 !important; }
+ul.statistics.index { list-style: none; margin: 2rem 0 0; padding: 0; }
+ul.statistics.index > li.fandom { background: none !important; border: 0 !important; box-shadow: none !important; margin: 0 0 3rem !important; padding: 0 !important; float: none !important; width: auto !important; }
+ul.statistics.index > li.fandom > h5.heading { display: block; font-size: 1.25rem; font-weight: 650; letter-spacing: -0.015em; color: var(--ink); margin: 0 0 0.25rem; padding: 0 0 0.6rem; border: 0 !important; border-bottom: 1px solid var(--line-2) !important; background: none !important; }
+ul.statistics.index ul.index { margin: 0 !important; padding: 0 !important; list-style: none; background: none !important; border: 0 !important; }
+ul.statistics.index ul.index > li { background: none !important; border: 0 !important; border-bottom: 1px solid var(--line) !important; padding: 1.1rem 0 !important; margin: 0 !important; }
+ul.statistics.index ul.index > li > dl { margin: 0; padding: 0; background: none; }
+ul.statistics.index ul.index > li > dl > dt { float: none; width: auto; margin: 0; padding: 0; font-size: 1.25rem; font-weight: 650; letter-spacing: -0.015em; line-height: 1.3; }
+ul.statistics.index ul.index > li > dl > dt a { color: var(--ink); }
+ul.statistics.index ul.index > li > dl > dt a:hover { color: var(--link); }
+ul.statistics.index ul.index > li > dl > dt span.words { font-size: 0.875rem; font-weight: 400; letter-spacing: 0; color: var(--muted); margin-left: 0.5rem; }
+ul.statistics.index ul.index > li > dl > dd { float: none; width: auto; margin: 0; padding: 0; }
+ul.statistics.index dd dl.stats { margin: 0.4rem 0 0; }
+/* The chart: accent-coloured bars, quiet axes (the chart's colours are set on its shapes, so match them by value) */
+#stat_chart text, #stat_chart tspan { font-family: var(--f-ui) !important; fill: var(--muted) !important; }
+#stat_chart rect[fill="#993333"] { fill: var(--hue) !important; }
+#stat_chart rect[fill="#ffffff"] { fill: transparent !important; }
+#stat_chart rect[fill="#cccccc"], #stat_chart rect[fill="#ebebeb"] { fill: var(--line) !important; }
+#stat_chart path[stroke="#cccccc"], #stat_chart path[stroke="#ebebeb"] { stroke: var(--line) !important; }
+
+/* Subscriptions: tabs, then one row per subscription (title, small meta line, short unsubscribe button) */
+#main.subscriptions-index { max-width: 46rem; }
+#main.subscriptions-index > ul.navigation.actions { display: flex !important; flex-wrap: nowrap; align-items: flex-end; gap: 0 1.4rem; list-style: none; margin: 0 0 1.5rem !important; padding: 0 !important; border: 0 !important; border-bottom: 1px solid var(--line) !important; background: none !important; float: none; }
+#main.subscriptions-index > ul.navigation.actions > li { display: flex; align-items: center; float: none; margin: 0 !important; padding: 0 !important; background: none !important; border: 0 !important; }
+#main.subscriptions-index > ul.navigation.actions > li > a, #main.subscriptions-index > ul.navigation.actions > li > span.current { display: inline-block; white-space: nowrap; padding: 0.6rem 0 !important; margin: 0 0 -1px !important; border: 0 !important; border-bottom: 2px solid transparent !important; background: none !important; box-shadow: none !important; border-radius: 0 !important; color: var(--muted) !important; font: 500 0.9375rem/1.2 var(--f-ui) !important; text-decoration: none; text-shadow: none; }
+#main.subscriptions-index > ul.navigation.actions > li > a:hover { color: var(--ink) !important; border-bottom-color: var(--line-2) !important; background: none !important; }
+#main.subscriptions-index > ul.navigation.actions > li > span.current { color: var(--ink) !important; border-bottom-color: var(--ink) !important; }
+#main.subscriptions-index > ul.navigation.actions > li:last-child { margin-left: auto !important; }
+#main.subscriptions-index > ul.navigation.actions > li:last-child > a { font-size: 0.875rem !important; font-weight: 400 !important; }
+dl.subscription.index { display: grid; grid-template-columns: minmax(0, 1fr) auto; column-gap: 1.5rem; margin: 1rem 0 0; padding: 0; border: 0; background: none; float: none; width: auto; }
+dl.subscription > dt, dl.subscription > dd { float: none; width: auto; margin: 0; padding: 1rem 0; border: 0; border-bottom: 1px solid var(--line); background: none !important; }
+dl.subscription > dt { display: block; font-size: 0.875rem; color: var(--muted); line-height: 1.5; }
+dl.subscription > dt > a:first-child { display: block; font-size: 1.125rem; font-weight: 600; color: var(--ink); line-height: 1.3; letter-spacing: -0.01em; margin-bottom: 0.15rem; }
+dl.subscription > dt > a:first-child:hover { color: var(--link); }
+dl.subscription > dt > a:not(:first-child) { color: var(--muted); }
+dl.subscription > dd { display: flex; align-items: center; justify-content: flex-end; }
+dl.subscription > dd form { margin: 0; padding: 0; }
+dl.subscription > dd input[type="submit"] { max-width: 10.5rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; background: var(--bg) !important; color: var(--ink) !important; border: 1px solid var(--line-2) !important; padding: 0.35rem 0.8rem !important; font: 500 0.875rem/1.2 var(--f-ui) !important; }
+dl.subscription > dd input[type="submit"]:hover { background: var(--bg-2) !important; }
+
+/* Search forms: AO3 rounds these into pills; use the standard input look everywhere in the page body */
+#main input[type="text"], #main input[type="search"], #main input[type="number"], #main input[type="date"], #main input.text, #main input:not([type]), #main textarea, #main select {
+  border: 1px solid var(--line-2) !important; border-radius: 6px !important; box-shadow: none !important; background-color: var(--bg) !important; color: var(--ink);
+  padding: 0.4rem 0.6rem !important; height: auto; font: inherit; max-width: 100%; box-sizing: border-box;
+}
+/* Search forms: the top Search button sits on the section-label line instead of floating in a gap */
+form.search > fieldset:first-of-type { position: relative; }
+form.search > fieldset:first-of-type > p.submit { position: absolute; top: 0.4rem; right: 0; margin: 0 !important; padding: 0 !important; height: auto; }
+form.search > fieldset:first-of-type > p.submit input[type="submit"] { padding: 0.35rem 1rem !important; }
+#main input[type="text"]:focus, #main input.text:focus, #main textarea:focus, #main select:focus { outline: none !important; border-color: var(--link) !important; box-shadow: inset 0 0 0 1px var(--link) !important; }
+
+/* Fandom / tag index pages: the A-Z row and the little back-to-top arrows */
+ul#alphabet, ul.alphabet { display: flex; flex-wrap: wrap; justify-content: flex-start; gap: 0.35rem; list-style: none; margin: 1rem 0 2rem; padding: 0; float: none; }
+ul#alphabet li, ul.alphabet li { float: none; margin: 0; padding: 0; background: none; border: 0; }
+ul#alphabet li a, ul.alphabet li a { display: inline-block; min-width: 2rem; box-sizing: border-box; text-align: center; padding: 0.3rem 0.5rem !important; background: var(--bg) !important; background-image: none !important; border: 1px solid var(--line-2) !important; border-radius: 6px !important; color: var(--ink) !important; box-shadow: none !important; font: 500 0.875rem/1.2 var(--f-ui) !important; text-decoration: none; text-shadow: none; }
+ul#alphabet li a, ul.alphabet li a { display: inline-flex !important; align-items: center; justify-content: center; min-height: 2rem; height: auto !important; margin: 0 !important; position: static !important; top: auto !important; line-height: 1.2 !important; padding: 0.25rem 0.5rem !important; vertical-align: top; }
+ul#alphabet li a:hover, ul.alphabet li a:hover { background: var(--bg-2) !important; text-decoration: none; }
+h3.heading span.action.top, span.action.top { display: inline-block; border: 0 !important; background: none !important; box-shadow: none !important; padding: 0 0 0 0.6rem !important; color: var(--muted) !important; font-size: 0.9375rem !important; font-weight: 400; letter-spacing: 0; text-transform: none; width: auto !important; height: auto !important; }
+span.action.top a { color: var(--muted) !important; }
+/* "All Anime & Manga..." / "Expand Fandoms List" style buttons at the end of a block (Fandoms page, user pages) */
+div.listbox p.actions a, li.listbox p.actions a, .listbox .actions a { background: var(--bg) !important; background-image: none !important; color: var(--ink) !important; border: 1px solid var(--line-2) !important; border-radius: 6px !important; box-shadow: none !important; padding: 0.45rem 0.8rem !important; font: 500 0.875rem/1.2 var(--f-ui) !important; text-shadow: none; text-decoration: none; }
+div.listbox p.actions a:not(.hidden), li.listbox p.actions a:not(.hidden), .listbox .actions a:not(.hidden) { display: inline-block; } /* hidden ones (e.g. Collapse before you Expand) stay hidden */
+div.listbox p.actions a:hover, li.listbox p.actions a:hover, .listbox .actions a:hover { background: var(--bg-2) !important; text-decoration: none; }
+
+/* Fandom / tag index: letter blocks were far too airy */
+li.letter.listbox, li.letter.listbox.group { margin: 0 0 1.5rem !important; }
+#main li.letter.listbox > h3.heading { margin: 0 0 0.4rem !important; padding-bottom: 0.4rem !important; }
+li.letter.listbox ul.tags.index { margin: 0 !important; }
+li.letter.listbox ul.tags.index > li { margin: 0.2rem 1.5rem 0.2rem 0 !important; }
+
+/* Who bookmarked a work (/works/ID/bookmarks): one slim row per person, notes set apart */
+li.user.short.blurb { border: 0 !important; border-bottom: 1px solid var(--line) !important; padding: 1.1rem 0 !important; background: none !important; box-shadow: none !important; border-radius: 0 !important; min-height: 0 !important; }
+li.user.short.blurb .header.module { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.15rem 0.75rem; margin: 0 !important; padding: 0 !important; }
+li.user.short.blurb h5.byline.heading { flex: 1 1 auto; margin: 0 !important; font-size: 0.9375rem; font-weight: 400; color: var(--muted); }
+li.user.short.blurb h5.byline a { font-size: 1.0625rem; font-weight: 700; color: var(--ink); text-decoration: none; }
+li.user.short.blurb h5.byline a:hover { color: var(--link); text-decoration: underline; }
+li.user.short.blurb p.datetime { margin: 0 0 0 auto !important; font-size: 0.875rem; color: var(--muted); }
+li.user.short.blurb p.status { flex-basis: 100%; margin: 0 !important; font-size: 0.8125rem; color: var(--muted); }
+li.user.short.blurb blockquote.userstuff { margin: 0.7rem 0 0 !important; padding: 0 0 0 1rem !important; border-left: 2px solid var(--line-2) !important; max-width: 40rem; }
+/* Your bookmarks list: "PUBLIC BOOKMARK" / "PRIVATE BOOKMARK" as a small label, with the bookmark count (a number, or * when AO3 gives none) as a little outlined badge beside it */
+li.bookmark.blurb p.status { display: flex !important; align-items: center; gap: 0.6rem; margin: 0 0 0.6rem !important; font-size: 0.75rem !important; letter-spacing: 0.06em; text-transform: uppercase; color: var(--soft) !important; line-height: 1.4; }
+li.bookmark.blurb p.status a.help { display: inline !important; margin: 0 !important; }
+li.bookmark.blurb p.status span.private, li.bookmark.blurb p.status span.private .text { color: var(--ink) !important; font-weight: 600; } /* private ones stand out a little */
+li.bookmark.blurb p.status span.count { display: inline-block !important; margin: 0 !important; padding: 0 !important; letter-spacing: 0; text-transform: none; font-variant-numeric: tabular-nums; }
+li.bookmark.blurb p.status span.count a { display: inline-block; padding: 0.02rem 0.45rem !important; border: 1px solid var(--line-2) !important; border-radius: 5px !important; color: var(--soft) !important; font-size: 0.75rem; line-height: 1.4; }
+li.bookmark.blurb p.status span.count a:hover { background: var(--bg-2); text-decoration: none; }
+
+/* Recs get a small accent badge (here and on any bookmark list) */
+.blurb p.status span.rec { display: inline-block !important; border: 1px solid var(--link) !important; border-radius: 5px !important; padding: 0.05rem 0.55rem !important; color: var(--link) !important; font-weight: 600; letter-spacing: 0.02em; }
+.blurb p.status span.rec .text { color: var(--link) !important; }
+.blurb p.status span.rec:before { content: "\2605\00a0"; }
+
+/* Pagination: "Previous" / "Next" are plain text when disabled and links otherwise; give both the same type and centre them */
+ol.pagination { align-items: center; }
+#main ol.pagination li a, #main ol.pagination li span, ol.pagination li a, ol.pagination li span { font-family: var(--f-ui) !important; font-size: 0.9rem !important; font-weight: 500 !important; line-height: 1.2 !important; vertical-align: middle !important; }
+
+/* Download menu: AO3's own rules for it are specific (and white), so ours need to be too.
+   We only change how it looks, never whether it is open (AO3's script toggles that). */
+.javascript ul.work.navigation li.download ul.expandable.secondary { flex-direction: column !important; flex-wrap: nowrap !important; align-items: stretch !important; background: var(--bg) !important; background-image: none !important; border: 1px solid var(--line-2) !important; border-radius: 8px !important; box-shadow: 0 8px 24px rgb(0 0 0 / 0.14) !important; padding: 0.35rem !important; width: max-content !important; min-width: 8rem !important; left: 0 !important; right: auto !important; margin: 0.25rem 0 0 !important; }
+.javascript ul.work.navigation li.download ul.expandable.secondary li { display: block !important; width: auto !important; float: none !important; background: none !important; border: 0 !important; margin: 0 !important; padding: 0 !important; box-shadow: none !important; }
+.javascript ul.work.navigation li.download ul.expandable.secondary li a { display: block !important; margin: 0 !important; padding: 0.3rem 0.65rem !important; line-height: 1.3 !important; color: var(--ink) !important; border-radius: 5px !important; box-shadow: none !important; background: none !important; }
+.javascript ul.work.navigation li.download ul.expandable.secondary li a:hover { background: var(--bg-2) !important; }
+.javascript ul.work.navigation li.download ul.expandable.secondary { height: auto !important; }
+.javascript ul.work.navigation li.download ul.expandable.secondary li { flex: 0 0 auto !important; }
+
+/* One system for the rows of options above works, series and lists:
+   - real tabs (they switch between views of the same list) have the underline and sit on a line;
+   - actions (Bookmark, Subscribe, Share, Download, Clear...) are quiet text links with a flat hover underline;
+   - nothing in these rows has rounded corners. */
+ul.work.navigation li > a, ul.work.navigation li > button, ul.work.navigation li input[type="submit"] { border-radius: 0 !important; }
+#main#main.readings-index > ul.navigation.actions > li:last-child { margin-left: auto !important; }
+#main#main.readings-index > ul.navigation.actions > li:last-child > a { font-size: 0.8125rem !important; font-weight: 400 !important; }
+
+/* A work's info block: the long "Additional Tags" list set small (12px) */
+dl.work.meta dd.freeform.tags, dl.work.meta dd.freeform.tags a.tag { font-size: 0.75rem !important; line-height: 1.65; }
+/* ...and the same 12px for additional tags (the "freeforms") in work lists */
+.blurb ul.tags li.freeforms, .blurb ul.tags li.freeforms a.tag { font-size: 0.75rem !important; }
+
+/* Visited links inside the headings of a "listbox" (e.g. the fandom line of a work on a user page): AO3 forces them to #2a2a2a, which vanishes on dark */
+.listbox .heading a:visited, .listbox .heading a.tag:visited { color: var(--link) !important; }
+.listbox .blurb h5.fandoms.heading a:visited, .listbox .blurb h5.fandoms.heading a.tag:visited { color: var(--muted) !important; }
+.listbox .blurb h4.heading a:first-child:visited { color: var(--ink) !important; }
+.listbox .blurb h4.heading a[rel="author"]:visited, .listbox .blurb h4.heading a:not(:first-child):visited { color: var(--muted) !important; }
+
+.kudos_error, .kudos_notice { padding: 0.75rem 1rem; margin: 0 0 1rem; } /* the kudos message under a work, same spacing as the other notices */
+
+/* Forms with a tick-list inside a form row (e.g. "Media" when you create an AO3 skin): the row was squeezed to ~9px and the list was invisible */
+form dl dd.listbox.group { float: left !important; width: calc(100% - 177px) !important; margin: 0 !important; padding: 0 !important; overflow: visible !important; }
+ul.options.many, form ul.options.index.group.many { position: static !important; float: none !important; width: auto !important; max-width: 100% !important; box-sizing: border-box; max-height: 12rem; overflow: auto; margin: 0 !important; padding: 0.4rem 0.8rem !important; background: var(--bg) !important; background-image: none !important; border: 1px solid var(--line-2) !important; border-radius: 6px !important; box-shadow: none !important; }
+ul.options li { display: block !important; float: none !important; width: auto !important; margin: 0 !important; padding: 0 !important; background: none !important; border: 0 !important; }
+ul.options label.action, ul.options label { display: inline-flex !important; align-items: center; gap: 0.5rem; background: none !important; background-image: none !important; border: 0 !important; box-shadow: none !important; border-radius: 0 !important; padding: 0.25rem 0 !important; font: inherit !important; color: var(--ink) !important; cursor: pointer; }
+ul.options input[type="checkbox"], ul.options input[type="radio"] { position: static !important; width: 1rem; height: 1rem; margin: 0; accent-color: var(--ink); }
+
+/* Skimmability: labels quiet, values clear; more air between the parts of a work block */
+dl.stats dt { color: var(--soft); font-weight: 400; }
+dl.stats dd, dl.stats dd a { color: var(--ink); font-weight: 600; }
+.blurb ul.tags { margin-top: 1.2rem !important; }
+.blurb blockquote.summary, .blurb blockquote.userstuff { margin-top: 1.2rem !important; }
+.blurb dl.stats { margin-top: 1.2rem !important; padding-top: 0.85rem !important; border-top: 1px solid var(--line) !important; }
+
+/* ================================================================== *
+ * EXTENSION STYLES: "AO3 Enhancements" (browser extension)
+ * Everything between these two banners only exists to style what that
+ * extension adds (reading time, finish-reading time, kudos/hits ratio,
+ * chapter stats, backup status). Safe to delete or comment out the whole
+ * section if you uninstall the extension. Nothing above depends on it.
+ * ================================================================== */
+
+/* The extension wraps every stat's label and value in a <div>. Make those wrappers
+   behave like plain text again so our inline "Words: 5,048 | Chapters: 8/8" row works.
+   (Without this each stat falls onto its own line and the | separators disappear.) */
+dl.stats > div { display: inline; }
+dl.stats > div.language { display: none; }
+dl.stats > div:not(:last-child) > dd::after { content: "\00a0\00a0|\00a0\00a0\200b"; color: var(--line-2); font-weight: 300; }
+
+/* "Finish reading at: 12:35 ↻" - the little refresh icon, kept quiet */
+dd.finish-at span[role="button"], dd.finish-at .time { color: inherit; cursor: pointer; }
+dd.finish-at svg { width: 0.8em; height: 0.8em; margin-left: 0.3em; vertical-align: -0.1em; fill: currentColor; opacity: 0.55; }
+dd.finish-at span[role="button"]:hover svg { opacity: 1; }
+
+/* "Chapter stats" block under each chapter heading: a quiet label and one stats row */
+#chapter-stats.module, .AO3E--chapter-stats { background: none !important; border: 0 !important; box-shadow: none !important; padding: 0 !important; margin: 0.75rem 0 1.5rem !important; float: none !important; width: auto !important; }
+#chapter-stats.module > h3.heading { border: 0 !important; margin: 0 0 0.2rem !important; font-family: var(--f-ui); font-size: 0.8125rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+#chapter-stats blockquote.meta { margin: 0 !important; padding: 0 !important; border: 0 !important; background: none !important; max-width: none; }
+#chapter-stats dl.stats { margin: 0; }
+
+/* The "Tools" menu the extension adds to the header: same quiet look as the other menus */
+li.dropdown.AO3E--tools > a { color: var(--muted); }
+li.dropdown.AO3E--tools > a > svg { display: none !important; } /* no icon, just the words */
+
+/* ================================================================== *
+ * END EXTENSION STYLES: "AO3 Enhancements"
+ * ================================================================== */
+
+/* Filter checkboxes (and radios): a plain square that follows the theme.
+   AO3 hides the real input and draws a gradient box in <span class="indicator">; we redraw that box. */
+#main label > span.indicator { display: inline-block; position: relative; width: 1.05rem; height: 1.05rem; vertical-align: -0.2em; margin-right: 0.5rem; background: none !important; border: 0 !important; }
+#main label > span.indicator::before { content: ""; position: absolute; left: 0; top: 0; width: 100% !important; height: 100% !important; box-sizing: border-box; border: 1px solid var(--line-2) !important; border-radius: 4px; background: var(--bg) !important; background-image: none !important; box-shadow: none !important; }
+#main label > input:checked + span.indicator::before { background: var(--link) !important; border-color: var(--link) !important; }
+#main label > input:checked + span.indicator::after { content: ""; position: absolute; left: 0.36rem; top: 0.14rem; width: 0.26rem; height: 0.5rem; border: solid var(--bg); border-width: 0 2px 2px 0; transform: rotate(45deg); }
+#main label > input:focus-visible + span.indicator::before { outline: 2px solid var(--link); outline-offset: 2px; }
+#main label > input[type="radio"] + span.indicator::before { border-radius: 50%; }
+#main label > input[type="radio"]:checked + span.indicator::after { left: 0.32rem; top: 0.32rem; width: 0.4rem; height: 0.4rem; border: 0; border-radius: 50%; background: var(--bg); transform: none; }
+
+/* Related works page (translations, inspired-by): plain tables and rows, minimal */
+#main.related_works-index { max-width: 46rem; }
+#main.related_works-index > h3.heading { display: block; margin: 2.5rem 0 0.75rem; padding: 0 0 0.5rem; border: 0 !important; border-bottom: 1px solid var(--line) !important; background: none !important; font-size: 0.8125rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+#main.related_works-index table { width: 100%; background: none !important; border: 0 !important; border-collapse: collapse; box-shadow: none !important; }
+#main.related_works-index table thead, #main.related_works-index table tbody, #main.related_works-index table tr, #main.related_works-index table th, #main.related_works-index table td { background: none !important; }
+#main.related_works-index table th { padding: 0 1rem 0.5rem 0; border: 0 !important; border-bottom: 1px solid var(--line) !important; font-size: 0.8125rem; font-weight: 500; color: var(--soft, var(--muted)); text-align: left; }
+#main.related_works-index table td { padding: 0.75rem 1rem 0.75rem 0; border: 0 !important; border-bottom: 1px solid var(--line) !important; vertical-align: middle; }
+#main.related_works-index table td:last-child, #main.related_works-index table th:last-child { padding-right: 0; text-align: right; }
+dl.inspired.index { margin: 0; padding: 0; background: none !important; border: 0 !important; }
+dl.inspired dt.parent { float: none; width: auto; margin: 1.25rem 0 0.25rem; padding: 0; background: none !important; font-size: 1.0625rem; font-weight: 600; }
+dl.inspired dd.child { display: flex; align-items: center; justify-content: flex-start; gap: 0.4rem; float: none; width: auto; margin: 0; padding: 0.5rem 0 0.75rem; background: none !important; border: 0 !important; border-bottom: 1px solid var(--line) !important; color: var(--muted); }
+dl.inspired dd.child span.actions { margin: 0 0 0 auto; padding: 0; background: none; border: 0; }
+dl.inspired dd.child form { margin: 0; padding: 0; background: none; border: 0; }
+#main.related_works-index button, #main.related_works-index input[type="submit"] { background: var(--bg) !important; background-image: none !important; color: var(--ink) !important; border: 1px solid var(--line-2) !important; border-radius: 6px !important; box-shadow: none !important; padding: 0.35rem 0.8rem !important; font: 500 0.875rem/1.2 var(--f-ui) !important; }
+
+/* Footer links: no dotted underlines */
+#footer a, #footer a:link, #footer a:visited, #footer a:hover { border: 0 !important; text-decoration: none; }
+#footer a:hover { text-decoration: underline; }
+#footer .module, #footer ul.navigation, #footer .navigation { margin-left: 0 !important; padding-left: 0 !important; }
+
+table { border-collapse: collapse; width: auto; }
+th, td { border: 0; border-bottom: 1px solid var(--line); padding: 0.45rem 0.75rem 0.45rem 0; text-align: left; background: none; }
+th { font-weight: 600; color: var(--muted); font-size: 0.875rem; }
+code, pre, kbd { font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace; font-size: 0.9em; background: var(--bg-2); border-radius: 4px; }
+code { padding: 0.1em 0.3em; }
+pre { padding: 0.75rem 1rem; overflow-x: auto; }
+
+#footer { margin: 3rem 0 0; padding: 1.5rem 0 3rem; border-top: 1px solid var(--line); color: var(--muted); font-size: 0.875rem; float: none; }
+#footer h3.heading, #footer .module h4 { font-size: 0.8125rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); margin: 0 0 0.5rem; }
+#footer ul { list-style: none; }
+#footer a { color: var(--muted); }
+#footer a:hover { color: var(--ink); }
+#footer ul.navigation, #footer .module { background: none; border: 0; }
+#footer ul.navigation { align-items: flex-start !important; }
+
+/* Mobile-width safety (the browser extension may be used on a narrow window) */
+@media (max-width: 760px) {
+  #outer { padding: 0 1rem; }
+  #site_search { width: 100%; }
+  #header li.search { margin-left: 0; width: 100%; }
+  dl.work.meta { grid-template-columns: 1fr; gap: 0; }
+  dl.work.meta > dd { margin-bottom: 0.6rem; }
+  #workskin .preface .title.heading { font-size: 1.6rem; }
+}
+
+}
