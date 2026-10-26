@@ -24,8 +24,6 @@ Stylus checks for new versions on its own. Other style extensions are untested a
 
 **Other extensions:** a clearly labelled block at the end of the file styles the "AO3 Enhancements" extension. Comment it out if you don't use it.
 
-<img src="screenshots/desktop-works-list-light.jpg" alt="Works list, light" width="49%"> <img src="screenshots/desktop-work-dark.jpg" alt="Work page, dark" width="49%">
-
 ## Install the phone skin
 
 Pick **one** file: `skin/archive-neue-skin-light.css` (light) or `skin/archive-neue-skin-dark.css` (dark).
@@ -41,6 +39,8 @@ Notes:
 - It does not follow the phone's light/dark setting. To switch, create the other skin the same way and press **Use** on it.
 - It does not update itself. When there is a new version, paste it over the old one.
 - AO3 does not read `@media` rules written inside a skin. The Media setting above is how the narrow-screen condition works.
+
+<img src="screenshots/desktop-works-list-light.jpg" alt="Works list, light" width="49%"> <img src="screenshots/desktop-work-dark.jpg" alt="Work page, dark" width="49%">
 
 <img src="screenshots/phone-light.png" alt="Phone skin, light" width="180"> <img src="screenshots/phone-dark.png" alt="Phone skin, dark" width="180">
 
