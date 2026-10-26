@@ -6,10 +6,6 @@ A quiet, minimal look for [Archive of Our Own](https://archiveofourown.org) (AO3
 - **Phone skin.** A simpler version you paste into AO3's own skin settings. No extension needed.
 - **Customisable.** Light, dark or follow your system. Fonts, text size, line spacing, text width and accent colour. (The phone skin is light or dark only.)
 
-<img src="screenshots/desktop-works-list-light.jpg" alt="Works list, light" width="49%"> <img src="screenshots/desktop-work-dark.jpg" alt="Work page, dark" width="49%">
-
-<img src="screenshots/phone-light.png" alt="Phone skin, light" width="300"> <img src="screenshots/phone-dark.png" alt="Phone skin, dark" width="300">
-
 Works on `archiveofourown.org`, `archiveofourown.gay` and `archive.transformativeworks.org`.
 
 ## Install the desktop style
@@ -28,6 +24,8 @@ Stylus checks for new versions on its own. Other style extensions are untested a
 
 **Other extensions:** a clearly labelled block at the end of the file styles the "AO3 Enhancements" extension. Comment it out if you don't use it.
 
+<img src="screenshots/desktop-works-list-light.jpg" alt="Works list, light" width="49%"> <img src="screenshots/desktop-work-dark.jpg" alt="Work page, dark" width="49%">
+
 ## Install the phone skin
 
 Pick **one** file: `skin/archive-neue-skin-light.css` (light) or `skin/archive-neue-skin-dark.css` (dark).
@@ -43,6 +41,8 @@ Notes:
 - It does not follow the phone's light/dark setting. To switch, create the other skin the same way and press **Use** on it.
 - It does not update itself. When there is a new version, paste it over the old one.
 - AO3 does not read `@media` rules written inside a skin. The Media setting above is how the narrow-screen condition works.
+
+<img src="screenshots/phone-light.png" alt="Phone skin, light" width="180"> <img src="screenshots/phone-dark.png" alt="Phone skin, dark" width="180">
 
 ## Known gaps
 
