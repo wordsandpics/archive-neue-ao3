@@ -173,7 +173,7 @@ p { margin: 0 0 1em; }
 hr { border: 0; border-top: 1px solid var(--line); margin: 2rem 0; }
 ul, ol, dl, dd { margin: 0; padding: 0; }
 dt { font-weight: 500; }
-.landmark, .hidden.landmark { /* keep screen-reader text hidden, as AO3 does */ }
+/* Screen-reader-only text (.landmark) is left alone: AO3 already hides it */
 
 /* ------------------------------------------------------------------ *
  * 3. Header: no logo, quiet text navigation
