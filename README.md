@@ -16,7 +16,7 @@ Works on `archiveofourown.org`, `archiveofourown.gay` and `archive.transformativ
 
 ## Install the desktop style
 
-1. Install [Stylus](https://chromewebstore.google.com/detail/stylus/clngdbkpkpeebahjckkjfobafhncgmne) (for Chrome, Brave and Edge. It also exists for Firefox.)
+1. Install [Stylus](https://chromewebstore.google.com/detail/stylus/clngdbkpkpeebahjckkjfobafhncgmne) (for Chrome, Brave, Edge and Firefox)
 2. [Open this link](https://raw.githubusercontent.com/wordsandpics/archive-neue-ao3/main/archive-neue.user.css). Stylus offers to install the style.
 3. Click **Install**, then reload AO3.
 
@@ -48,7 +48,7 @@ Notes:
 
 This is a work in progress. Not every page and element is styled yet.
 
-- Tested in Chrome and Brave. Firefox is untested.
+- Tested in Chrome, Brave and Firefox (with Stylus). Edge is untested.
 - The phone skin has been checked on a limited set of pages.
 
 Found something that looks wrong? Open an [issue](https://github.com/wordsandpics/archive-neue-ao3/issues) with a screenshot and the page address.
