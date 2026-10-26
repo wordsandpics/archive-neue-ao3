@@ -1,4 +1,4 @@
-# Archive Neue
+<img src="screenshots/header.png" alt="Archive Neue: a minimal userstyle for AO3" width="100%">
 
 A quiet, minimal look for [Archive of Our Own](https://archiveofourown.org) (AO3).
 
@@ -6,9 +6,7 @@ A quiet, minimal look for [Archive of Our Own](https://archiveofourown.org) (AO3
 - **Phone skin.** A simpler version you paste into AO3's own skin settings. No extension needed.
 - **Customisable.** Light, dark or follow your system. Fonts, text size, line spacing, text width and accent colour. (The phone skin is light or dark only.)
 
-![Works list, light](screenshots/desktop-works-list-light.jpg)
-
-![Work page, dark](screenshots/desktop-work-dark.jpg)
+<img src="screenshots/desktop-works-list-light.jpg" alt="Works list, light" width="49%"> <img src="screenshots/desktop-work-dark.jpg" alt="Work page, dark" width="49%">
 
 <img src="screenshots/phone-light.png" alt="Phone skin, light" width="300"> <img src="screenshots/phone-dark.png" alt="Phone skin, dark" width="300">
 
