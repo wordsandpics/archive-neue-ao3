@@ -340,6 +340,8 @@ li.blurb:first-child { padding-top: 0.75rem !important; }
 .blurb h4.heading a[rel="author"] { color: var(--muted); font-weight: 400; font-size: 1.0625rem; letter-spacing: 0; }
 .blurb h5.fandoms.heading { font-size: 1rem; font-weight: 500; color: var(--muted); margin: 0.4rem 0 0; }
 .blurb h5.fandoms a { color: var(--muted); }
+.blurb h5.fandoms a { white-space: nowrap; } /* a long fandom list wraps between fandoms, never in the middle of a name */
+.blurb h5.fandoms { text-wrap: pretty; }
 .blurb .datetime { position: static; float: none; margin: 0.25rem 0 0; font-size: 0.9375rem; color: var(--muted); font-variant-numeric: tabular-nums; }
 
 /* The four-square symbols become plain words: "Explicit  M/M  Work in progress" */
