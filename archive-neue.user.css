@@ -889,9 +889,8 @@ li.user.short.blurb blockquote.userstuff { margin: 0.7rem 0 0 !important; paddin
 li.bookmark.blurb p.status { display: flex !important; align-items: center; gap: 0.6rem; margin: 0 0 0.6rem !important; font-size: 0.75rem !important; letter-spacing: 0.06em; text-transform: uppercase; color: var(--soft) !important; line-height: 1.4; }
 li.bookmark.blurb p.status a.help { display: inline !important; margin: 0 !important; }
 li.bookmark.blurb p.status span.private, li.bookmark.blurb p.status span.private .text { color: var(--ink) !important; font-weight: 600; } /* private ones stand out a little */
-li.bookmark.blurb p.status span.count { display: inline-block !important; margin: 0 !important; padding: 0 !important; letter-spacing: 0; text-transform: none; font-variant-numeric: tabular-nums; }
-li.bookmark.blurb p.status span.count a { display: inline-block; padding: 0.02rem 0.45rem !important; border: 1px solid var(--line-2) !important; border-radius: 5px !important; color: var(--soft) !important; font-size: 0.75rem; line-height: 1.4; }
-li.bookmark.blurb p.status span.count a:hover { background: var(--bg-2); text-decoration: none; }
+/* The little number badge repeated the "Bookmarks" figure in the stats line (and showed "*" for popular works), so it is hidden */
+li.bookmark.blurb p.status span.count { display: none !important; }
 
 /* Recs get a small accent badge (here and on any bookmark list) */
 .blurb p.status span.rec { display: inline-block !important; border: 1px solid var(--link) !important; border-radius: 5px !important; padding: 0.05rem 0.55rem !important; color: var(--link) !important; font-weight: 600; letter-spacing: 0.02em; }
