@@ -18,6 +18,8 @@ Works on `archiveofourown.org`, `archiveofourown.gay` and `archive.transformativ
 2. [Open this link](https://raw.githubusercontent.com/wordsandpics/archive-neue-ao3/main/archive-neue.user.css). Stylus offers to install the style.
 3. Click **Install**, then reload AO3.
 
+The style is also listed on [userstyles.world](https://userstyles.world/style/31084/archive-neue-for-ao3).
+
 Stylus checks for new versions on its own. Other style extensions are untested and may not read the file or its settings.
 
 **Settings:** click the Stylus icon, then the gear next to Archive Neue. You can change the colour theme (follow system, always light, always dark), reading font, interface font, reading size, line height, text column width and accent colour.
