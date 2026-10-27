@@ -102,6 +102,7 @@ div.user.home div.primary.header.module p.icon a { position: static !important; 
 div.user.home div.primary.header.module p.icon img.icon { position: static !important; top: auto !important; left: auto !important; width: 4.5rem !important; height: 4.5rem !important; max-width: 100% !important; border: 0 !important; border-radius: 50% !important; display: block !important; }
 div.user.home div.primary.header.module ul.navigation.actions { float: none !important; margin: 0.5rem 0 0 !important; padding: 0 !important; text-align: left !important; }
 div.user.home div.primary.header.module ul.navigation.actions li { display: inline-block !important; float: none !important; margin: 0 0.4rem 0.4rem 0 !important; padding: 0 !important; }
+#main.series-show > h2.heading { font-size: 2.25rem !important; font-weight: 400 !important; line-height: 1.15 !important; letter-spacing: -0.025em !important; margin: 0 0 1.5rem !important; }
 ul.work.navigation { list-style: none !important; float: none !important; margin: 0 0 1.25rem !important; padding: 0 0 1rem !important; border-bottom: 1px solid #e6e6e8 !important; }
 ul.work.navigation li { display: inline-block !important; float: none !important; margin: 0 1rem 0 0 !important; padding: 0 !important; }
 ul.work.navigation li a, ul.work.navigation li button, ul.work.navigation li input { background: none !important; border: 0 !important; box-shadow: none !important; padding: 0.2rem 0 !important; color: #6b6b73 !important; font-weight: 500 !important; font-size: 0.9rem !important; }
