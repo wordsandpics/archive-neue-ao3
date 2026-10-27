@@ -19,7 +19,7 @@ hr { border: 0; border-top: 1px solid {{line}}; }
 
 /* Header: no logo, quiet links */
 #header { float: none; height: auto; margin: 0; padding: 0.9rem 0 0.6rem; border-bottom: 1px solid {{line}}; background: none; }
-#header h1.heading { margin: 0 0 0.4rem; padding: 0; float: none; font-size: 1rem; }
+#header h1.heading { margin: 0 1rem 0 0; padding: 0.25rem 0; float: left; font-size: 1rem; line-height: 1.55; }
 #header h1.heading a { font-size: 0; display: inline-block; background: none; padding: 0; height: auto; width: auto; }
 #header h1.heading a img.logo, #header h1.heading a span, #header h1.heading sup { display: none; }
 #header h1.heading a:after { content: "Home"; font-size: 1rem; font-weight: 600; color: {{ink}}; }
