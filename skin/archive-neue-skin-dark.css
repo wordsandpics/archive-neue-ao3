@@ -12,10 +12,10 @@ h1, h2, h3, h4, h5, h6, .heading, .heading a { font-family: -apple-system, syste
 h2.heading { font-size: 1.4rem !important; margin: 0 0 1rem !important; }
 hr { border: 0 !important; border-top: 1px solid #303036 !important; }
 #header { float: none !important; height: auto !important; margin: 0 !important; padding: 0.9rem 0 0.6rem !important; border-bottom: 1px solid #303036 !important; background: none !important; }
-#header h1.heading { margin: 0 1rem 0 0 !important; padding: 0.25rem 0 !important; float: left !important; font-size: 1rem !important; line-height: 1.55 !important; }
+#header h1.heading { margin: 0 1rem 0 0 !important; padding: 0.25rem 0 !important; float: left !important; font-size: 0.95rem !important; line-height: 1.55 !important; }
 #header h1.heading a { font-size: 0 !important; display: inline-block !important; background: none !important; padding: 0 !important; height: auto !important; width: auto !important; }
 #header h1.heading a img.logo, #header h1.heading a span, #header h1.heading sup { display: none !important; }
-#header h1.heading a:after { content: "Home" !important; font-size: 1rem !important; font-weight: 600 !important; color: #e9e9ea !important; }
+#header h1.heading a:after { content: "Home" !important; font-size: 0.95rem !important; font-weight: 600 !important; color: #e9e9ea !important; }
 #header nav, #header ul.navigation, #header .navigation li, #header #login, #header #greeting { background: none !important; border: 0 !important; box-shadow: none !important; float: none !important; border-radius: 0 !important; height: auto !important; }
 #header .navigation li { display: inline-block !important; margin: 0 1rem 0 0 !important; padding: 0 !important; }
 #header .navigation a, #header #login a, #header #greeting a { background: none !important; border: 0 !important; box-shadow: none !important; padding: 0.25rem 0 !important; color: #9b9ba3 !important; font-weight: 500 !important; font-size: 0.95rem !important; }
@@ -36,7 +36,8 @@ ul.work.navigation, ul.navigation.actions, #main ul.navigation.actions, #main di
 #header .dropdown .menu { box-sizing: border-box !important; left: 0 !important; right: auto !important; width: 100% !important; margin: 0.25rem 0 0 !important; }
 #header .dropdown .menu li { display: block !important; float: none !important; margin: 0 !important; padding: 0 !important; border: 0 !important; }
 #header .dropdown .menu li a { display: block !important; padding: 0.45rem 0.65rem !important; color: #e9e9ea !important; font-size: 1rem !important; font-weight: 400 !important; }
-#header #greeting ul.user { display: inline-block !important; vertical-align: middle !important; }
+#header #greeting ul.user { display: inline !important; }
+#header nav, #header nav > ul.navigation { display: inline !important; margin: 0 !important; padding: 0 !important; }
 #header #greeting p.icon { margin: 0 0 0 0.6rem !important; }
 #dashboard, #dashboard.own { border: 0 !important; border-top: 1px solid #303036 !important; border-bottom: 1px solid #303036 !important; border-radius: 0 !important; padding: 0.5rem 0 !important; margin: 0 0 1rem !important; }
 #main ul.navigation.actions li, #main .navigation.actions.module li, ul.work.navigation li { text-align: left !important; }

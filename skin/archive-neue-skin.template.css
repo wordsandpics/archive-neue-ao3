@@ -19,10 +19,10 @@ hr { border: 0; border-top: 1px solid {{line}}; }
 
 /* Header: no logo, quiet links */
 #header { float: none; height: auto; margin: 0; padding: 0.9rem 0 0.6rem; border-bottom: 1px solid {{line}}; background: none; }
-#header h1.heading { margin: 0 1rem 0 0; padding: 0.25rem 0; float: left; font-size: 1rem; line-height: 1.55; }
+#header h1.heading { margin: 0 1rem 0 0; padding: 0.25rem 0; float: left; font-size: 0.95rem; line-height: 1.55; }
 #header h1.heading a { font-size: 0; display: inline-block; background: none; padding: 0; height: auto; width: auto; }
 #header h1.heading a img.logo, #header h1.heading a span, #header h1.heading sup { display: none; }
-#header h1.heading a:after { content: "Home"; font-size: 1rem; font-weight: 600; color: {{ink}}; }
+#header h1.heading a:after { content: "Home"; font-size: 0.95rem; font-weight: 600; color: {{ink}}; }
 #header nav, #header ul.navigation, #header .navigation li, #header #login, #header #greeting { background: none; border: 0; box-shadow: none; float: none; border-radius: 0; height: auto; }
 #header .navigation li { display: inline-block; margin: 0 1rem 0 0; padding: 0; }
 #header .navigation a, #header #login a, #header #greeting a { background: none; border: 0; box-shadow: none; padding: 0.25rem 0; color: {{muted}}; font-weight: 500; font-size: 0.95rem; }
@@ -47,7 +47,9 @@ ul.work.navigation, ul.navigation.actions, #main ul.navigation.actions, #main di
 #header .dropdown .menu li { display: block; float: none; margin: 0; padding: 0; border: 0; }
 #header .dropdown .menu li a { display: block; padding: 0.45rem 0.65rem; color: {{ink}}; font-size: 1rem; font-weight: 400; }
 /* The avatar sits after "Log Out" on the same line (AO3 skins may not use gap, flex or order, so the list is inline) */
-#header #greeting ul.user { display: inline-block; vertical-align: middle; }
+#header #greeting ul.user { display: inline; }
+/* One flowing row: greeting, avatar and the main menu share lines instead of each starting a new one */
+#header nav, #header nav > ul.navigation { display: inline; margin: 0; padding: 0; }
 #header #greeting p.icon { margin: 0 0 0 0.6rem; }
 /* AO3 draws thick red bars around the dashboard menu; use plain hairlines */
 #dashboard, #dashboard.own { border: 0; border-top: 1px solid {{line}}; border-bottom: 1px solid {{line}}; border-radius: 0; padding: 0.5rem 0; margin: 0 0 1rem; }
