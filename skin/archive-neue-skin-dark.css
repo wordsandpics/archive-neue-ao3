@@ -88,6 +88,19 @@ ol.pagination li { display: inline-block !important; float: none !important; mar
 ol.pagination a, ol.pagination span { display: inline-block !important; padding: 0.4rem 0.7rem !important; background: none !important; border: 0 !important; box-shadow: none !important; color: #9b9ba3 !important; border-radius: 6px !important; }
 ol.pagination a.current { background: #e9e9ea !important; color: #111113 !important; }
 .actions span.current, ul.navigation.actions span.current, #main .navigation.actions span.current { display: inline-block !important; font-family: -apple-system, system-ui, "Helvetica Neue", sans-serif !important; font-size: 0.9rem !important; font-weight: 500 !important; line-height: 1.2 !important; color: #111113 !important; background: #e9e9ea !important; background-image: none !important; border: 1px solid #e9e9ea !important; border-radius: 6px !important; box-shadow: none !important; text-shadow: none !important; padding: 0.5rem 0.8rem !important; }
+.listbox, .listbox.group, .listbox .index, .listbox .index.group { background: none !important; border: 0 !important; border-radius: 0 !important; box-shadow: none !important; margin: 0 !important; padding: 0 !important; float: none !important; width: auto !important; }
+.listbox { margin: 0 0 2rem !important; }
+.listbox > h3.heading, .listbox h3.heading { background: none !important; border: 0 !important; box-shadow: none !important; margin: 0 0 0.6rem !important; padding: 0 !important; font-size: 0.75rem !important; font-weight: 500 !important; letter-spacing: 0.06em !important; text-transform: uppercase !important; color: #9b9ba3 !important; }
+.listbox .index li, .listbox ol.index li { background: none !important; border: 0 !important; box-shadow: none !important; list-style: none !important; padding: 0.15rem 0 !important; margin: 0 !important; float: none !important; }
+.listbox .index li.blurb { border-bottom: 1px solid #4b4b53 !important; padding: 1.5rem 0 !important; }
+.listbox .index li a { color: #e9e9ea !important; }
+.listbox .index li.blurb h4.heading a:first-child { color: #e9e9ea !important; }
+div.user.home div.primary.header.module { background: none !important; border: 0 !important; box-shadow: none !important; margin: 0 0 1.5rem !important; padding: 0 !important; min-height: 0 !important; float: none !important; width: auto !important; }
+div.user.home div.primary.header.module h2.heading { float: none !important; text-align: left !important; margin: 0.75rem 0 0.5rem !important; font-size: 1.6rem !important; }
+div.user.home div.primary.header.module p.icon { float: none !important; margin: 0 !important; padding: 0 !important; background: none !important; border: 0 !important; }
+div.user.home div.primary.header.module p.icon img.icon { width: 4.5rem !important; height: 4.5rem !important; max-width: 100% !important; object-fit: cover !important; border: 0 !important; border-radius: 50% !important; display: block !important; }
+div.user.home div.primary.header.module ul.navigation.actions { float: none !important; margin: 0.5rem 0 0 !important; padding: 0 !important; text-align: left !important; }
+div.user.home div.primary.header.module ul.navigation.actions li { display: inline-block !important; float: none !important; margin: 0 0.4rem 0.4rem 0 !important; padding: 0 !important; }
 ul.work.navigation { list-style: none !important; float: none !important; margin: 0 0 1.25rem !important; padding: 0 0 1rem !important; border-bottom: 1px solid #303036 !important; }
 ul.work.navigation li { display: inline-block !important; float: none !important; margin: 0 1rem 0 0 !important; padding: 0 !important; }
 ul.work.navigation li a, ul.work.navigation li button, ul.work.navigation li input { background: none !important; border: 0 !important; box-shadow: none !important; padding: 0.2rem 0 !important; color: #9b9ba3 !important; font-weight: 500 !important; font-size: 0.9rem !important; }
