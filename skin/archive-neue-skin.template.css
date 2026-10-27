@@ -127,6 +127,12 @@ div.user.home div.primary.header.module ul.navigation.actions li { display: inli
 
 /* Series page: the series title is bigger and lighter than the story titles below it */
 #main.series-show > h2.heading { font-size: 2.25rem; font-weight: 400; line-height: 1.15; letter-spacing: -0.025em; margin: 0 0 1.5rem; }
+dl.series.meta { background: none; border: 0; border-bottom: 1px solid {{line}}; box-shadow: none; float: none; width: auto; margin: 0 0 1.5rem; padding: 0 0 1rem; font-size: 0.9rem; }
+dl.series.meta > dt { float: none; width: auto; margin: 0.6rem 0 0; padding: 0; color: {{muted}}; font-weight: 400; text-align: left; }
+dl.series.meta > dd { float: none; width: auto; margin: 0; padding: 0; }
+dl.series.meta a { color: {{ink}}; }
+dl.series.meta blockquote.userstuff { font-family: -apple-system, system-ui, "Helvetica Neue", sans-serif; font-size: 0.9rem; line-height: 1.6; margin: 0; padding: 0; border: 0; background: none; }
+dl.series.meta dl.stats { margin: 0.25rem 0 0; font-size: 0.8rem; }
 
 /* A work */
 ul.work.navigation { list-style: none; float: none; margin: 0 0 1.25rem; padding: 0 0 1rem; border-bottom: 1px solid {{line}}; }

@@ -103,6 +103,12 @@ div.user.home div.primary.header.module p.icon img.icon { position: static !impo
 div.user.home div.primary.header.module ul.navigation.actions { float: none !important; margin: 0.5rem 0 0 !important; padding: 0 !important; text-align: left !important; }
 div.user.home div.primary.header.module ul.navigation.actions li { display: inline-block !important; float: none !important; margin: 0 0.4rem 0.4rem 0 !important; padding: 0 !important; }
 #main.series-show > h2.heading { font-size: 2.25rem !important; font-weight: 400 !important; line-height: 1.15 !important; letter-spacing: -0.025em !important; margin: 0 0 1.5rem !important; }
+dl.series.meta { background: none !important; border: 0 !important; border-bottom: 1px solid #e6e6e8 !important; box-shadow: none !important; float: none !important; width: auto !important; margin: 0 0 1.5rem !important; padding: 0 0 1rem !important; font-size: 0.9rem !important; }
+dl.series.meta > dt { float: none !important; width: auto !important; margin: 0.6rem 0 0 !important; padding: 0 !important; color: #6b6b73 !important; font-weight: 400 !important; text-align: left !important; }
+dl.series.meta > dd { float: none !important; width: auto !important; margin: 0 !important; padding: 0 !important; }
+dl.series.meta a { color: #17171a !important; }
+dl.series.meta blockquote.userstuff { font-family: -apple-system, system-ui, "Helvetica Neue", sans-serif !important; font-size: 0.9rem !important; line-height: 1.6 !important; margin: 0 !important; padding: 0 !important; border: 0 !important; background: none !important; }
+dl.series.meta dl.stats { margin: 0.25rem 0 0 !important; font-size: 0.8rem !important; }
 ul.work.navigation { list-style: none !important; float: none !important; margin: 0 0 1.25rem !important; padding: 0 0 1rem !important; border-bottom: 1px solid #e6e6e8 !important; }
 ul.work.navigation li { display: inline-block !important; float: none !important; margin: 0 1rem 0 0 !important; padding: 0 !important; }
 ul.work.navigation li a, ul.work.navigation li button, ul.work.navigation li input { background: none !important; border: 0 !important; box-shadow: none !important; padding: 0.2rem 0 !important; color: #6b6b73 !important; font-weight: 500 !important; font-size: 0.9rem !important; }
