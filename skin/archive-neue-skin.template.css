@@ -19,8 +19,8 @@ hr { border: 0; border-top: 1px solid {{line}}; }
 
 /* Header: no logo, quiet links */
 #header { float: none; height: auto; margin: 0; padding: 0.9rem 0 0.6rem; border-bottom: 1px solid {{line}}; background: none; }
-#header h1.heading { margin: 0 1rem 0 0; padding: 0.25rem 0; float: left; font-size: 0.95rem; line-height: 1.55; }
-#header h1.heading a { font-size: 0; display: inline-block; background: none; padding: 0; height: auto; width: auto; }
+#header h1.heading { display: inline; margin: 0 1rem 0 0; padding: 0; float: none; font-size: 0.95rem; line-height: 1.55; }
+#header h1.heading a { font-size: 0; display: inline-block; background: none; padding: 0.25rem 0; height: auto; width: auto; vertical-align: baseline; }
 #header h1.heading a img.logo, #header h1.heading a span, #header h1.heading sup { display: none; }
 #header h1.heading a:after { content: "Home"; font-size: 0.95rem; font-weight: 600; color: {{ink}}; }
 #header nav, #header ul.navigation, #header .navigation li, #header #login, #header #greeting { background: none; border: 0; box-shadow: none; float: none; border-radius: 0; height: auto; }
@@ -40,7 +40,7 @@ hr { border: 0; border-top: 1px solid {{line}}; }
 #header, #header nav, #header ul, #header li, #header #greeting, #header #greeting ul { text-align: left; }
 #header #greeting p, #header #greeting p.icon { float: none; position: static; display: inline-block; width: auto; height: auto; margin: 0 0 0 0.25rem; padding: 0; vertical-align: middle; background: none; border: 0; }
 #header #greeting p.icon a { display: inline-block; padding: 0; border: 0; background: none; }
-#header #greeting img, #header #greeting img.icon { width: 1.75rem; height: 1.75rem; border-radius: 50%; vertical-align: middle; }
+#header #greeting img, #header #greeting img.icon { width: 1.5rem; height: 1.5rem; border-radius: 50%; vertical-align: middle; }
 ul.work.navigation, ul.navigation.actions, #main ul.navigation.actions, #main div.navigation.actions, #main .navigation.actions.module ul { text-align: left; }
 /* Header menus (opened by tapping the greeting): a vertical list that fits the page width. The selectors are long on purpose, to beat the header link rules above */
 #header .dropdown .menu { box-sizing: border-box; left: 0; right: auto; width: 100%; margin: 0.25rem 0 0; }

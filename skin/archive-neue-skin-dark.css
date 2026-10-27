@@ -12,8 +12,8 @@ h1, h2, h3, h4, h5, h6, .heading, .heading a { font-family: -apple-system, syste
 h2.heading { font-size: 1.4rem !important; margin: 0 0 1rem !important; }
 hr { border: 0 !important; border-top: 1px solid #303036 !important; }
 #header { float: none !important; height: auto !important; margin: 0 !important; padding: 0.9rem 0 0.6rem !important; border-bottom: 1px solid #303036 !important; background: none !important; }
-#header h1.heading { margin: 0 1rem 0 0 !important; padding: 0.25rem 0 !important; float: left !important; font-size: 0.95rem !important; line-height: 1.55 !important; }
-#header h1.heading a { font-size: 0 !important; display: inline-block !important; background: none !important; padding: 0 !important; height: auto !important; width: auto !important; }
+#header h1.heading { display: inline !important; margin: 0 1rem 0 0 !important; padding: 0 !important; float: none !important; font-size: 0.95rem !important; line-height: 1.55 !important; }
+#header h1.heading a { font-size: 0 !important; display: inline-block !important; background: none !important; padding: 0.25rem 0 !important; height: auto !important; width: auto !important; vertical-align: baseline !important; }
 #header h1.heading a img.logo, #header h1.heading a span, #header h1.heading sup { display: none !important; }
 #header h1.heading a:after { content: "Home" !important; font-size: 0.95rem !important; font-weight: 600 !important; color: #e9e9ea !important; }
 #header nav, #header ul.navigation, #header .navigation li, #header #login, #header #greeting { background: none !important; border: 0 !important; box-shadow: none !important; float: none !important; border-radius: 0 !important; height: auto !important; }
@@ -31,7 +31,7 @@ hr { border: 0 !important; border-top: 1px solid #303036 !important; }
 #header, #header nav, #header ul, #header li, #header #greeting, #header #greeting ul { text-align: left !important; }
 #header #greeting p, #header #greeting p.icon { float: none !important; position: static !important; display: inline-block !important; width: auto !important; height: auto !important; margin: 0 0 0 0.25rem !important; padding: 0 !important; vertical-align: middle !important; background: none !important; border: 0 !important; }
 #header #greeting p.icon a { display: inline-block !important; padding: 0 !important; border: 0 !important; background: none !important; }
-#header #greeting img, #header #greeting img.icon { width: 1.75rem !important; height: 1.75rem !important; border-radius: 50% !important; vertical-align: middle !important; }
+#header #greeting img, #header #greeting img.icon { width: 1.5rem !important; height: 1.5rem !important; border-radius: 50% !important; vertical-align: middle !important; }
 ul.work.navigation, ul.navigation.actions, #main ul.navigation.actions, #main div.navigation.actions, #main .navigation.actions.module ul { text-align: left !important; }
 #header .dropdown .menu { box-sizing: border-box !important; left: 0 !important; right: auto !important; width: 100% !important; margin: 0.25rem 0 0 !important; }
 #header .dropdown .menu li { display: block !important; float: none !important; margin: 0 !important; padding: 0 !important; border: 0 !important; }
