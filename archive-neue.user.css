@@ -20,7 +20,7 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,300..700;1,300..700&family=Instrument+Sans:wght@400..700&display=swap");
 
-@-moz-document domain("archiveofourown.org"), domain("archiveofourown.gay"), domain("archive.transformativeworks.org") {
+@-moz-document domain("archiveofourown.org"), domain("ao3.org"), domain("archiveofourown.gay"), domain("archive.transformativeworks.org") {
 
 /* ------------------------------------------------------------------ *
  * 1. Tokens. Edit these (or use the Stylus settings panel) to taste.

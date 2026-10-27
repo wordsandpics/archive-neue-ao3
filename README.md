@@ -6,7 +6,7 @@ A minimal, typography-first reading theme for [Archive of Our Own](https://archi
 - **Phone skin.** A simpler version you paste into AO3's own skin settings. No extension needed.
 - **Customisable.** Light, dark or follow your system. Fonts, text size, line spacing, text width and accent colour. (The phone skin is light or dark only.)
 
-Works on `archiveofourown.org`, `archiveofourown.gay` and `archive.transformativeworks.org`.
+Works on `archiveofourown.org`, `ao3.org`, `archiveofourown.gay` and `archive.transformativeworks.org`.
 
 ## Install the desktop style
 
