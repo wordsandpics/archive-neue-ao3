@@ -7,7 +7,7 @@
 body { background: {{bg}}; color: {{ink}}; margin: 0; font-family: -apple-system, system-ui, "Helvetica Neue", sans-serif; font-size: 16px; font-weight: 400; line-height: 1.55; -webkit-text-size-adjust: 100%; }
 html { background: {{bg}}; }
 #outer, #inner, #main, #header, #footer, .wrapper { background: none; border: 0; box-shadow: none; text-shadow: none; }
-#outer { max-width: 44rem; width: auto; margin: 0 auto; padding: 0 1rem; box-sizing: border-box; }
+#outer { max-width: 44rem; width: auto; margin: 0 auto; padding: 0 1rem; box-sizing: border-box; float: none; }
 #inner { margin: 0; padding: 0; }
 #main { margin: 0; padding: 1.25rem 0 3rem; float: none; width: auto; }
 
@@ -56,6 +56,7 @@ ul.work.navigation, ul.navigation.actions, #main ul.navigation.actions, #main di
 #main ul.navigation.actions li, #main .navigation.actions.module li, ul.work.navigation li { text-align: left; }
 
 /* Inputs and buttons */
+.intro .account p.actions a { display: inline-block; background: {{ink}}; color: {{bg}}; border: 1px solid {{ink}}; border-radius: 6px; box-shadow: none; text-shadow: none; padding: 0.55rem 1rem; font-size: 0.95rem; font-weight: 500; line-height: 1.2; }
 input[type="text"], input[type="search"], input[type="password"], input[type="email"], input[type="number"], textarea, select { font-family: -apple-system, system-ui, "Helvetica Neue", sans-serif; font-size: 1rem; color: {{ink}}; background: {{bg}}; border: 1px solid {{line2}}; border-radius: 6px; box-shadow: none; padding: 0.45rem 0.6rem; max-width: 100%; }
 textarea { width: 100%; box-sizing: border-box; }
 button, input[type="submit"], .actions a, .actions button, a.action { font-family: -apple-system, system-ui, "Helvetica Neue", sans-serif; font-size: 0.9rem; font-weight: 500; line-height: 1.2; color: {{ink}}; background: {{bg}}; background-image: none; border: 1px solid {{line2}}; border-radius: 6px; box-shadow: none; text-shadow: none; padding: 0.5rem 0.8rem; }

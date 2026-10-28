@@ -3,7 +3,7 @@
 body { background: #ffffff !important; color: #17171a !important; margin: 0 !important; font-family: -apple-system, system-ui, "Helvetica Neue", sans-serif !important; font-size: 16px !important; font-weight: 400 !important; line-height: 1.55 !important; -webkit-text-size-adjust: 100% !important; }
 html { background: #ffffff !important; }
 #outer, #inner, #main, #header, #footer, .wrapper { background: none !important; border: 0 !important; box-shadow: none !important; text-shadow: none !important; }
-#outer { max-width: 44rem !important; width: auto !important; margin: 0 auto !important; padding: 0 1rem !important; box-sizing: border-box !important; }
+#outer { max-width: 44rem !important; width: auto !important; margin: 0 auto !important; padding: 0 1rem !important; box-sizing: border-box !important; float: none !important; }
 #inner { margin: 0 !important; padding: 0 !important; }
 #main { margin: 0 !important; padding: 1.25rem 0 3rem !important; float: none !important; width: auto !important; }
 a, a:link, a:visited { color: #2f54eb !important; text-decoration: none !important; border: 0 !important; }
@@ -41,6 +41,7 @@ ul.work.navigation, ul.navigation.actions, #main ul.navigation.actions, #main di
 #header #greeting p.icon { margin: 0 0 0 0.6rem !important; }
 #dashboard, #dashboard.own { border: 0 !important; border-top: 1px solid #e6e6e8 !important; border-bottom: 1px solid #e6e6e8 !important; border-radius: 0 !important; padding: 0.5rem 0 !important; margin: 0 0 1rem !important; }
 #main ul.navigation.actions li, #main .navigation.actions.module li, ul.work.navigation li { text-align: left !important; }
+.intro .account p.actions a { display: inline-block !important; background: #17171a !important; color: #ffffff !important; border: 1px solid #17171a !important; border-radius: 6px !important; box-shadow: none !important; text-shadow: none !important; padding: 0.55rem 1rem !important; font-size: 0.95rem !important; font-weight: 500 !important; line-height: 1.2 !important; }
 input[type="text"], input[type="search"], input[type="password"], input[type="email"], input[type="number"], textarea, select { font-family: -apple-system, system-ui, "Helvetica Neue", sans-serif !important; font-size: 1rem !important; color: #17171a !important; background: #ffffff !important; border: 1px solid #cfcfd4 !important; border-radius: 6px !important; box-shadow: none !important; padding: 0.45rem 0.6rem !important; max-width: 100% !important; }
 textarea { width: 100% !important; box-sizing: border-box !important; }
 button, input[type="submit"], .actions a, .actions button, a.action { font-family: -apple-system, system-ui, "Helvetica Neue", sans-serif !important; font-size: 0.9rem !important; font-weight: 500 !important; line-height: 1.2 !important; color: #17171a !important; background: #ffffff !important; background-image: none !important; border: 1px solid #cfcfd4 !important; border-radius: 6px !important; box-shadow: none !important; text-shadow: none !important; padding: 0.5rem 0.8rem !important; }

@@ -77,7 +77,7 @@ body * { font-family: inherit; }
   background: none; border: 0; box-shadow: none; text-shadow: none;
 }
 .wrapper { box-shadow: none !important; border: 0 !important; }
-#outer { max-width: 62rem; margin: 0 auto; padding: 0 1.5rem; }
+#outer { max-width: 62rem; margin: 0 auto; padding: 0 1.5rem; float: none; } /* AO3 floats it left, which ignores the auto margins */
 #inner { margin: 0; padding: 0; }
 #main  { margin: 0 auto; padding: 2rem 0 4rem; float: none; width: auto; }
 
@@ -588,6 +588,9 @@ li.comment .icon, li.comment .user .icon, .icon img { border-radius: 50%; }
 .splash .favorite ul li a.tag { display: inline-block; padding: 0.2rem 0.6rem; border: 1px solid var(--line) !important; border-radius: 5px; background: none !important; color: var(--ink); font-size: 0.9375rem; }
 .splash .favorite ul { display: flex; flex-wrap: wrap; gap: 0.4rem; }
 .splash .favorite ul li a.tag:hover { background: var(--bg-2) !important; border-color: var(--line-2) !important; text-decoration: none; }
+/* "Get Invited!" on the logged-out home page: the one button there, so it is the filled kind */
+.splash .intro .account p.actions a { display: inline-block; background: var(--ink) !important; background-image: none !important; color: var(--bg) !important; border: 1px solid var(--ink) !important; border-radius: 6px !important; box-shadow: none !important; text-shadow: none !important; padding: 0.55rem 1rem !important; font: 500 0.9375rem/1.2 var(--f-ui) !important; text-decoration: none; }
+.splash .intro .account p.actions a:hover { opacity: 0.88; }
 .splash p.note { color: var(--muted); font-size: 0.9375rem; margin: 0 0 1rem; }
 
 /* News posts */
