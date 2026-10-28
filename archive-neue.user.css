@@ -168,6 +168,10 @@ h1, h2, h3, h4, h5, h6 {
 h2.heading { font-size: 1.5rem; margin: 0 0 1rem; letter-spacing: -0.02em; }
 /* Page titles that sit above a row of options get more room */
 h2.heading:has(+ .navigation.actions, + .landmark.heading + .navigation.actions) { display: block !important; margin-bottom: 1.5rem !important; } /* AO3 makes some of these titles inline, which ignores the margin */
+/* Page titles that AO3 leaves inline or tight (chapter index, series list, fandoms, inbox, news): same 1.5rem below as the rest */
+#main:is(.works-navigate, .series-index, .media-index) > h2.heading { display: block !important; margin-bottom: 1.5rem !important; }
+#main.inbox-show > h2.heading { display: block !important; margin-bottom: 0.5rem !important; }
+#main.admin_posts-index .primary.header > h2.heading { margin-bottom: 1.5rem !important; }
 h3.heading { font-size: 1.125rem; margin: 1.5rem 0 0.5rem; }
 p { margin: 0 0 1em; }
 hr { border: 0; border-top: 1px solid var(--line); margin: 2rem 0; }
