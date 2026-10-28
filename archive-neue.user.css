@@ -77,8 +77,8 @@ body * { font-family: inherit; }
   background: none; border: 0; box-shadow: none; text-shadow: none;
 }
 .wrapper { box-shadow: none !important; border: 0 !important; }
-#outer { max-width: 62rem; margin: 0 auto; padding: 0 1.5rem; }
-#outer.wrapper { float: none !important; margin-left: auto !important; margin-right: auto !important; } /* AO3 floats it left (with a more specific rule), which ignores the auto margins */
+#outer { max-width: 62rem; padding: 0 1.5rem; }
+#outer.wrapper { float: none !important; margin: 0 auto !important; } /* AO3 floats it left with a more specific rule */
 #inner { margin: 0; padding: 0; }
 #main  { margin: 0 auto; padding: 2rem 0 4rem; float: none; width: auto; }
 
