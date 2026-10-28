@@ -303,6 +303,15 @@ li.skins.blurb div.icon { display: none !important; }
 /* Chapter index: the chapter titles are the links, so they are bolder; the dates are quiet */
 #main.works-navigate ol.chapter.index > li > a { font-weight: 600; }
 #main.works-navigate ol.chapter.index span.datetime { color: var(--muted); font-size: 0.875rem; }
+/* "Save a bookmark" form at the end of a work: a plain outline instead of AO3's heavy border and shadow, and the Create button stays dark when pressed */
+#bookmark-form > form { border: 1px solid var(--line) !important; border-radius: 10px !important; box-shadow: none !important; background: none !important; }
+#bookmark-form form input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]), #bookmark-form form textarea { box-shadow: none !important; }
+#bookmark-form a.bookmark_form_placement_close { background: var(--bg) !important; background-image: none !important; color: var(--ink) !important; border: 1px solid var(--line-2) !important; border-radius: 6px !important; box-shadow: none !important; text-shadow: none !important; }
+#bookmark-form form input[type="submit"], #bookmark-form form input[type="submit"]:hover, #bookmark-form form input[type="submit"]:active, #bookmark-form form input[type="submit"]:focus { background: var(--ink) !important; background-image: none !important; color: var(--bg) !important; border: 1px solid var(--ink) !important; box-shadow: none !important; text-shadow: none !important; }
+#bookmark-form form input[type="submit"]:active { opacity: 0.8 !important; }
+/* "Add to collection" page: same plain outline and buttons */
+form#new_collection_item > dl { background: none !important; border: 1px solid var(--line) !important; border-radius: 8px !important; box-shadow: none !important; padding: 1rem !important; margin: 0 !important; }
+form#new_collection_item dd.submit.actions a { background: var(--bg) !important; background-image: none !important; color: var(--ink) !important; border: 1px solid var(--line-2) !important; border-radius: 6px !important; box-shadow: none !important; text-shadow: none !important; padding: 0.45rem 0.8rem !important; font: 500 0.9375rem/1.2 var(--f-ui) !important; }
 input[type="submit"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
 input[type="submit"]:hover { background: var(--ink); color: var(--bg); opacity: 0.88; }
 fieldset { border: 1px solid var(--line); border-radius: 8px; padding: 1rem; margin: 0 0 1rem; background: none; }
