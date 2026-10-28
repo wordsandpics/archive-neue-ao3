@@ -292,6 +292,10 @@ button:hover, input[type="submit"]:hover, input[type="button"]:hover, .actions a
 /* Buttons inside a form row (e.g. "Public Site Skins" on the preferences page): AO3 gives them a grey gradient */
 fieldset dd span.actions a { background: var(--bg) !important; background-image: none !important; color: var(--ink) !important; border: 1px solid var(--line-2) !important; border-radius: 6px !important; box-shadow: none !important; text-shadow: none !important; padding: 0.45rem 0.8rem !important; font: 500 0.9375rem/1.2 var(--f-ui) !important; }
 fieldset dd span.actions a:hover { background: var(--bg-2) !important; text-decoration: none; }
+/* Skins page: the four "My Site Skins ..." buttons, and no icon square beside each skin's title (it overlapped the title) */
+#main.skins-index > ul.actions:not(.navigation) > li > a, #main.skins-index > ul.actions:not(.navigation) > li > span.current { background: var(--bg) !important; background-image: none !important; color: var(--ink) !important; border: 1px solid var(--line-2) !important; border-radius: 6px !important; box-shadow: none !important; text-shadow: none !important; padding: 0.45rem 0.8rem !important; font: 500 0.9375rem/1.2 var(--f-ui) !important; }
+#main.skins-index > ul.actions:not(.navigation) > li > span.current { background: var(--bg-2) !important; font-weight: 650 !important; }
+li.skins.blurb div.icon { display: none !important; }
 input[type="submit"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
 input[type="submit"]:hover { background: var(--ink); color: var(--bg); opacity: 0.88; }
 fieldset { border: 1px solid var(--line); border-radius: 8px; padding: 1rem; margin: 0 0 1rem; background: none; }
