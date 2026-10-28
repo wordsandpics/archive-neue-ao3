@@ -296,6 +296,9 @@ fieldset dd span.actions a:hover { background: var(--bg-2) !important; text-deco
 #main.skins-index > ul.actions:not(.navigation) > li > a, #main.skins-index > ul.actions:not(.navigation) > li > span.current { background: var(--bg) !important; background-image: none !important; color: var(--ink) !important; border: 1px solid var(--line-2) !important; border-radius: 6px !important; box-shadow: none !important; text-shadow: none !important; padding: 0.45rem 0.8rem !important; font: 500 0.9375rem/1.2 var(--f-ui) !important; }
 #main.skins-index > ul.actions:not(.navigation) > li > span.current { background: var(--bg-2) !important; font-weight: 650 !important; }
 li.skins.blurb div.icon { display: none !important; }
+/* Chapter index: the chapter titles are the links, so they are bolder; the dates are quiet */
+#main.works-navigate ol.chapter.index > li > a { font-weight: 600; }
+#main.works-navigate ol.chapter.index span.datetime { color: var(--muted); font-size: 0.875rem; }
 input[type="submit"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
 input[type="submit"]:hover { background: var(--ink); color: var(--bg); opacity: 0.88; }
 fieldset { border: 1px solid var(--line); border-radius: 8px; padding: 1rem; margin: 0 0 1rem; background: none; }
