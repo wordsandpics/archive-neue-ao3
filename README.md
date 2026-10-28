@@ -26,11 +26,11 @@ Stylus checks for new versions on its own. Other style extensions are untested a
 
 ## Install the phone skin
 
-Pick **one** file: `skin/archive-neue-skin-light.css` (light) or `skin/archive-neue-skin-dark.css` (dark).
+Pick **one** file: `skin/archive-neue-skin-light.css` (light), `skin/archive-neue-skin-dark.css` (dark) or `skin/archive-neue-skin-contrast.css` (light with black text and darker lines, good for e-ink readers or if you prefer stronger contrast).
 
 1. Log in to AO3, open your name, then **Preferences**, then **Skins & Archive Interface**, then **Create Site Skin**.
 2. Give it a title and paste the whole file into the CSS box. AO3 does not allow the word "Archive" in a skin title, so use something like "Neue Light" or "Neue Dark".
-3. Open **Advanced**, then **Media**. Tick only `only screen and (max-width: 42em)`. Leave the role on "add on to archive skin". Submit.
+3. Open **Advanced**, then **Media**. Tick `only screen and (max-width: 42em)`, which covers most phones. Tick `only screen and (max-width: 62em)` instead if you also want it on a tablet or e-reader. It works on any small screen. Leave the role on "add on to archive skin". Submit.
 4. Back in Preferences, press **Use** next to your new skin.
 
 Notes:
