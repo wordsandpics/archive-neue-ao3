@@ -167,4 +167,10 @@ li.comment ul.actions a, li.comment ul.actions button, li.comment ul.actions inp
 #bookmark-form form input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]), #bookmark-form form textarea { box-shadow: none !important; }
 #bookmark-form a.bookmark_form_placement_close { background: #ffffff !important; background-image: none !important; color: #000000 !important; border: 1px solid #5a5a5a !important; border-radius: 6px !important; box-shadow: none !important; text-shadow: none !important; }
 #bookmark-form form input[type="submit"], #bookmark-form form input[type="submit"]:hover, #bookmark-form form input[type="submit"]:active, #bookmark-form form input[type="submit"]:focus { background: #000000 !important; background-image: none !important; color: #ffffff !important; border: 1px solid #000000 !important; box-shadow: none !important; text-shadow: none !important; }
+#dashboard { float: none !important; width: auto !important; }
+#dashboard ul { float: none !important; text-align: left !important; padding: 0 !important; border: 0 !important; }
+#dashboard ul, #dashboard li, #dashboard a, #dashboard span { background: none !important; box-shadow: none !important; text-shadow: none !important; }
+#dashboard li { display: inline-block !important; margin: 0 0.75rem 0 0 !important; }
+#dashboard a, #dashboard span { display: inline !important; padding: 0 !important; border: 0 !important; }
+#dashboard span.current, #dashboard li.current a, #dashboard .current { color: #000000 !important; font-weight: 700 !important; }
 

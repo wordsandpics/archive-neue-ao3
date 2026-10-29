@@ -199,3 +199,11 @@ li.comment ul.actions a, li.comment ul.actions button, li.comment ul.actions inp
 #bookmark-form form input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]), #bookmark-form form textarea { box-shadow: none; }
 #bookmark-form a.bookmark_form_placement_close { background: {{bg}}; background-image: none; color: {{ink}}; border: 1px solid {{line2}}; border-radius: 6px; box-shadow: none; text-shadow: none; }
 #bookmark-form form input[type="submit"], #bookmark-form form input[type="submit"]:hover, #bookmark-form form input[type="submit"]:active, #bookmark-form form input[type="submit"]:focus { background: {{ink}}; background-image: none; color: {{bg}}; border: 1px solid {{ink}}; box-shadow: none; text-shadow: none; }
+
+/* The dashboard sidebar (account pages): stack it above the content as a row of links, so the content can't cover it */
+#dashboard { float: none; width: auto; }
+#dashboard ul { float: none; text-align: left; padding: 0; border: 0; }
+#dashboard ul, #dashboard li, #dashboard a, #dashboard span { background: none; box-shadow: none; text-shadow: none; }
+#dashboard li { display: inline-block; margin: 0 0.75rem 0 0; }
+#dashboard a, #dashboard span { display: inline; padding: 0; border: 0; }
+#dashboard span.current, #dashboard li.current a, #dashboard .current { color: {{ink}}; font-weight: 700; }
