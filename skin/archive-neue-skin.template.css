@@ -193,3 +193,9 @@ li.comment ul.actions a, li.comment ul.actions button, li.comment ul.actions inp
 #footer ul.menu li a, #footer ul.menu li button, #footer li.module a, #footer li.module button { display: block; width: auto; margin: 0; padding: 0.4rem 0; background: none; background-image: none; border: 0; border-radius: 0; box-shadow: none; color: {{muted}}; font-size: 0.95rem; font-weight: 400; text-align: left; text-decoration: none; }
 #footer a { color: {{muted}}; border: 0; }
 #footer ul { list-style: none; }
+/* Save-bookmark panel on a work page: AO3 gives it a white background */
+#bookmark-form, div.post.bookmark, #bookmark-form > form { background: none; box-shadow: none; }
+#bookmark-form > form { border: 1px solid {{line}}; border-radius: 10px; }
+#bookmark-form form input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]), #bookmark-form form textarea { box-shadow: none; }
+#bookmark-form a.bookmark_form_placement_close { background: {{bg}}; background-image: none; color: {{ink}}; border: 1px solid {{line2}}; border-radius: 6px; box-shadow: none; text-shadow: none; }
+#bookmark-form form input[type="submit"], #bookmark-form form input[type="submit"]:hover, #bookmark-form form input[type="submit"]:active, #bookmark-form form input[type="submit"]:focus { background: {{ink}}; background-image: none; color: {{bg}}; border: 1px solid {{ink}}; box-shadow: none; text-shadow: none; }
