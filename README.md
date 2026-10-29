@@ -40,9 +40,9 @@ Notes:
 - It does not update itself. When there is a new version, paste it over the old one.
 - AO3 does not read `@media` rules written inside a skin. The Media setting above is how the narrow-screen condition works.
 
-<img src="screenshots/desktop-works-list-light.jpg" alt="Works list, light" width="49%"> <img src="screenshots/desktop-work-dark.jpg" alt="Work page, dark" width="49%">
+<img src="screenshots/themes-desktop.png" alt="The userstyle on desktop in light, dark, slate and paper" width="100%">
 
-<img src="screenshots/phone-light.png" alt="Phone skin, light" width="180"> <img src="screenshots/phone-dark.png" alt="Phone skin, dark" width="180">
+<img src="screenshots/themes-phone.png" alt="The phone skin in light, dark, slate and paper" width="100%">
 
 ## Known gaps
 
