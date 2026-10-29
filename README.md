@@ -1,10 +1,10 @@
 <img src="screenshots/header.png" alt="Archive Neue: a minimal userstyle for AO3" width="100%">
 
-A minimal, typography-first reading theme for [Archive of Our Own](https://archiveofourown.org) (AO3). Airy and discreet. Light, dark or follows your system.
+A minimal, typography-first reading theme for [Archive of Our Own](https://archiveofourown.org) (AO3). Airy and discreet. Light, dark, slate or paper, or follows your system.
 
 - **Desktop style.** Installs with the free [Stylus](https://add0n.com/stylus.html) browser extension.
 - **Phone skin.** A simpler version you paste into AO3's own skin settings. No extension needed.
-- **Customisable.** Light, dark or follow your system. Fonts, text size, line spacing, text width and accent colour. (The phone skin is light or dark only.)
+- **Customisable.** Light, dark, slate (blue-grey), paper (warm beige) or follow your system. Fonts, text size, line spacing, text width and accent colour. (Each skin file is one theme.)
 
 Works on `archiveofourown.org`, `ao3.org`, `archiveofourown.gay` and `archive.transformativeworks.org`.
 
@@ -18,7 +18,7 @@ The style is also listed on [userstyles.world](https://userstyles.world/style/31
 
 Stylus checks for new versions on its own. Other style extensions are untested and may not read the file or its settings.
 
-**Settings:** click the Stylus icon, then the gear next to Archive Neue. You can change the colour theme (follow system, always light, always dark), reading font, interface font, reading size, line height, text column width and accent colour.
+**Settings:** click the Stylus icon, then the gear next to Archive Neue. You can change the colour theme (follow system, light, dark, slate or paper), reading font, interface font, reading size, line height, text column width and accent colour.
 
 **Fonts:** the style loads Bitter (reading) and Instrument Sans (interface) from Google Fonts, so your browser contacts Google when an AO3 page loads. Both fonts are open-licensed. To use other fonts, change the font names in the settings (and the `@import` line at the top of the file if the font comes from Google Fonts).
 
@@ -26,7 +26,7 @@ Stylus checks for new versions on its own. Other style extensions are untested a
 
 ## Install the phone skin
 
-Pick **one** file: `skin/archive-neue-skin-light.css` (light), `skin/archive-neue-skin-dark.css` (dark) or `skin/archive-neue-skin-contrast.css` (light with black text and darker lines, good for e-ink readers or if you prefer stronger contrast).
+Pick **one** file: `skin/archive-neue-skin-light.css` (light), `skin/archive-neue-skin-dark.css` (dark), `skin/archive-neue-skin-slate.css` (blue-grey), `skin/archive-neue-skin-paper.css` (warm beige) or `skin/archive-neue-skin-contrast.css` (light with black text and darker lines, good for e-ink readers or if you prefer stronger contrast).
 
 1. Log in to AO3, open your name, then **Preferences**, then **Skins & Archive Interface**, then **Create Site Skin**.
 2. Give it a title and paste the whole file into the CSS box. AO3 does not allow the word "Archive" in a skin title, so use something like "Neue Light" or "Neue Dark".

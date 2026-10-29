@@ -14,7 +14,7 @@
 @var range  reading-size "Reading size" [18, 15, 26, 0.5, 'px']
 @var range  reading-lh   "Reading line height" [1.7, 1.3, 2.2, 0.05, '']
 @var range  text-width   "Text column width" [40, 28, 60, 1, 'rem']
-@var select theme        "Colour theme" ["0:Follow system*", "1:Always light", "2:Always dark"]
+@var select theme        "Colour theme" ["0:Follow system*", "1:Light", "2:Dark", "3:Slate", "4:Paper"]
 @var color  accent       "Accent colour" #2f54eb
 ==/UserStyle== */
 
@@ -35,22 +35,24 @@
   --col:       var(--text-width, 40rem);
   --hue:       var(--accent, #2f54eb);
 
-  /* Light / dark switch. --mode comes from the style's "Colour theme" setting (stored as 0 follow the system,
-     1 always light, 2 always dark; Stylus option names can't be negative, so we subtract 1):
-     -1 follow the system, 0 always light, 1 always dark. --sys is 1 when the system is dark.
-     --dark works out to 0 (light) or 1 (dark); each colour mixes its light and dark value by it. */
+  /* Colour theme. --theme comes from the style's "Colour theme" setting: 0 follow the system, 1 light, 2 dark, 3 slate, 4 paper.
+     --mode is -1 follow the system, 0 light, 1 dark (slate counts as dark, paper as light; Stylus option names can't be
+     negative, so we subtract 1). --sys is 1 when the system is dark. --dark works out to 0 or 1.
+     --slate and --paper are 1 only for their own theme. Each colour mixes light and dark by --dark, then slate and paper over that. */
   --sys: 0;
-  --mode: calc(var(--theme, 0) - 1);
+  --paper: calc(var(--theme, 0) * (var(--theme, 0) - 1) * (var(--theme, 0) - 2) * (var(--theme, 0) - 3) / 24);
+  --slate: calc(var(--theme, 0) * (var(--theme, 0) - 1) * (var(--theme, 0) - 2) * (var(--theme, 0) - 4) / -6);
+  --mode: calc(min(var(--theme, 0), 2) - 1 - var(--paper));
   --dark: calc((var(--mode) * (var(--mode) + 1) / 2) + (var(--mode) * (var(--mode) - 1) / 2) * var(--sys));
 
-  --bg:     color-mix(in srgb, #111113 calc(var(--dark) * 100%), #ffffff);
-  --bg-2:   color-mix(in srgb, #19191c calc(var(--dark) * 100%), #f6f6f4);
-  --ink:    color-mix(in srgb, #e9e9ea calc(var(--dark) * 100%), #17171a);
-  --muted:  color-mix(in srgb, #9b9ba3 calc(var(--dark) * 100%), #6b6b73);
+  --bg:     color-mix(in srgb, #f5ede1 calc(var(--paper) * 100%), color-mix(in srgb, #272e3d calc(var(--slate) * 100%), color-mix(in srgb, #111113 calc(var(--dark) * 100%), #ffffff)));
+  --bg-2:   color-mix(in srgb, #ede3d3 calc(var(--paper) * 100%), color-mix(in srgb, #2f3748 calc(var(--slate) * 100%), color-mix(in srgb, #19191c calc(var(--dark) * 100%), #f6f6f4)));
+  --ink:    color-mix(in srgb, #2b2622 calc(var(--paper) * 100%), color-mix(in srgb, #e6e9ef calc(var(--slate) * 100%), color-mix(in srgb, #e9e9ea calc(var(--dark) * 100%), #17171a)));
+  --muted:  color-mix(in srgb, #6b6054 calc(var(--paper) * 100%), color-mix(in srgb, #9aa3b5 calc(var(--slate) * 100%), color-mix(in srgb, #9b9ba3 calc(var(--dark) * 100%), #6b6b73)));
   /* between --muted and --ink in light mode (a bit more contrast for small text); same as --muted in dark */
   --soft:   color-mix(in srgb, var(--muted) calc(100% - (1 - var(--dark)) * 30%), var(--ink));
-  --line:   color-mix(in srgb, #303036 calc(var(--dark) * 100%), #e6e6e8);
-  --line-2: color-mix(in srgb, #4b4b53 calc(var(--dark) * 100%), #cfcfd4);
+  --line:   color-mix(in srgb, #ddd0bb calc(var(--paper) * 100%), color-mix(in srgb, #3a4357 calc(var(--slate) * 100%), color-mix(in srgb, #303036 calc(var(--dark) * 100%), #e6e6e8)));
+  --line-2: color-mix(in srgb, #c9b99d calc(var(--paper) * 100%), color-mix(in srgb, #4b556b calc(var(--slate) * 100%), color-mix(in srgb, #4b4b53 calc(var(--dark) * 100%), #cfcfd4)));
   --link:   color-mix(in srgb, color-mix(in srgb, var(--hue) 55%, white) calc(var(--dark) * 100%), var(--hue));
 }
 @media (prefers-color-scheme: dark) {
