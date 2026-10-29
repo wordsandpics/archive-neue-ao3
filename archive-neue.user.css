@@ -832,12 +832,16 @@ li.collection.blurb p.type { color: var(--muted); font-size: 0.875rem; margin: 0
 #main ol.year.actions li { float: none; margin: 0; padding: 0; background: none; border: 0; }
 #main ol.year.actions li a, #main ol.year.actions li span { display: inline-block; background: var(--bg) !important; background-image: none !important; color: var(--ink) !important; border: 1px solid var(--line-2) !important; border-radius: 6px !important; box-shadow: none !important; padding: 0.35rem 0.8rem !important; font: 500 0.9375rem/1.2 var(--f-ui) !important; text-shadow: none; }
 #main ol.year.actions li span.current { background: var(--bg-2) !important; font-weight: 650 !important; }
-#main .wrapper dl.statistics, #main dl.statistics.meta, #main .wrapper > dl { background: none !important; border: 1px solid var(--line) !important; border-radius: 10px; box-shadow: none !important; padding: 1rem 1.25rem; margin: 0 0 2rem; display: block; font-size: 1rem; line-height: 1.9; }
-/* Inline like the stats under a work: they flow and wrap to whatever width there is */
-#main .wrapper dl.statistics dt, #main .wrapper > dl dt { display: inline; float: none; width: auto; margin: 0 0.3rem 0 0; padding: 0; color: var(--muted); font-weight: 400; white-space: nowrap; }
-#main .wrapper dl.statistics dd, #main .wrapper > dl dd { display: inline; float: none; width: auto; margin: 0; padding: 0; font-variant-numeric: tabular-nums; font-weight: 500; white-space: nowrap; }
-#main .wrapper dl.statistics dd::after, #main .wrapper > dl dd::after { content: "\00a0\00a0|\00a0\00a0\200b"; color: var(--line-2); font-weight: 300; }
-#main .wrapper dl.statistics dd:last-of-type::after, #main .wrapper > dl dd:last-of-type::after { content: none; }
+#main .wrapper dl.statistics, #main dl.statistics.meta, #main .wrapper > dl { background: none !important; border: 1px solid var(--line) !important; border-radius: 10px; box-shadow: none !important; padding: 1rem 1.25rem; margin: 0 0 2rem; font-size: 1rem; }
+#main .wrapper > dl:not(.statistics) { display: grid; grid-template-columns: max-content 1fr; gap: 0.35rem 1.5rem; }
+#main .wrapper > dl dt { float: none; width: auto; margin: 0; padding: 0; color: var(--muted); font-weight: 400; text-align: left; }
+#main .wrapper > dl dd { float: none; width: auto; margin: 0; padding: 0; font-variant-numeric: tabular-nums; font-weight: 500; }
+/* The Stats page: inline like the stats under a work, so they flow and wrap to whatever width there is */
+#main .wrapper dl.statistics, #main dl.statistics.meta { display: block; line-height: 1.9; }
+#main .wrapper dl.statistics dt { display: inline; margin: 0 0.3rem 0 0; white-space: nowrap; }
+#main .wrapper dl.statistics dd { display: inline; white-space: nowrap; }
+#main .wrapper dl.statistics dd::after { content: "\00a0\00a0|\00a0\00a0\200b"; color: var(--line-2); font-weight: 300; }
+#main .wrapper dl.statistics dd:last-of-type::after { content: none; }
 #main div.actions.module { background: none !important; border: 0 !important; box-shadow: none !important; padding: 0 !important; margin: 0 0 2rem; text-align: left; }
 #main div.actions.module ul, #main div.actions.module ol { display: flex; flex-wrap: wrap; gap: 0.4rem; list-style: none; margin: 0 0 0.75rem; padding: 0; float: none; text-align: left; }
 #main div.actions.module li { float: none; margin: 0; padding: 0; background: none; border: 0; }
