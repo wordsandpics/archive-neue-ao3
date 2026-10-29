@@ -17,6 +17,7 @@ CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 
 THEMES = {"light": 1, "dark": 2, "slate": 3, "paper": 4}      # value of the userstyle's "Colour theme" setting
 DESKTOP, PHONE = 1280, 390
+META_TOP = {}                                                     # where the work info box starts, per image
 
 AO3_CSS = ('<link rel="stylesheet" media="screen" href="../ao3/1_site_screen_.css">'
            '<link rel="stylesheet" media="only screen and (max-width: 62em), handheld" href="../ao3/4_site_midsize.handheld_.css">'
@@ -203,7 +204,8 @@ def host_html(inner, width):
             f'srcdoc="{htmllib.escape(inner, quote=True)}"></iframe><script>'
             "const f=document.getElementById('f');"
             "f.addEventListener('load',()=>setTimeout(()=>{const h=Math.ceil(f.contentDocument.getElementById('outer')"
-            ".getBoundingClientRect().bottom)+24;f.style.height=h+'px';document.title=h;},2000));</script></body></html>")
+            ".getBoundingClientRect().bottom)+24;f.style.height=h+'px';"
+            "const m=f.contentDocument.querySelector('dl.work.meta');document.title=h+':'+(m?Math.round(m.getBoundingClientRect().top)-16:0);},2000));</script></body></html>")
 
 
 def chrome(args):
@@ -214,7 +216,8 @@ def chrome(args):
 def shoot(html_path, png_path, width):
     url = html_path.resolve().as_uri()
     dom = chrome([f"--window-size={max(width, 500)},3000", "--dump-dom", url]).stdout
-    height = int(re.search(r"<title>(\d+)</title>", dom).group(1))
+    height = int(re.search(r"<title>(\d+):(-?\d+)</title>", dom).group(1))
+    META_TOP[png_path.name] = int(re.search(r"<title>(\d+):(-?\d+)</title>", dom).group(2))
     chrome([f"--window-size={max(width, 500)},{height}", f"--screenshot={png_path.resolve()}", url])
     if width < 500:                                               # crop away the margins (the page sits centred)
         subprocess.run(["sips", "--cropToHeightWidth", str(height), str(width), str(png_path)],
@@ -222,10 +225,11 @@ def shoot(html_path, png_path, width):
     return height
 
 
-def sheet(name, images, cols, cell_w, cell_h, scale, gap=24, pad=32, bg="#e9e7e2"):
+def sheet(name, images, cols, cell_w, cell_h, scale, gap=24, pad=32, bg="#e9e7e2", from_meta=False):
     """Lay the top part of several renders out on one image (the lineups). scale shrinks desktop renders to fit."""
     cells = "".join(f'<div style="width:{cell_w}px;height:{cell_h}px;overflow:hidden;border-radius:10px;'
-                    f'box-shadow:0 1px 6px #0003"><img src="{(OUT / i).resolve().as_uri()}" width="{round(w * scale)}"></div>'
+                    f'box-shadow:0 1px 6px #0003"><img src="{(OUT / i).resolve().as_uri()}" width="{round(w * scale)}" '
+                    f'style="margin-top:-{round(META_TOP.get(i, 0) * scale) if from_meta else 0}px"></div>'
                     for i, w in images)
     width = pad * 2 + cols * cell_w + (cols - 1) * gap
     rows = -(-len(images) // cols)
@@ -240,7 +244,7 @@ def sheet(name, images, cols, cell_w, cell_h, scale, gap=24, pad=32, bg="#e9e7e2
 def lineups():
     names = list(THEMES)
     sheet("themes-desktop", [(f"work-desktop-{t}.png", DESKTOP) for t in names], 2, 640, 480, 0.5)
-    sheet("themes-phone", [(f"work-phone-{t}.png", PHONE) for t in names], 4, 300, 640, 300 / PHONE)
+    sheet("themes-phone", [(f"work-phone-{t}.png", PHONE) for t in names], 4, 300, 640, 300 / PHONE, from_meta=True)
 
 
 def main():
