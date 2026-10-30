@@ -398,7 +398,7 @@ ul.required-tags a.help.symbol.question, ul.required-tags a.help.symbol.question
 /* any stray symbol icons elsewhere */
 .symbol .text { display: inline; }
 
-.blurb ul.tags { display: flex; flex-wrap: wrap; gap: 0.25rem 0.3rem; list-style: none; margin: 0.5rem 0 0; padding: 0; float: none; width: auto; }
+.blurb ul.tags { display: flex; flex-wrap: wrap; gap: 0.25rem 0.3rem; list-style: none; margin: 1rem 0 0; padding: 0; float: none; width: auto; }
 .blurb ul.tags li { display: block; background: none !important; border: 0; padding: 0; margin: 0; float: none; font-size: 0.8125rem; line-height: 1.3; }
 .blurb ul.tags li::after { content: none; }
 .blurb ul.tags li a.tag, .blurb ul.tags li strong a.tag {
@@ -998,8 +998,8 @@ ul.options input[type="checkbox"], ul.options input[type="radio"] { position: re
 /* Skimmability: labels quiet, values clear; more air between the parts of a work block */
 dl.stats dt { color: var(--soft); font-weight: 400; }
 dl.stats dd, dl.stats dd a { color: var(--ink); font-weight: 600; }
-.blurb ul.tags { margin-top: 1.2rem !important; }
-.blurb blockquote.summary, .blurb blockquote.userstuff { margin-top: 1.2rem !important; }
+.blurb ul.tags { margin-top: 0.5rem !important; } /* the tags read as the last line of the facts above them... */
+.blurb blockquote.summary, .blurb blockquote.userstuff { margin-top: 1.75rem !important; } /* ...and the space is kept for what follows */
 .blurb dl.stats { margin-top: 1.2rem !important; padding-top: 0.85rem !important; border-top: 1px solid var(--line) !important; }
 
 /* ================================================================== *
