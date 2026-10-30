@@ -55,7 +55,7 @@ scrollTo(0,0);parent.postMessage(JSON.stringify(res),'*')},1500));</script>"""
 
 
 def pages():
-    return sorted(p for p in SOURCE.glob("*.html"))
+    return sorted(p for p in SOURCE.glob("*.html") if p.name != "index.html")
 
 
 def host(url, width, height=3000):

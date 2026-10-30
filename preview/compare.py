@@ -39,7 +39,7 @@ parent.postMessage(JSON.stringify({names,pk,els}),'*')},1500));</script>"""
 
 
 def pages():
-    return sorted(SOURCE.glob("*.html"))
+    return sorted(p for p in SOURCE.glob("*.html") if p.name != "index.html")
 
 
 def userstyle_css(text, theme):
