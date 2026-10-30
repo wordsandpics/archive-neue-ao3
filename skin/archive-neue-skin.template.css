@@ -221,3 +221,15 @@ li.collection.blurb .icon img { position: static; width: 3rem; height: 3rem; bor
 /* The Download list and other small menus: AO3 gives them a white panel */
 ul.expandable.secondary { background: {{bg}}; border: 1px solid {{line}}; box-shadow: none; }
 ul.expandable.secondary li a { color: {{ink}}; background: none; }
+
+/* Account menu: label and links on one wrapping line per group, the label quiet */
+#dashboard li.pseud { display: block; margin: 0.25rem 0; }
+#dashboard li.pseud ul { display: inline; margin: 0; }
+#dashboard li.pseud > a { color: {{muted}}; margin-right: 0.5rem; }
+
+/* Bookmarks list: the bookmarker's note is part of the blurb, not a boxed panel */
+.blurb div.user.module, .blurb .module.group.user { margin: 0.9rem 0 0; padding: 0; background: none; border: 0; box-shadow: none; }
+.bookmark .user h6.meta.heading { display: block; margin: 0.9rem 0 0.4rem; font-size: 0.75rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: {{muted}}; }
+
+/* The avatar sits at the right edge of the header, so it never reads as part of the menu next to it */
+#header #greeting p.icon { float: right; margin: 0 0 0 0.6rem; }

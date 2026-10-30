@@ -180,4 +180,10 @@ li.collection.blurb .icon img { position: static !important; width: 3rem !import
 #bookmark-form legend { position: static !important; float: none !important; display: block !important; width: auto !important; margin: 0 0 0.35rem !important; padding: 0 !important; }
 ul.expandable.secondary { background: #ffffff !important; border: 1px solid #e6e6e8 !important; box-shadow: none !important; }
 ul.expandable.secondary li a { color: #17171a !important; background: none !important; }
+#dashboard li.pseud { display: block !important; margin: 0.25rem 0 !important; }
+#dashboard li.pseud ul { display: inline !important; margin: 0 !important; }
+#dashboard li.pseud > a { color: #6b6b73 !important; margin-right: 0.5rem !important; }
+.blurb div.user.module, .blurb .module.group.user { margin: 0.9rem 0 0 !important; padding: 0 !important; background: none !important; border: 0 !important; box-shadow: none !important; }
+.bookmark .user h6.meta.heading { display: block !important; margin: 0.9rem 0 0.4rem !important; font-size: 0.75rem !important; font-weight: 500 !important; letter-spacing: 0.06em !important; text-transform: uppercase !important; color: #6b6b73 !important; }
+#header #greeting p.icon { float: right !important; margin: 0 0 0 0.6rem !important; }
 
