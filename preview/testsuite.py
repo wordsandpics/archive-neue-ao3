@@ -29,8 +29,8 @@ KINDS = {"works-index": "Works list", "bookmarks-index": "Bookmarks list", "seri
 def userstyle():
     css = (ROOT / "archive-neue.user.css").read_text()
     css = re.sub(r"^@-moz-document[^{]*\{", LOCAL + " {", css, count=1, flags=re.M)
-    css = re.sub(r"^(@name\s+).*$", r"\1Archive Neue (local test)", css, count=1, flags=re.M)
-    css = re.sub(r"^(@namespace\s+).*$", r"\1local.archive-neue.test", css, count=1, flags=re.M)
+    css = re.sub(r"^(@name\s+).*$", r"\1Archive Neue (saved-pages test)", css, count=1, flags=re.M)
+    css = re.sub(r"^(@namespace\s+).*$", r"\1local.archive-neue-saved-pages.test", css, count=1, flags=re.M)
     css = re.sub(r"^@updateURL.*\n", "", css, count=1, flags=re.M)
     return css
 
