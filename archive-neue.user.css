@@ -53,6 +53,8 @@
   --soft:   color-mix(in srgb, var(--muted) calc(100% - (1 - var(--dark)) * 30%), var(--ink));
   --line:   color-mix(in srgb, #ddd0bb calc(var(--paper) * 100%), color-mix(in srgb, #3a4357 calc(var(--slate) * 100%), color-mix(in srgb, #303036 calc(var(--dark) * 100%), #e6e6e8)));
   --line-2: color-mix(in srgb, #c9b99d calc(var(--paper) * 100%), color-mix(in srgb, #4b556b calc(var(--slate) * 100%), color-mix(in srgb, #4b4b53 calc(var(--dark) * 100%), #cfcfd4)));
+  /* outline of buttons: a step darker than --line-2 on the light themes, so buttons stand apart from tags */
+  --btn-line: color-mix(in srgb, #a9987b calc(var(--paper) * 100%), color-mix(in srgb, #4b556b calc(var(--slate) * 100%), color-mix(in srgb, #4b4b53 calc(var(--dark) * 100%), #a9a9b2)));
   --link:   color-mix(in srgb, color-mix(in srgb, var(--hue) 55%, white) calc(var(--dark) * 100%), var(--hue));
 }
 @media (prefers-color-scheme: dark) {
@@ -290,17 +292,17 @@ input::placeholder, textarea::placeholder { color: var(--muted); }
 button, input[type="submit"], input[type="button"], input[type="reset"],
 .actions a, .actions button, a.action, .action {
   font: 500 0.9375rem/1.2 var(--f-ui); color: var(--ink);
-  background: var(--bg); background-image: none; border: 1px solid var(--line-2); border-radius: 6px;
+  background: var(--bg); background-image: none; border: 1px solid var(--btn-line); border-radius: 6px;
   box-shadow: none; text-shadow: none; padding: 0.45rem 0.8rem; cursor: pointer;
 }
 button:hover, input[type="submit"]:hover, input[type="button"]:hover, .actions a:hover, a.action:hover {
   background: var(--bg-2); text-decoration: none; color: var(--ink);
 }
 /* Buttons inside a form row (e.g. "Public Site Skins" on the preferences page): AO3 gives them a grey gradient */
-fieldset dd span.actions a { background: var(--bg) !important; background-image: none !important; color: var(--ink) !important; border: 1px solid var(--line-2) !important; border-radius: 6px !important; box-shadow: none !important; text-shadow: none !important; padding: 0.45rem 0.8rem !important; font: 500 0.9375rem/1.2 var(--f-ui) !important; }
+fieldset dd span.actions a { background: var(--bg) !important; background-image: none !important; color: var(--ink) !important; border: 1px solid var(--btn-line) !important; border-radius: 6px !important; box-shadow: none !important; text-shadow: none !important; padding: 0.45rem 0.8rem !important; font: 500 0.9375rem/1.2 var(--f-ui) !important; }
 fieldset dd span.actions a:hover { background: var(--bg-2) !important; text-decoration: none; }
 /* Skins page: the four "My Site Skins ..." buttons, and no icon square beside each skin's title (it overlapped the title) */
-#main.skins-index > ul.actions:not(.navigation) > li > a, #main.skins-index > ul.actions:not(.navigation) > li > span.current { background: var(--bg) !important; background-image: none !important; color: var(--ink) !important; border: 1px solid var(--line-2) !important; border-radius: 6px !important; box-shadow: none !important; text-shadow: none !important; padding: 0.45rem 0.8rem !important; font: 500 0.9375rem/1.2 var(--f-ui) !important; }
+#main.skins-index > ul.actions:not(.navigation) > li > a, #main.skins-index > ul.actions:not(.navigation) > li > span.current { background: var(--bg) !important; background-image: none !important; color: var(--ink) !important; border: 1px solid var(--btn-line) !important; border-radius: 6px !important; box-shadow: none !important; text-shadow: none !important; padding: 0.45rem 0.8rem !important; font: 500 0.9375rem/1.2 var(--f-ui) !important; }
 #main.skins-index > ul.actions:not(.navigation) > li > span.current { background: var(--bg-2) !important; font-weight: 650 !important; }
 li.skins.blurb div.icon { display: none !important; }
 /* Chapter index: the chapter titles are the links, so they are bolder; the dates are quiet */
@@ -309,12 +311,17 @@ li.skins.blurb div.icon { display: none !important; }
 /* "Save a bookmark" form at the end of a work: a plain outline instead of AO3's heavy border and shadow, and the Create button stays dark when pressed */
 #bookmark-form > form { border: 1px solid var(--line) !important; border-radius: 10px !important; box-shadow: none !important; background: none !important; }
 #bookmark-form form input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]), #bookmark-form form textarea { box-shadow: none !important; }
-#bookmark-form a.bookmark_form_placement_close { background: var(--bg) !important; background-image: none !important; color: var(--ink) !important; border: 1px solid var(--line-2) !important; border-radius: 6px !important; box-shadow: none !important; text-shadow: none !important; }
+#bookmark-form a.bookmark_form_placement_close { background: var(--bg) !important; background-image: none !important; color: var(--ink) !important; border: 1px solid var(--btn-line) !important; border-radius: 6px !important; box-shadow: none !important; text-shadow: none !important; }
 #bookmark-form form input[type="submit"], #bookmark-form form input[type="submit"]:hover, #bookmark-form form input[type="submit"]:active, #bookmark-form form input[type="submit"]:focus { background: var(--ink) !important; background-image: none !important; color: var(--bg) !important; border: 1px solid var(--ink) !important; box-shadow: none !important; text-shadow: none !important; }
 #bookmark-form form input[type="submit"]:active { opacity: 0.8 !important; }
+/* AO3 leaves these labels near-black: unreadable on the dark themes */
+#bookmark-form dt label, #collection-form dt label { color: var(--muted) !important; font: 500 0.875rem/1.4 var(--f-ui) !important; }
+#bookmark-form p label, #collection-form p label { color: var(--ink) !important; font-family: var(--f-ui) !important; }
+/* "Invite to collections" on a work: AO3 draws a white panel with a shadow around the form */
+#collection-form, form#new_collection_item { background: none !important; box-shadow: none !important; border: 0 !important; padding: 0 !important; }
 /* "Add to collection" page: same plain outline and buttons */
 form#new_collection_item > dl { background: none !important; border: 1px solid var(--line) !important; border-radius: 8px !important; box-shadow: none !important; padding: 1rem !important; margin: 0 !important; }
-form#new_collection_item dd.submit.actions a { background: var(--bg) !important; background-image: none !important; color: var(--ink) !important; border: 1px solid var(--line-2) !important; border-radius: 6px !important; box-shadow: none !important; text-shadow: none !important; padding: 0.45rem 0.8rem !important; font: 500 0.9375rem/1.2 var(--f-ui) !important; }
+form#new_collection_item dd.submit.actions a { background: var(--bg) !important; background-image: none !important; color: var(--ink) !important; border: 1px solid var(--btn-line) !important; border-radius: 6px !important; box-shadow: none !important; text-shadow: none !important; padding: 0.45rem 0.8rem !important; font: 500 0.9375rem/1.2 var(--f-ui) !important; }
 input[type="submit"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
 input[type="submit"]:hover { background: var(--ink); color: var(--bg); opacity: 0.88; }
 fieldset { border: 1px solid var(--line); border-radius: 8px; padding: 1rem; margin: 0 0 1rem; background: none; }
@@ -356,22 +363,23 @@ li.blurb, li.work.blurb, li.bookmark.blurb, li.series.blurb {
   box-shadow: none; margin: 0 !important; padding: 2.5rem 0 !important; list-style: none; float: none !important; width: auto !important; min-height: 0;
 }
 li.blurb:first-child { padding-top: 0.75rem !important; }
-.blurb .header.module { position: static; min-height: 0; background: none; border: 0; }
+.blurb .header.module { position: relative; min-height: 0; background: none; border: 0; }
 .blurb h4.heading, .blurb h5.heading, .blurb .datetime, .blurb ul.tags, .blurb dl.stats { margin-left: 0 !important; padding-left: 0 !important; }
 .blurb .datetime { font-family: var(--f-ui) !important; }
-.blurb h4.heading { margin-right: 0 !important; text-wrap: wrap !important; } /* AO3 reserves ~84px for the icon squares; balanced wrapping also made titles break early */
+.blurb h4.heading { margin-right: 6.5rem !important; text-wrap: wrap !important; } /* room for the date at the top right (AO3 reserved ~84px for the icon squares; balanced wrapping also made titles break early) */
 .blurb dl.stats { float: none !important; width: auto !important; clear: both; }
 .blurb h4.heading { font-size: 1.0625rem; font-weight: 400; line-height: 1.4; margin: 0; letter-spacing: 0; color: var(--muted); }
 .blurb h4.heading a:first-child { color: var(--ink); font-weight: 650; font-size: 1.5625rem; line-height: 1.2; letter-spacing: -0.02em;  margin-right: 0.4rem;}
-.blurb h4.heading a[rel="author"] { color: var(--muted); font-weight: 400; font-size: 1.0625rem; letter-spacing: 0; }
-.blurb h5.fandoms.heading { font-size: 1rem; font-weight: 500; color: var(--muted); margin: 0.4rem 0 0; }
+.blurb h4.heading a[rel="author"] { color: var(--ink); font-weight: 500; font-size: 1.0625rem; letter-spacing: 0; }
+.blurb h5.fandoms.heading { font-size: 1rem; font-weight: 400; color: var(--muted); margin: 0.4rem 0 0; }
 .blurb h5.fandoms a { color: var(--muted); }
 .blurb h5.fandoms a { white-space: nowrap; } /* a long fandom list wraps between fandoms, never in the middle of a name */
 .blurb h5.fandoms { text-wrap: pretty; }
-.blurb .datetime { position: static; float: none; margin: 0.25rem 0 0; font-size: 0.9375rem; color: var(--muted); font-variant-numeric: tabular-nums; }
+/* The date sits at the top right, on the title line; it is the thing you scan a list by */
+.blurb .datetime { position: absolute; top: 0.45rem; right: 0; float: none; margin: 0; font-size: 0.875rem; color: var(--ink); font-variant-numeric: tabular-nums; }
 
 /* The four-square symbols become plain words: "Explicit  M/M  Work in progress" */
-ul.required-tags { display: flex !important; flex-wrap: wrap; gap: 0; list-style: none; margin: 0.35rem 0 0; padding: 0; float: none; position: static !important; width: auto !important; height: auto !important; font-size: 0.875rem; color: var(--soft); }
+ul.required-tags { display: flex !important; flex-wrap: wrap; gap: 0; list-style: none; margin: 0.35rem 0 0; padding: 0; float: none; position: static !important; width: auto !important; height: auto !important; font-size: 0.875rem; font-weight: 500; color: var(--ink); }
 ul.required-tags li { display: block !important; float: none !important; margin: 0 !important; padding: 0 !important; width: auto !important; height: auto !important; background: none; position: static !important; visibility: visible !important; }
 ul.required-tags li:not(:first-child)::before { content: "\00a0\00a0|\00a0\00a0"; color: var(--line-2); font-weight: 300; white-space: pre; } /* same bar and spacing as the stats row */
 ul.required-tags li:has(.warnings) { display: none !important; } /* warnings already appear in the tag list below */
@@ -384,14 +392,13 @@ ul.required-tags span {
   width: auto !important; height: auto !important; text-indent: 0; position: static !important; visibility: visible !important; color: inherit; box-shadow: none;
 }
 ul.required-tags span.text { display: inline !important; visibility: visible !important; color: inherit !important; font-size: inherit; clip: auto; overflow: visible; }
-ul.required-tags .rating .text { color: var(--ink) !important; font-weight: 500; }
 /* The little "?" help-icon rule (further down) was shrinking this line's text to 11px; the line is meant to match the stats row: 14px, same line height */
 ul.required-tags { line-height: 1.5 !important; }
 ul.required-tags a.help.symbol.question, ul.required-tags a.help.symbol.question span, ul.required-tags a.help.symbol.question span.text { font-size: 1em !important; line-height: inherit !important; }
 /* any stray symbol icons elsewhere */
 .symbol .text { display: inline; }
 
-.blurb ul.tags { display: flex; flex-wrap: wrap; gap: 0.25rem 0.3rem; list-style: none; margin: 1rem 0 0; padding: 0; float: none; width: auto; }
+.blurb ul.tags { display: flex; flex-wrap: wrap; gap: 0.25rem 0.3rem; list-style: none; margin: 0.6rem 0 0; padding: 0; float: none; width: auto; }
 .blurb ul.tags li { display: block; background: none !important; border: 0; padding: 0; margin: 0; float: none; font-size: 0.8125rem; line-height: 1.3; }
 .blurb ul.tags li::after { content: none; }
 .blurb ul.tags li a.tag, .blurb ul.tags li strong a.tag {
@@ -648,7 +655,7 @@ ul.news li.post blockquote.userstuff, ul.news li.post blockquote.userstuff p:fir
 :is(li.user.short.blurb, .bookmark .user.module) ul.meta.tags li, :is(li.user.short.blurb, .bookmark .user.module) ul.meta.tags li a.tag { font-family: var(--f-ui) !important; font-size: 0.8125rem !important; }
 .blurb div.user.module, .blurb .module.group.user { margin: 0.9rem 0 0 !important; padding: 0 !important; background: none !important; border: 0 !important; box-shadow: none !important; }
 .blurb h4.viewed, .blurb .viewed { background: none !important; font-size: 0.875rem !important; font-weight: 400 !important; line-height: 1.6; color: var(--muted); margin: 0 !important; padding: 0 !important; letter-spacing: 0; }
-.blurb .actions input[type="submit"], .blurb .actions button, .blurb ul.actions input[type="submit"] { background: var(--bg) !important; color: var(--ink) !important; border: 1px solid var(--line-2) !important; }
+.blurb .actions input[type="submit"], .blurb .actions button, .blurb ul.actions input[type="submit"] { background: var(--bg) !important; color: var(--ink) !important; border: 1px solid var(--btn-line) !important; }
 .blurb .actions input[type="submit"]:hover { background: var(--bg-2) !important; opacity: 1; }
 
 /* Comments: small round avatar on the left, quiet text actions */
@@ -728,7 +735,7 @@ ul.navigation.actions li.module a, ul.navigation.actions li.module button, ul.na
 .user.home > .primary.header ul.navigation.actions li { float: none; margin: 0; padding: 0; }
 .user.home > .primary.header ul.navigation.actions a, .user.home > .primary.header ul.navigation.actions input[type="submit"],
 .blurb ul.actions li a, .blurb ul.actions li button, .blurb ul.actions li input[type="submit"] {
-  background: var(--bg) !important; background-image: none !important; color: var(--ink) !important; border: 1px solid var(--line-2) !important;
+  background: var(--bg) !important; background-image: none !important; color: var(--ink) !important; border: 1px solid var(--btn-line) !important;
   border-radius: 6px !important; box-shadow: none !important; padding: 0.45rem 0.8rem !important; font: 500 0.9375rem/1.2 var(--f-ui) !important; text-shadow: none; opacity: 1;
 }
 .blurb ul.actions li a:hover, .blurb ul.actions li button:hover, .user.home > .primary.header ul.navigation.actions a:hover { background: var(--bg-2) !important; text-decoration: none; }
@@ -757,9 +764,20 @@ a.help.symbol.question { border: 0 !important; width: auto !important; height: a
 ul.options, form ul.options, .options { border: 1px solid var(--line) !important; border-radius: 6px; box-shadow: none !important; background: none !important; }
 .hint, dd .footnote, p.footnote, span.hint, form dd.hint, form p.character_counter, .character_counter { font-size: 0.875rem; color: var(--muted); }
 form dl dt, form dl dd { margin-top: 0.3rem !important; margin-bottom: 0.3rem !important; }
-form input[type="checkbox"], form input[type="radio"] { margin: 0.15rem 0.4rem 0 0; accent-color: var(--ink); }
+form input[type="checkbox"], form input[type="radio"] { margin: 0.15rem 0.4rem 0 0; }
+/* Every checkbox and radio is drawn in the theme's colours (the browser's own follow the system, so they were white on dark themes).
+   The filters' boxes, drawn by AO3's .indicator span, are left to their own rule below. */
+input[type="checkbox"]:not(:has(+ span.indicator)), input[type="radio"]:not(:has(+ span.indicator)) {
+  appearance: none; -webkit-appearance: none; position: relative; flex: none; box-sizing: border-box; width: 1.05rem; height: 1.05rem;
+  vertical-align: -0.2em; background: var(--bg); border: 1px solid var(--btn-line); border-radius: 4px; cursor: pointer;
+}
+input[type="radio"]:not(:has(+ span.indicator)) { border-radius: 50%; }
+input[type="checkbox"]:checked:not(:has(+ span.indicator)), input[type="radio"]:checked:not(:has(+ span.indicator)) { background: var(--link); border-color: var(--link); }
+input[type="checkbox"]:checked:not(:has(+ span.indicator))::after { content: ""; position: absolute; left: 0.3rem; top: 0.08rem; width: 0.26rem; height: 0.5rem; border: solid var(--bg); border-width: 0 2px 2px 0; transform: rotate(45deg); }
+input[type="radio"]:checked:not(:has(+ span.indicator))::after { content: ""; position: absolute; left: 0.27rem; top: 0.27rem; width: 0.4rem; height: 0.4rem; border-radius: 50%; background: var(--bg); }
+input[type="checkbox"]:focus-visible, input[type="radio"]:focus-visible { outline: 2px solid var(--link); outline-offset: 2px; }
 #main form ul.actions li a {
-  background: var(--bg) !important; background-image: none !important; color: var(--ink) !important; border: 1px solid var(--line-2) !important;
+  background: var(--bg) !important; background-image: none !important; color: var(--ink) !important; border: 1px solid var(--btn-line) !important;
   border-radius: 6px !important; box-shadow: none !important; padding: 0.45rem 0.8rem !important; font: 500 0.9375rem/1.2 var(--f-ui) !important; text-shadow: none;
 }
 #main form ul.actions li a:hover { background: var(--bg-2) !important; text-decoration: none; }
@@ -776,12 +794,12 @@ form input[type="checkbox"], form input[type="radio"] { margin: 0.15rem 0.4rem 0
 #main.series-show > ul.navigation.actions > li:first-child > span.current { color: var(--muted) !important; font-weight: 400 !important; border-bottom-color: transparent !important; }
 #main.series-show > ul.navigation.actions > li:first-child + li { margin-left: auto !important; }
 .blurb blockquote.userstuff, .blurb blockquote.summary, .blurb blockquote.userstuff p, .blurb blockquote.summary p { text-align: left !important; }
-.blurb ul.actions li a, .blurb .actions a, .blurb p.actions a, .blurb span.actions a, .blurb a.action { background: var(--bg) !important; background-image: none !important; color: var(--ink) !important; border: 1px solid var(--line-2) !important; border-radius: 6px !important; box-shadow: none !important; padding: 0.45rem 0.8rem !important; font: 500 0.9375rem/1.2 var(--f-ui) !important; text-shadow: none; }
+.blurb ul.actions li a, .blurb .actions a, .blurb p.actions a, .blurb span.actions a, .blurb a.action { background: var(--bg) !important; background-image: none !important; color: var(--ink) !important; border: 1px solid var(--btn-line) !important; border-radius: 6px !important; box-shadow: none !important; padding: 0.45rem 0.8rem !important; font: 500 0.9375rem/1.2 var(--f-ui) !important; text-shadow: none; }
 fieldset.actions { border: 0 !important; padding: 0 !important; margin: 0 0 1rem !important; }
 fieldset.actions ul { display: flex; flex-wrap: wrap; gap: 0.5rem; list-style: none; margin: 0; padding: 0; float: none; }
 fieldset.actions li, ul.actions li { float: none; margin: 0; padding: 0; background: none; }
 fieldset.actions input[type="submit"], fieldset.actions input[type="button"], ul.actions li input[type="submit"], ul.actions li input[type="button"], ul.actions li button {
-  background: var(--bg) !important; background-image: none !important; color: var(--ink) !important; border: 1px solid var(--line-2) !important; border-radius: 6px !important; box-shadow: none !important; opacity: 1;
+  background: var(--bg) !important; background-image: none !important; color: var(--ink) !important; border: 1px solid var(--btn-line) !important; border-radius: 6px !important; box-shadow: none !important; opacity: 1;
 }
 fieldset.actions input[type="submit"]:hover, ul.actions li input[type="submit"]:hover { background: var(--bg-2) !important; }
 /* Unread marker: a small accent dot and plain text, not a bordered badge (that looked like a button); it sits at the end of the row */
@@ -829,7 +847,7 @@ li.collection.blurb p.type { color: var(--muted); font-size: 0.875rem; margin: 0
 #main.stats-index > h3.heading { display: block; margin: 2rem 0 0.75rem; padding: 0 0 0.5rem; border: 0 !important; border-bottom: 1px solid var(--line) !important; font-size: 0.8125rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); background: none !important; }
 #main ol.year.actions { display: flex; flex-wrap: wrap; gap: 0.5rem; list-style: none; margin: 0 0 1.5rem; padding: 0; float: none; text-align: left; }
 #main ol.year.actions li { float: none; margin: 0; padding: 0; background: none; border: 0; }
-#main ol.year.actions li a, #main ol.year.actions li span { display: inline-block; background: var(--bg) !important; background-image: none !important; color: var(--ink) !important; border: 1px solid var(--line-2) !important; border-radius: 6px !important; box-shadow: none !important; padding: 0.35rem 0.8rem !important; font: 500 0.9375rem/1.2 var(--f-ui) !important; text-shadow: none; }
+#main ol.year.actions li a, #main ol.year.actions li span { display: inline-block; background: var(--bg) !important; background-image: none !important; color: var(--ink) !important; border: 1px solid var(--btn-line) !important; border-radius: 6px !important; box-shadow: none !important; padding: 0.35rem 0.8rem !important; font: 500 0.9375rem/1.2 var(--f-ui) !important; text-shadow: none; }
 #main ol.year.actions li span.current { background: var(--bg-2) !important; font-weight: 650 !important; }
 #main .wrapper dl.statistics, #main dl.statistics.meta, #main .wrapper > dl { background: none !important; border: 1px solid var(--line) !important; border-radius: 10px; box-shadow: none !important; padding: 1rem 1.25rem; margin: 0 0 2rem; font-size: 1rem; }
 #main .wrapper > dl:not(.statistics) { display: grid; grid-template-columns: max-content 1fr; gap: 0.35rem 1.5rem; }
@@ -844,7 +862,7 @@ li.collection.blurb p.type { color: var(--muted); font-size: 0.875rem; margin: 0
 #main div.actions.module { background: none !important; border: 0 !important; box-shadow: none !important; padding: 0 !important; margin: 0 0 2rem; text-align: left; }
 #main div.actions.module ul, #main div.actions.module ol { display: flex; flex-wrap: wrap; gap: 0.4rem; list-style: none; margin: 0 0 0.75rem; padding: 0; float: none; text-align: left; }
 #main div.actions.module li { float: none; margin: 0; padding: 0; background: none; border: 0; }
-#main div.actions.module a, #main div.actions.module span, #main div.actions.module button { display: inline-block; background: var(--bg) !important; background-image: none !important; color: var(--ink) !important; border: 1px solid var(--line-2) !important; border-radius: 6px !important; box-shadow: none !important; padding: 0.3rem 0.7rem !important; font: 500 0.875rem/1.2 var(--f-ui) !important; text-shadow: none; }
+#main div.actions.module a, #main div.actions.module span, #main div.actions.module button { display: inline-block; background: var(--bg) !important; background-image: none !important; color: var(--ink) !important; border: 1px solid var(--btn-line) !important; border-radius: 6px !important; box-shadow: none !important; padding: 0.3rem 0.7rem !important; font: 500 0.875rem/1.2 var(--f-ui) !important; text-shadow: none; }
 #main div.actions.module span.current, #main div.actions.module a.current, #main div.actions.module .current { background: var(--bg-2) !important; font-weight: 650 !important; }
 ul.statistics.index { list-style: none; margin: 2rem 0 0; padding: 0; }
 ul.statistics.index > li.fandom { background: none !important; border: 0 !important; box-shadow: none !important; margin: 0 0 3rem !important; padding: 0 !important; float: none !important; width: auto !important; }
@@ -882,7 +900,7 @@ dl.subscription > dt > a:first-child:hover { color: var(--link); }
 dl.subscription > dt > a:not(:first-child) { color: var(--muted); }
 dl.subscription > dd { display: flex; align-items: center; justify-content: flex-end; }
 dl.subscription > dd form { margin: 0; padding: 0; }
-dl.subscription > dd input[type="submit"] { max-width: 10.5rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; background: var(--bg) !important; color: var(--ink) !important; border: 1px solid var(--line-2) !important; padding: 0.35rem 0.8rem !important; font: 500 0.875rem/1.2 var(--f-ui) !important; }
+dl.subscription > dd input[type="submit"] { max-width: 10.5rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; background: var(--bg) !important; color: var(--ink) !important; border: 1px solid var(--btn-line) !important; padding: 0.35rem 0.8rem !important; font: 500 0.875rem/1.2 var(--f-ui) !important; }
 dl.subscription > dd input[type="submit"]:hover { background: var(--bg-2) !important; }
 
 /* Search forms: AO3 rounds these into pills; use the standard input look everywhere in the page body */
@@ -899,13 +917,13 @@ form.search > fieldset:first-of-type > p.submit input[type="submit"] { padding: 
 /* Fandom / tag index pages: the A-Z row and the little back-to-top arrows */
 ul#alphabet, ul.alphabet { display: flex; flex-wrap: wrap; justify-content: flex-start; gap: 0.35rem; list-style: none; margin: 1rem 0 2rem; padding: 0; float: none; }
 ul#alphabet li, ul.alphabet li { float: none; margin: 0; padding: 0; background: none; border: 0; }
-ul#alphabet li a, ul.alphabet li a { min-width: 2rem; box-sizing: border-box; text-align: center; background: var(--bg) !important; background-image: none !important; border: 1px solid var(--line-2) !important; border-radius: 6px !important; color: var(--ink) !important; box-shadow: none !important; font: 500 0.875rem/1.2 var(--f-ui) !important; text-decoration: none; text-shadow: none; }
+ul#alphabet li a, ul.alphabet li a { min-width: 2rem; box-sizing: border-box; text-align: center; background: var(--bg) !important; background-image: none !important; border: 1px solid var(--btn-line) !important; border-radius: 6px !important; color: var(--ink) !important; box-shadow: none !important; font: 500 0.875rem/1.2 var(--f-ui) !important; text-decoration: none; text-shadow: none; }
 ul#alphabet li a, ul.alphabet li a { display: inline-flex !important; align-items: center; justify-content: center; min-height: 2rem; height: auto !important; margin: 0 !important; position: static !important; top: auto !important; line-height: 1.2 !important; padding: 0.25rem 0.5rem !important; vertical-align: top; }
 ul#alphabet li a:hover, ul.alphabet li a:hover { background: var(--bg-2) !important; text-decoration: none; }
 h3.heading span.action.top, span.action.top { display: inline-block; border: 0 !important; background: none !important; box-shadow: none !important; padding: 0 0 0 0.6rem !important; color: var(--muted) !important; font-size: 0.9375rem !important; font-weight: 400; letter-spacing: 0; text-transform: none; width: auto !important; height: auto !important; }
 span.action.top a { color: var(--muted) !important; }
 /* "All Anime & Manga..." / "Expand Fandoms List" style buttons at the end of a block (Fandoms page, user pages) */
-div.listbox p.actions a, li.listbox p.actions a, .listbox .actions a { background: var(--bg) !important; background-image: none !important; color: var(--ink) !important; border: 1px solid var(--line-2) !important; border-radius: 6px !important; box-shadow: none !important; padding: 0.45rem 0.8rem !important; font: 500 0.875rem/1.2 var(--f-ui) !important; text-shadow: none; text-decoration: none; }
+div.listbox p.actions a, li.listbox p.actions a, .listbox .actions a { background: var(--bg) !important; background-image: none !important; color: var(--ink) !important; border: 1px solid var(--btn-line) !important; border-radius: 6px !important; box-shadow: none !important; padding: 0.45rem 0.8rem !important; font: 500 0.875rem/1.2 var(--f-ui) !important; text-shadow: none; text-decoration: none; }
 div.listbox p.actions a:not(.hidden), li.listbox p.actions a:not(.hidden), .listbox .actions a:not(.hidden) { display: inline-block; } /* hidden ones (e.g. Collapse before you Expand) stay hidden */
 div.listbox p.actions a:hover, li.listbox p.actions a:hover, .listbox .actions a:hover { background: var(--bg-2) !important; text-decoration: none; }
 
@@ -975,7 +993,7 @@ form dl dd.listbox.group { float: left !important; width: calc(100% - 177px) !im
 ul.options.many, form ul.options.index.group.many { position: static !important; float: none !important; width: auto !important; max-width: 100% !important; box-sizing: border-box; max-height: 12rem; overflow: auto; margin: 0 !important; padding: 0.4rem 0.8rem !important; background: var(--bg) !important; background-image: none !important; border: 1px solid var(--line-2) !important; border-radius: 6px !important; box-shadow: none !important; }
 ul.options li { display: block !important; float: none !important; width: auto !important; margin: 0 !important; padding: 0 !important; background: none !important; border: 0 !important; }
 ul.options label.action, ul.options label { display: inline-flex !important; align-items: center; gap: 0.5rem; background: none !important; background-image: none !important; border: 0 !important; box-shadow: none !important; border-radius: 0 !important; padding: 0.25rem 0 !important; font: inherit !important; color: var(--ink) !important; cursor: pointer; }
-ul.options input[type="checkbox"], ul.options input[type="radio"] { position: static !important; width: 1rem; height: 1rem; margin: 0; accent-color: var(--ink); }
+ul.options input[type="checkbox"], ul.options input[type="radio"] { position: relative !important; margin: 0; }
 
 /* Skimmability: labels quiet, values clear; more air between the parts of a work block */
 dl.stats dt { color: var(--soft); font-weight: 400; }
@@ -1041,7 +1059,7 @@ dl.inspired dt.parent { float: none; width: auto; margin: 1.25rem 0 0.25rem; pad
 dl.inspired dd.child { display: flex; align-items: center; justify-content: flex-start; gap: 0.4rem; float: none; width: auto; margin: 0; padding: 0.5rem 0 0.75rem; background: none !important; border: 0 !important; border-bottom: 1px solid var(--line) !important; color: var(--muted); }
 dl.inspired dd.child span.actions { margin: 0 0 0 auto; padding: 0; background: none; border: 0; }
 dl.inspired dd.child form { margin: 0; padding: 0; background: none; border: 0; }
-#main.related_works-index button, #main.related_works-index input[type="submit"] { background: var(--bg) !important; background-image: none !important; color: var(--ink) !important; border: 1px solid var(--line-2) !important; border-radius: 6px !important; box-shadow: none !important; padding: 0.35rem 0.8rem !important; font: 500 0.875rem/1.2 var(--f-ui) !important; }
+#main.related_works-index button, #main.related_works-index input[type="submit"] { background: var(--bg) !important; background-image: none !important; color: var(--ink) !important; border: 1px solid var(--btn-line) !important; border-radius: 6px !important; box-shadow: none !important; padding: 0.35rem 0.8rem !important; font: 500 0.875rem/1.2 var(--f-ui) !important; }
 
 /* Footer links: no dotted underlines */
 #footer a, #footer a:link, #footer a:visited, #footer a:hover { border: 0 !important; text-decoration: none; }
@@ -1071,6 +1089,9 @@ pre { padding: 0.75rem 1rem; overflow-x: auto; }
   dl.work.meta { grid-template-columns: 1fr; gap: 0; }
   dl.work.meta > dd { margin-bottom: 0.6rem; }
   #workskin .preface .title.heading { font-size: 1.6rem; }
+  /* no room for the date beside the title: it goes back under the facts row */
+  .blurb h4.heading { margin-right: 0 !important; }
+  .blurb .datetime { position: static; margin: 0.25rem 0 0; }
 }
 
 }
