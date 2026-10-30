@@ -173,4 +173,12 @@ li.comment ul.actions a, li.comment ul.actions button, li.comment ul.actions inp
 #dashboard li { display: inline-block !important; margin: 0 0.75rem 0 0 !important; }
 #dashboard a, #dashboard span { display: inline !important; padding: 0 !important; border: 0 !important; }
 #dashboard span.current, #dashboard li.current a, #dashboard .current { color: #000000 !important; font-weight: 700 !important; }
+li.collection.blurb { position: relative !important; }
+li.collection.blurb div.icon { position: absolute !important; right: 0 !important; top: 2.6rem !important; float: none !important; width: 3rem !important; height: 3rem !important; margin: 0 !important; padding: 0 !important; background: none !important; border: 0 !important; box-shadow: none !important; }
+li.collection.blurb .icon img { position: static !important; width: 3rem !important; height: 3rem !important; border-radius: 50% !important; border: 0 !important; box-shadow: none !important; }
+#bookmark-form form, #bookmark-form label, #bookmark-form dt, #bookmark-form dd, #bookmark-form p { color: #000000 !important; }
+#bookmark-form .footnote, #bookmark-form .character_counter, #bookmark-form p.character_counter span { color: #3a3a3a !important; }
+#bookmark-form legend { position: static !important; float: none !important; display: block !important; width: auto !important; margin: 0 0 0.35rem !important; padding: 0 !important; }
+ul.expandable.secondary { background: #ffffff !important; border: 1px solid #8a8a8a !important; box-shadow: none !important; }
+ul.expandable.secondary li a { color: #000000 !important; background: none !important; }
 

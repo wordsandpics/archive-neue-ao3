@@ -207,3 +207,17 @@ li.comment ul.actions a, li.comment ul.actions button, li.comment ul.actions inp
 #dashboard li { display: inline-block; margin: 0 0.75rem 0 0; }
 #dashboard a, #dashboard span { display: inline; padding: 0; border: 0; }
 #dashboard span.current, #dashboard li.current a, #dashboard .current { color: {{ink}}; font-weight: 700; }
+
+/* Collection blurbs: AO3 puts the icon on top of the title; tuck a small round one to the right instead */
+li.collection.blurb { position: relative; }
+li.collection.blurb div.icon { position: absolute; right: 0; top: 2.6rem; float: none; width: 3rem; height: 3rem; margin: 0; padding: 0; background: none; border: 0; box-shadow: none; }
+li.collection.blurb .icon img { position: static; width: 3rem; height: 3rem; border-radius: 50%; border: 0; box-shadow: none; }
+
+/* Save-bookmark panel: its text colours were left dark; legends are plain labels, not boxes over the fields */
+#bookmark-form form, #bookmark-form label, #bookmark-form dt, #bookmark-form dd, #bookmark-form p { color: {{ink}}; }
+#bookmark-form .footnote, #bookmark-form .character_counter, #bookmark-form p.character_counter span { color: {{muted}}; }
+#bookmark-form legend { position: static; float: none; display: block; width: auto; margin: 0 0 0.35rem; padding: 0; }
+
+/* The Download list and other small menus: AO3 gives them a white panel */
+ul.expandable.secondary { background: {{bg}}; border: 1px solid {{line}}; box-shadow: none; }
+ul.expandable.secondary li a { color: {{ink}}; background: none; }

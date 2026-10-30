@@ -49,7 +49,7 @@ const tw=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);
 while(tw.nextNode()){const n=tw.currentNode;if(n.nodeValue.trim()&&!/^(SCRIPT|STYLE|NOSCRIPT)$/.test(n.parentElement.tagName))test(n.parentElement,n.nodeValue)}
 document.querySelectorAll('input:not([type=hidden]):not([type=checkbox]):not([type=radio]),button,select,textarea').forEach(e=>test(e,e.value||e.textContent||e.placeholder||e.type));
 const els=[...document.querySelectorAll('a[href],button,input:not([type=hidden]),select,textarea')].filter(shown).slice(0,500);
-for(const e of els){e.scrollIntoView({block:'center'});const r=e.getClientRects()[0],t=document.elementFromPoint(r.left+r.width/2,r.top+r.height/2);
+for(const e of els){e.scrollIntoView({block:'center',behavior:'instant'});const r=e.getClientRects()[0],t=document.elementFromPoint(r.left+r.width/2,r.top+r.height/2);
 if(t&&t!==e&&!e.contains(t)&&!t.contains(e)&&!(e.labels&&[...e.labels].some(l=>l.contains(t)))&&res.covered.length<10)res.covered.push(sel(e)+' ('+(e.textContent||e.value||'').trim().slice(0,20)+') under '+sel(t))}
 scrollTo(0,0);parent.postMessage(JSON.stringify(res),'*')},1500));</script>"""
 
