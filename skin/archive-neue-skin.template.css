@@ -58,7 +58,7 @@ ul.work.navigation, ul.navigation.actions, #main ul.navigation.actions, #main di
 .intro .account p.actions a { display: inline-block; background: {{ink}}; color: {{bg}}; border: 1px solid {{ink}}; border-radius: 6px; box-shadow: none; text-shadow: none; padding: 0.55rem 1rem; font-size: 0.95rem; font-weight: 500; line-height: 1.2; }
 input[type="text"], input[type="search"], input[type="password"], input[type="email"], input[type="number"], textarea, select { font-family: -apple-system, system-ui, "Helvetica Neue", sans-serif; font-size: 1rem; color: {{ink}}; background: {{bg}}; border: 1px solid {{line2}}; border-radius: 6px; box-shadow: none; padding: 0.45rem 0.6rem; max-width: 100%; }
 textarea { width: 100%; box-sizing: border-box; }
-button, input[type="submit"], .actions a, .actions button, a.action { font-family: -apple-system, system-ui, "Helvetica Neue", sans-serif; font-size: 0.9rem; font-weight: 500; line-height: 1.2; color: {{ink}}; background: {{bg}}; background-image: none; border: 1px solid {{line2}}; border-radius: 6px; box-shadow: none; text-shadow: none; padding: 0.5rem 0.8rem; }
+button, input[type="submit"], .actions a, .actions button, a.action { font-family: -apple-system, system-ui, "Helvetica Neue", sans-serif; font-size: 0.9rem; font-weight: 500; line-height: 1.2; color: {{ink}}; background: {{bg}}; background-image: none; border: 1px solid {{btn}}; border-radius: 6px; box-shadow: none; text-shadow: none; padding: 0.5rem 0.8rem; }
 input[type="submit"] { background: {{ink}}; color: {{bg}}; border-color: {{ink}}; }
 fieldset { border: 0; border-top: 1px solid {{line}}; border-radius: 0; box-shadow: none; background: none; }
 legend { background: none; border: 0; box-shadow: none; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; color: {{muted}}; }
@@ -83,17 +83,19 @@ li.blurb { background: none; border: 0; border-bottom: 1px solid {{line2}}; bord
 .blurb h4.heading, .blurb h5.heading, .blurb .datetime, .blurb ul.tags, .blurb dl.stats { margin-left: 0; padding-left: 0; }
 .blurb h4.heading { font-size: 1rem; font-weight: 400; margin-top: 0; margin-bottom: 0; color: {{muted}}; }
 .blurb h4.heading a { color: {{muted}}; }
+.blurb h4.heading a[rel="author"] { color: {{ink}}; font-weight: 500; }
 .blurb h4.heading a:first-child { color: {{ink}}; font-weight: 650; font-size: 1.75rem; line-height: 1.2; }
-.blurb h5.fandoms.heading { font-size: 0.875rem; font-weight: 500; margin: 0.4rem 0 0; }
+.blurb h5.fandoms.heading { font-size: 0.875rem; font-weight: 400; margin: 0.4rem 0 0; }
 .blurb h5.fandoms a { color: {{muted}}; }
-.blurb .datetime { position: static; float: none; margin: 0.2rem 0 0; font-size: 0.8rem; color: {{muted}}; font-family: -apple-system, system-ui, "Helvetica Neue", sans-serif; }
-ul.required-tags { position: static; float: none; width: auto; height: auto; list-style: none; margin: 0.4rem 0 0; padding: 0; font-size: 0.8rem; color: {{muted}}; }
+.blurb .datetime { position: static; float: none; display: inline; margin: 0; font-size: 0.8rem; font-weight: 500; color: {{ink}}; font-family: -apple-system, system-ui, "Helvetica Neue", sans-serif; }
+ul.required-tags { display: inline; position: static; float: none; width: auto; height: auto; list-style: none; margin: 0.4rem 0 0; padding: 0; font-size: 0.8rem; font-weight: 500; color: {{ink}}; }
 ul.required-tags li { display: inline; float: none; position: static; width: auto; height: auto; margin: 0; padding: 0; background: none; visibility: visible; }
-ul.required-tags a, ul.required-tags span { display: inline; position: static; width: auto; height: auto; margin: 0; padding: 0; background: none; border: 0; text-indent: 0; color: {{muted}}; visibility: visible; }
+ul.required-tags a, ul.required-tags span { display: inline; position: static; width: auto; height: auto; margin: 0; padding: 0; background: none; border: 0; text-indent: 0; color: {{ink}}; visibility: visible; }
 ul.required-tags span.text { display: inline; font-size: 0.8rem; line-height: 1.4; margin-right: 0.9rem; }
 ul.required-tags span.warnings { display: none; }
-ul.required-tags .rating .text { color: {{ink}}; font-weight: 500; }
-.blurb ul.tags { list-style: none; float: none; width: auto; margin: 0.9rem 0 0; padding: 0; }
+ul.required-tags .text { color: {{ink}}; font-weight: 500; }
+ul.required-tags .rating .text { color: {{ink}}; }
+.blurb ul.tags { list-style: none; float: none; width: auto; margin: 0.6rem 0 0; padding: 0; }
 .blurb ul.tags li:after { content: none; }
 .blurb ul.tags li { display: inline-block; background: none; border: 0; padding: 0; margin: 0 0.3rem 0.3rem 0; font-size: 0.8rem; }
 .blurb ul.tags li a.tag, .blurb ul.tags li strong a.tag { display: inline-block; padding: 0 0.55rem; border: 1px solid {{line}}; border-radius: 5px; background: none; color: {{muted}}; font-weight: 400; }
@@ -196,7 +198,7 @@ li.comment ul.actions a, li.comment ul.actions button, li.comment ul.actions inp
 #bookmark-form, div.post.bookmark, #bookmark-form > form { background: none; box-shadow: none; }
 #bookmark-form > form { border: 1px solid {{line}}; border-radius: 10px; }
 #bookmark-form form input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]), #bookmark-form form textarea { box-shadow: none; }
-#bookmark-form a.bookmark_form_placement_close { background: {{bg}}; background-image: none; color: {{ink}}; border: 1px solid {{line2}}; border-radius: 6px; box-shadow: none; text-shadow: none; }
+#bookmark-form a.bookmark_form_placement_close { background: {{bg}}; background-image: none; color: {{ink}}; border: 1px solid {{btn}}; border-radius: 6px; box-shadow: none; text-shadow: none; }
 #bookmark-form form input[type="submit"], #bookmark-form form input[type="submit"]:hover, #bookmark-form form input[type="submit"]:active, #bookmark-form form input[type="submit"]:focus { background: {{ink}}; background-image: none; color: {{bg}}; border: 1px solid {{ink}}; box-shadow: none; text-shadow: none; }
 
 /* The dashboard sidebar (account pages): stack it above the content as a row of links, so the content can't cover it */
@@ -241,7 +243,7 @@ dl.subscription > dt > a:first-child { display: block; font-size: 1.125rem; font
 dl.subscription > dt > a:not(:first-child) { color: {{muted}}; }
 dl.subscription > dd { padding: 0 0 1rem; border-bottom: 1px solid {{line}}; }
 dl.subscription > dd form { margin: 0; padding: 0; }
-dl.subscription > dd input[type="submit"] { max-width: 100%; background: {{bg}}; color: {{ink}}; border: 1px solid {{line2}}; padding: 0.35rem 0.8rem; font-size: 0.875rem; }
+dl.subscription > dd input[type="submit"] { max-width: 100%; background: {{bg}}; color: {{ink}}; border: 1px solid {{btn}}; padding: 0.35rem 0.8rem; font-size: 0.875rem; }
 
 /* Search forms: fields fit the page, labels are plain, and the Search button sits on the section-label line */
 form.search dl, form.search dt, form.search dd { float: none; width: auto; margin: 0; padding: 0; border: 0; background: none; }
@@ -263,3 +265,8 @@ span.action.top, span.action.top a { background: none; background-image: none; b
 /* AO3 keeps room on the right of a work's title for something we don't show; bookmarks keep room for their count */
 .blurb .header h4.heading { margin-right: 0; }
 .bookmark.blurb .header h4.heading { margin-right: 2.5rem; }
+
+/* "Invite to collections" on a work: AO3 draws a white panel with a shadow around the form; its labels were near-black */
+#collection-form, form#new_collection_item { background: none; box-shadow: none; border: 0; padding: 0; }
+#collection-form dt label { color: {{muted}}; font-size: 0.875rem; font-weight: 500; }
+#collection-form p label, #bookmark-form p label { color: {{ink}}; }

@@ -20,18 +20,18 @@ PHONE_WIDTH = "42em"          # AO3's own "narrow" breakpoint
 
 THEMES = {
     "light": dict(bg="#ffffff", bg2="#f6f6f4", ink="#17171a", muted="#6b6b73",
-                  line="#e6e6e8", line2="#cfcfd4", link="#2f54eb"),
+                  line="#e6e6e8", line2="#cfcfd4", btn="#a9a9b2", link="#2f54eb"),
     "dark":  dict(bg="#111113", bg2="#19191c", ink="#e9e9ea", muted="#9b9ba3",
-                  line="#303036", line2="#4b4b53", link="#8da4f5"),
+                  line="#303036", line2="#4b4b53", btn="#4b4b53", link="#8da4f5"),
     "slate": dict(bg="#272e3d", bg2="#2f3748", ink="#e6e9ef", muted="#aeb6c6",
-                  line="#3a4357", line2="#4b556b", link="#8da4f5"),
+                  line="#3a4357", line2="#4b556b", btn="#4b556b", link="#8da4f5"),
     "paper": dict(bg="#f7f0e8", bg2="#ede3d3", ink="#2b2622", muted="#6b6054",
-                  line="#ddd0bb", line2="#c9b99d", link="#2f54eb"),
+                  line="#ddd0bb", line2="#c9b99d", btn="#a9987b", link="#2f54eb"),
 }
 
 # High contrast: e-ink screens wash out light greys, and some people simply prefer stronger contrast.
 CONTRAST = dict(bg="#ffffff", bg2="#eeeeee", ink="#000000", muted="#3a3a3a",
-            line="#8a8a8a", line2="#5a5a5a", link="#000000")
+            line="#8a8a8a", line2="#5a5a5a", btn="#5a5a5a", link="#000000")
 
 RULE = re.compile(r"([^{}]+)\{([^{}]*)\}")
 

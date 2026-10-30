@@ -64,17 +64,19 @@ li.blurb { background: none !important; border: 0 !important; border-bottom: 1px
 .blurb h4.heading, .blurb h5.heading, .blurb .datetime, .blurb ul.tags, .blurb dl.stats { margin-left: 0 !important; padding-left: 0 !important; }
 .blurb h4.heading { font-size: 1rem !important; font-weight: 400 !important; margin-top: 0 !important; margin-bottom: 0 !important; color: #3a3a3a !important; }
 .blurb h4.heading a { color: #3a3a3a !important; }
+.blurb h4.heading a[rel="author"] { color: #000000 !important; font-weight: 500 !important; }
 .blurb h4.heading a:first-child { color: #000000 !important; font-weight: 650 !important; font-size: 1.75rem !important; line-height: 1.2 !important; }
-.blurb h5.fandoms.heading { font-size: 0.875rem !important; font-weight: 500 !important; margin: 0.4rem 0 0 !important; }
+.blurb h5.fandoms.heading { font-size: 0.875rem !important; font-weight: 400 !important; margin: 0.4rem 0 0 !important; }
 .blurb h5.fandoms a { color: #3a3a3a !important; }
-.blurb .datetime { position: static !important; float: none !important; margin: 0.2rem 0 0 !important; font-size: 0.8rem !important; color: #3a3a3a !important; font-family: -apple-system, system-ui, "Helvetica Neue", sans-serif !important; }
-ul.required-tags { position: static !important; float: none !important; width: auto !important; height: auto !important; list-style: none !important; margin: 0.4rem 0 0 !important; padding: 0 !important; font-size: 0.8rem !important; color: #3a3a3a !important; }
+.blurb .datetime { position: static !important; float: none !important; display: inline !important; margin: 0 !important; font-size: 0.8rem !important; font-weight: 500 !important; color: #000000 !important; font-family: -apple-system, system-ui, "Helvetica Neue", sans-serif !important; }
+ul.required-tags { display: inline !important; position: static !important; float: none !important; width: auto !important; height: auto !important; list-style: none !important; margin: 0.4rem 0 0 !important; padding: 0 !important; font-size: 0.8rem !important; font-weight: 500 !important; color: #000000 !important; }
 ul.required-tags li { display: inline !important; float: none !important; position: static !important; width: auto !important; height: auto !important; margin: 0 !important; padding: 0 !important; background: none !important; visibility: visible !important; }
-ul.required-tags a, ul.required-tags span { display: inline !important; position: static !important; width: auto !important; height: auto !important; margin: 0 !important; padding: 0 !important; background: none !important; border: 0 !important; text-indent: 0 !important; color: #3a3a3a !important; visibility: visible !important; }
+ul.required-tags a, ul.required-tags span { display: inline !important; position: static !important; width: auto !important; height: auto !important; margin: 0 !important; padding: 0 !important; background: none !important; border: 0 !important; text-indent: 0 !important; color: #000000 !important; visibility: visible !important; }
 ul.required-tags span.text { display: inline !important; font-size: 0.8rem !important; line-height: 1.4 !important; margin-right: 0.9rem !important; }
 ul.required-tags span.warnings { display: none !important; }
-ul.required-tags .rating .text { color: #000000 !important; font-weight: 500 !important; }
-.blurb ul.tags { list-style: none !important; float: none !important; width: auto !important; margin: 0.9rem 0 0 !important; padding: 0 !important; }
+ul.required-tags .text { color: #000000 !important; font-weight: 500 !important; }
+ul.required-tags .rating .text { color: #000000 !important; }
+.blurb ul.tags { list-style: none !important; float: none !important; width: auto !important; margin: 0.6rem 0 0 !important; padding: 0 !important; }
 .blurb ul.tags li:after { content: none !important; }
 .blurb ul.tags li { display: inline-block !important; background: none !important; border: 0 !important; padding: 0 !important; margin: 0 0.3rem 0.3rem 0 !important; font-size: 0.8rem !important; }
 .blurb ul.tags li a.tag, .blurb ul.tags li strong a.tag { display: inline-block !important; padding: 0 0.55rem !important; border: 1px solid #8a8a8a !important; border-radius: 5px !important; background: none !important; color: #3a3a3a !important; font-weight: 400 !important; }
@@ -207,4 +209,7 @@ span.action.top, span.action.top a { background: none !important; background-ima
 .AO3E--hide-works--msg + .actions { margin: 0 0 1.5rem !important; }
 .blurb .header h4.heading { margin-right: 0 !important; }
 .bookmark.blurb .header h4.heading { margin-right: 2.5rem !important; }
+#collection-form, form#new_collection_item { background: none !important; box-shadow: none !important; border: 0 !important; padding: 0 !important; }
+#collection-form dt label { color: #3a3a3a !important; font-size: 0.875rem !important; font-weight: 500 !important; }
+#collection-form p label, #bookmark-form p label { color: #000000 !important; }
 

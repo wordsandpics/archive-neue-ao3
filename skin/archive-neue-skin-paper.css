@@ -43,7 +43,7 @@ ul.work.navigation, ul.navigation.actions, #main ul.navigation.actions, #main di
 .intro .account p.actions a { display: inline-block !important; background: #2b2622 !important; color: #f7f0e8 !important; border: 1px solid #2b2622 !important; border-radius: 6px !important; box-shadow: none !important; text-shadow: none !important; padding: 0.55rem 1rem !important; font-size: 0.95rem !important; font-weight: 500 !important; line-height: 1.2 !important; }
 input[type="text"], input[type="search"], input[type="password"], input[type="email"], input[type="number"], textarea, select { font-family: -apple-system, system-ui, "Helvetica Neue", sans-serif !important; font-size: 1rem !important; color: #2b2622 !important; background: #f7f0e8 !important; border: 1px solid #c9b99d !important; border-radius: 6px !important; box-shadow: none !important; padding: 0.45rem 0.6rem !important; max-width: 100% !important; }
 textarea { width: 100% !important; box-sizing: border-box !important; }
-button, input[type="submit"], .actions a, .actions button, a.action { font-family: -apple-system, system-ui, "Helvetica Neue", sans-serif !important; font-size: 0.9rem !important; font-weight: 500 !important; line-height: 1.2 !important; color: #2b2622 !important; background: #f7f0e8 !important; background-image: none !important; border: 1px solid #c9b99d !important; border-radius: 6px !important; box-shadow: none !important; text-shadow: none !important; padding: 0.5rem 0.8rem !important; }
+button, input[type="submit"], .actions a, .actions button, a.action { font-family: -apple-system, system-ui, "Helvetica Neue", sans-serif !important; font-size: 0.9rem !important; font-weight: 500 !important; line-height: 1.2 !important; color: #2b2622 !important; background: #f7f0e8 !important; background-image: none !important; border: 1px solid #a9987b !important; border-radius: 6px !important; box-shadow: none !important; text-shadow: none !important; padding: 0.5rem 0.8rem !important; }
 input[type="submit"] { background: #2b2622 !important; color: #f7f0e8 !important; border-color: #2b2622 !important; }
 fieldset { border: 0 !important; border-top: 1px solid #ddd0bb !important; border-radius: 0 !important; box-shadow: none !important; background: none !important; }
 legend { background: none !important; border: 0 !important; box-shadow: none !important; font-size: 0.75rem !important; text-transform: uppercase !important; letter-spacing: 0.06em !important; color: #6b6054 !important; }
@@ -63,17 +63,19 @@ li.blurb { background: none !important; border: 0 !important; border-bottom: 1px
 .blurb h4.heading, .blurb h5.heading, .blurb .datetime, .blurb ul.tags, .blurb dl.stats { margin-left: 0 !important; padding-left: 0 !important; }
 .blurb h4.heading { font-size: 1rem !important; font-weight: 400 !important; margin-top: 0 !important; margin-bottom: 0 !important; color: #6b6054 !important; }
 .blurb h4.heading a { color: #6b6054 !important; }
+.blurb h4.heading a[rel="author"] { color: #2b2622 !important; font-weight: 500 !important; }
 .blurb h4.heading a:first-child { color: #2b2622 !important; font-weight: 650 !important; font-size: 1.75rem !important; line-height: 1.2 !important; }
-.blurb h5.fandoms.heading { font-size: 0.875rem !important; font-weight: 500 !important; margin: 0.4rem 0 0 !important; }
+.blurb h5.fandoms.heading { font-size: 0.875rem !important; font-weight: 400 !important; margin: 0.4rem 0 0 !important; }
 .blurb h5.fandoms a { color: #6b6054 !important; }
-.blurb .datetime { position: static !important; float: none !important; margin: 0.2rem 0 0 !important; font-size: 0.8rem !important; color: #6b6054 !important; font-family: -apple-system, system-ui, "Helvetica Neue", sans-serif !important; }
-ul.required-tags { position: static !important; float: none !important; width: auto !important; height: auto !important; list-style: none !important; margin: 0.4rem 0 0 !important; padding: 0 !important; font-size: 0.8rem !important; color: #6b6054 !important; }
+.blurb .datetime { position: static !important; float: none !important; display: inline !important; margin: 0 !important; font-size: 0.8rem !important; font-weight: 500 !important; color: #2b2622 !important; font-family: -apple-system, system-ui, "Helvetica Neue", sans-serif !important; }
+ul.required-tags { display: inline !important; position: static !important; float: none !important; width: auto !important; height: auto !important; list-style: none !important; margin: 0.4rem 0 0 !important; padding: 0 !important; font-size: 0.8rem !important; font-weight: 500 !important; color: #2b2622 !important; }
 ul.required-tags li { display: inline !important; float: none !important; position: static !important; width: auto !important; height: auto !important; margin: 0 !important; padding: 0 !important; background: none !important; visibility: visible !important; }
-ul.required-tags a, ul.required-tags span { display: inline !important; position: static !important; width: auto !important; height: auto !important; margin: 0 !important; padding: 0 !important; background: none !important; border: 0 !important; text-indent: 0 !important; color: #6b6054 !important; visibility: visible !important; }
+ul.required-tags a, ul.required-tags span { display: inline !important; position: static !important; width: auto !important; height: auto !important; margin: 0 !important; padding: 0 !important; background: none !important; border: 0 !important; text-indent: 0 !important; color: #2b2622 !important; visibility: visible !important; }
 ul.required-tags span.text { display: inline !important; font-size: 0.8rem !important; line-height: 1.4 !important; margin-right: 0.9rem !important; }
 ul.required-tags span.warnings { display: none !important; }
-ul.required-tags .rating .text { color: #2b2622 !important; font-weight: 500 !important; }
-.blurb ul.tags { list-style: none !important; float: none !important; width: auto !important; margin: 0.9rem 0 0 !important; padding: 0 !important; }
+ul.required-tags .text { color: #2b2622 !important; font-weight: 500 !important; }
+ul.required-tags .rating .text { color: #2b2622 !important; }
+.blurb ul.tags { list-style: none !important; float: none !important; width: auto !important; margin: 0.6rem 0 0 !important; padding: 0 !important; }
 .blurb ul.tags li:after { content: none !important; }
 .blurb ul.tags li { display: inline-block !important; background: none !important; border: 0 !important; padding: 0 !important; margin: 0 0.3rem 0.3rem 0 !important; font-size: 0.8rem !important; }
 .blurb ul.tags li a.tag, .blurb ul.tags li strong a.tag { display: inline-block !important; padding: 0 0.55rem !important; border: 1px solid #ddd0bb !important; border-radius: 5px !important; background: none !important; color: #6b6054 !important; font-weight: 400 !important; }
@@ -163,7 +165,7 @@ li.comment ul.actions a, li.comment ul.actions button, li.comment ul.actions inp
 #bookmark-form, div.post.bookmark, #bookmark-form > form { background: none !important; box-shadow: none !important; }
 #bookmark-form > form { border: 1px solid #ddd0bb !important; border-radius: 10px !important; }
 #bookmark-form form input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]), #bookmark-form form textarea { box-shadow: none !important; }
-#bookmark-form a.bookmark_form_placement_close { background: #f7f0e8 !important; background-image: none !important; color: #2b2622 !important; border: 1px solid #c9b99d !important; border-radius: 6px !important; box-shadow: none !important; text-shadow: none !important; }
+#bookmark-form a.bookmark_form_placement_close { background: #f7f0e8 !important; background-image: none !important; color: #2b2622 !important; border: 1px solid #a9987b !important; border-radius: 6px !important; box-shadow: none !important; text-shadow: none !important; }
 #bookmark-form form input[type="submit"], #bookmark-form form input[type="submit"]:hover, #bookmark-form form input[type="submit"]:active, #bookmark-form form input[type="submit"]:focus { background: #2b2622 !important; background-image: none !important; color: #f7f0e8 !important; border: 1px solid #2b2622 !important; box-shadow: none !important; text-shadow: none !important; }
 #dashboard { float: none !important; width: auto !important; }
 #dashboard ul { float: none !important; text-align: left !important; padding: 0 !important; border: 0 !important; }
@@ -192,7 +194,7 @@ dl.subscription > dt > a:first-child { display: block !important; font-size: 1.1
 dl.subscription > dt > a:not(:first-child) { color: #6b6054 !important; }
 dl.subscription > dd { padding: 0 0 1rem !important; border-bottom: 1px solid #ddd0bb !important; }
 dl.subscription > dd form { margin: 0 !important; padding: 0 !important; }
-dl.subscription > dd input[type="submit"] { max-width: 100% !important; background: #f7f0e8 !important; color: #2b2622 !important; border: 1px solid #c9b99d !important; padding: 0.35rem 0.8rem !important; font-size: 0.875rem !important; }
+dl.subscription > dd input[type="submit"] { max-width: 100% !important; background: #f7f0e8 !important; color: #2b2622 !important; border: 1px solid #a9987b !important; padding: 0.35rem 0.8rem !important; font-size: 0.875rem !important; }
 form.search dl, form.search dt, form.search dd { float: none !important; width: auto !important; margin: 0 !important; padding: 0 !important; border: 0 !important; background: none !important; }
 form.search dt { margin: 1rem 0 0.35rem !important; font-size: 0.8125rem !important; font-weight: 500 !important; color: #6b6054 !important; }
 form.search dt label { border: 0 !important; text-decoration: none !important; background: none !important; color: #6b6054 !important; }
@@ -206,4 +208,7 @@ span.action.top, span.action.top a { background: none !important; background-ima
 .AO3E--hide-works--msg + .actions { margin: 0 0 1.5rem !important; }
 .blurb .header h4.heading { margin-right: 0 !important; }
 .bookmark.blurb .header h4.heading { margin-right: 2.5rem !important; }
+#collection-form, form#new_collection_item { background: none !important; box-shadow: none !important; border: 0 !important; padding: 0 !important; }
+#collection-form dt label { color: #6b6054 !important; font-size: 0.875rem !important; font-weight: 500 !important; }
+#collection-form p label, #bookmark-form p label { color: #2b2622 !important; }
 
