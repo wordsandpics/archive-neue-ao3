@@ -50,7 +50,6 @@ ul.work.navigation, ul.navigation.actions, #main ul.navigation.actions, #main di
 #header #greeting ul.user { display: inline; }
 /* One flowing row: greeting, avatar and the main menu share lines instead of each starting a new one */
 #header nav, #header nav > ul.navigation { display: inline; margin: 0; padding: 0; }
-#header #greeting p.icon { margin: 0 0 0 0.6rem; }
 /* AO3 draws thick red bars around the dashboard menu; use plain hairlines */
 #dashboard, #dashboard.own { border: 0; border-top: 1px solid {{line}}; border-bottom: 1px solid {{line}}; border-radius: 0; padding: 0.5rem 0; margin: 0 0 1rem; }
 #main ul.navigation.actions li, #main .navigation.actions.module li, ul.work.navigation li { text-align: left; }
