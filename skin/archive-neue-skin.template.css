@@ -233,3 +233,34 @@ ul.expandable.secondary li a { color: {{ink}}; background: none; }
 
 /* The avatar sits at the right edge of the header, so it never reads as part of the menu next to it */
 #header #greeting p.icon { float: right; margin: 0 0 0 0.6rem; }
+
+/* Subscriptions: a title, then a small unsubscribe button, then a hairline */
+dl.subscription.index { margin: 1rem 0 0; padding: 0; border: 0; background: none; float: none; width: auto; }
+dl.subscription > dt, dl.subscription > dd { float: none; width: auto; margin: 0; border: 0; background: none; }
+dl.subscription > dt { padding: 1rem 0 0.35rem; font-size: 0.875rem; color: {{muted}}; line-height: 1.5; }
+dl.subscription > dt > a:first-child { display: block; font-size: 1.125rem; font-weight: 600; color: {{ink}}; line-height: 1.3; }
+dl.subscription > dt > a:not(:first-child) { color: {{muted}}; }
+dl.subscription > dd { padding: 0 0 1rem; border-bottom: 1px solid {{line}}; }
+dl.subscription > dd form { margin: 0; padding: 0; }
+dl.subscription > dd input[type="submit"] { max-width: 100%; background: {{bg}}; color: {{ink}}; border: 1px solid {{line2}}; padding: 0.35rem 0.8rem; font-size: 0.875rem; }
+
+/* Search forms: fields fit the page, labels are plain, and the Search button sits on the section-label line */
+form.search dl, form.search dt, form.search dd { float: none; width: auto; margin: 0; padding: 0; border: 0; background: none; }
+form.search dt { margin: 1rem 0 0.35rem; font-size: 0.8125rem; font-weight: 500; color: {{muted}}; }
+form.search dt label { border: 0; text-decoration: none; background: none; color: {{muted}}; }
+form.search input[type="text"], form.search input.text, form.search textarea, form.search select { width: 100%; max-width: 100%; box-sizing: border-box; }
+form.search > fieldset:first-of-type { position: relative; }
+form.search > fieldset:first-of-type > p.submit { position: absolute; top: 0.4rem; right: 0; margin: 0; padding: 0; }
+form.search > fieldset:first-of-type > p.submit input[type="submit"] { padding: 0.35rem 1rem; }
+
+/* Fandom index: names separated like the userstyle, and the back-to-top arrow is a quiet link, not a white box */
+li.letter.listbox ul.tags.index > li { margin: 0.2rem 1.5rem 0.2rem 0; }
+span.action.top, span.action.top a { background: none; background-image: none; border: 0; box-shadow: none; color: {{muted}}; padding: 0 0 0 0.5rem; }
+
+/* The "Too many fandoms" notice from the AO3 Enhancements extension needs air */
+.AO3E--hide-works--msg { margin: 1rem 0 0.35rem; color: {{muted}}; }
+.AO3E--hide-works--msg + .actions { margin: 0 0 1.5rem; }
+
+/* AO3 keeps room on the right of a work's title for something we don't show; bookmarks keep room for their count */
+.blurb .header h4.heading { margin-right: 0; }
+.bookmark.blurb .header h4.heading { margin-right: 2.5rem; }

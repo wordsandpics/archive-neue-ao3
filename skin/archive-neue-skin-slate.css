@@ -186,4 +186,25 @@ ul.expandable.secondary li a { color: #e6e9ef !important; background: none !impo
 .blurb div.user.module, .blurb .module.group.user { margin: 0.9rem 0 0 !important; padding: 0 !important; background: none !important; border: 0 !important; box-shadow: none !important; }
 .bookmark .user h6.meta.heading { display: block !important; margin: 0.9rem 0 0.4rem !important; font-size: 0.75rem !important; font-weight: 500 !important; letter-spacing: 0.06em !important; text-transform: uppercase !important; color: #9aa3b5 !important; }
 #header #greeting p.icon { float: right !important; margin: 0 0 0 0.6rem !important; }
+dl.subscription.index { margin: 1rem 0 0 !important; padding: 0 !important; border: 0 !important; background: none !important; float: none !important; width: auto !important; }
+dl.subscription > dt, dl.subscription > dd { float: none !important; width: auto !important; margin: 0 !important; border: 0 !important; background: none !important; }
+dl.subscription > dt { padding: 1rem 0 0.35rem !important; font-size: 0.875rem !important; color: #9aa3b5 !important; line-height: 1.5 !important; }
+dl.subscription > dt > a:first-child { display: block !important; font-size: 1.125rem !important; font-weight: 600 !important; color: #e6e9ef !important; line-height: 1.3 !important; }
+dl.subscription > dt > a:not(:first-child) { color: #9aa3b5 !important; }
+dl.subscription > dd { padding: 0 0 1rem !important; border-bottom: 1px solid #3a4357 !important; }
+dl.subscription > dd form { margin: 0 !important; padding: 0 !important; }
+dl.subscription > dd input[type="submit"] { max-width: 100% !important; background: #272e3d !important; color: #e6e9ef !important; border: 1px solid #4b556b !important; padding: 0.35rem 0.8rem !important; font-size: 0.875rem !important; }
+form.search dl, form.search dt, form.search dd { float: none !important; width: auto !important; margin: 0 !important; padding: 0 !important; border: 0 !important; background: none !important; }
+form.search dt { margin: 1rem 0 0.35rem !important; font-size: 0.8125rem !important; font-weight: 500 !important; color: #9aa3b5 !important; }
+form.search dt label { border: 0 !important; text-decoration: none !important; background: none !important; color: #9aa3b5 !important; }
+form.search input[type="text"], form.search input.text, form.search textarea, form.search select { width: 100% !important; max-width: 100% !important; box-sizing: border-box !important; }
+form.search > fieldset:first-of-type { position: relative !important; }
+form.search > fieldset:first-of-type > p.submit { position: absolute !important; top: 0.4rem !important; right: 0 !important; margin: 0 !important; padding: 0 !important; }
+form.search > fieldset:first-of-type > p.submit input[type="submit"] { padding: 0.35rem 1rem !important; }
+li.letter.listbox ul.tags.index > li { margin: 0.2rem 1.5rem 0.2rem 0 !important; }
+span.action.top, span.action.top a { background: none !important; background-image: none !important; border: 0 !important; box-shadow: none !important; color: #9aa3b5 !important; padding: 0 0 0 0.5rem !important; }
+.AO3E--hide-works--msg { margin: 1rem 0 0.35rem !important; color: #9aa3b5 !important; }
+.AO3E--hide-works--msg + .actions { margin: 0 0 1.5rem !important; }
+.blurb .header h4.heading { margin-right: 0 !important; }
+.bookmark.blurb .header h4.heading { margin-right: 2.5rem !important; }
 
