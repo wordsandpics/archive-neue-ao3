@@ -186,7 +186,7 @@ dt { font-weight: 500; }
  * 3. Header: no logo, quiet text navigation
  * ------------------------------------------------------------------ */
 #header {
-  display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 2rem;
+  display: flex; flex-wrap: wrap; align-items: center;
   float: none; height: auto; margin: 0; padding: 1.25rem 0;
   border-bottom: 1px solid var(--line);
 }
@@ -199,7 +199,7 @@ dt { font-weight: 500; }
 }
 #header nav, #header ul.primary.navigation, #header .navigation { background: none; border: 0; box-shadow: none; border-radius: 0; height: auto; }
 #header nav { order: 2; flex: 1 1 auto; float: none; margin: 0; padding: 0; background: none; }
-#header ul.primary.navigation { display: flex; flex-wrap: wrap; align-items: center; gap: 0.25rem 1.5rem; float: none; margin: 0; }
+#header ul.primary.navigation { display: flex; flex-wrap: wrap; align-items: center; float: none; margin: 0; }
 #header #login, #header #login.dropdown { order: 3; float: none; margin: 0; background: none !important; box-shadow: none !important; border: 0 !important; }
 #header #login p.user, #header #login-dropdown, #header #login a { background: none !important; border: 0 !important; box-shadow: none !important; color: var(--muted); padding: 0.25rem 0; float: none; }
 #header .navigation li, #header .actions li { float: none; margin: 0; padding: 0; background: none; border: 0; }
@@ -211,7 +211,7 @@ dt { font-weight: 500; }
 #header li.search { margin-left: auto; }
 #header li.search form, #header li.search fieldset, #header li.search p { margin: 0; padding: 0; border: 0; display: block; }
 #header li.search .tip, #header li.search .submit { display: none; }
-#site_search, #header li.search input.text { width: 13rem; height: auto; background: var(--bg) !important; border: 1px solid var(--line-2) !important; border-radius: 6px !important; box-shadow: none !important; color: var(--ink); padding: 0.4rem 0.6rem !important; }
+#site_search, #header li.search input.text { height: auto; background: var(--bg) !important; border: 1px solid var(--line-2) !important; border-radius: 6px !important; box-shadow: none !important; color: var(--ink); padding: 0.4rem 0.6rem !important; }
 #header li.search .submit, #header li.search input[type="submit"] { display: none !important; }
 
 .dropdown .menu, .dropdown ul.menu, #small_login, ul.expandable.secondary {
@@ -356,7 +356,7 @@ li.blurb, li.work.blurb, li.bookmark.blurb, li.series.blurb {
   box-shadow: none; margin: 0 !important; padding: 2.5rem 0 !important; list-style: none; float: none !important; width: auto !important; min-height: 0;
 }
 li.blurb:first-child { padding-top: 0.75rem !important; }
-.blurb .header.module { position: static; margin: 0 0 0.35rem; padding: 0; min-height: 0; background: none; border: 0; }
+.blurb .header.module { position: static; min-height: 0; background: none; border: 0; }
 .blurb h4.heading, .blurb h5.heading, .blurb .datetime, .blurb ul.tags, .blurb dl.stats { margin-left: 0 !important; padding-left: 0 !important; }
 .blurb .datetime { font-family: var(--f-ui) !important; }
 .blurb h4.heading { margin-right: 0 !important; text-wrap: wrap !important; } /* AO3 reserves ~84px for the icon squares; balanced wrapping also made titles break early */
@@ -371,7 +371,7 @@ li.blurb:first-child { padding-top: 0.75rem !important; }
 .blurb .datetime { position: static; float: none; margin: 0.25rem 0 0; font-size: 0.9375rem; color: var(--muted); font-variant-numeric: tabular-nums; }
 
 /* The four-square symbols become plain words: "Explicit  M/M  Work in progress" */
-ul.required-tags { display: flex !important; flex-wrap: wrap; gap: 0; list-style: none; margin: 0.35rem 0 0; padding: 0; float: none; position: static !important; width: auto !important; height: auto !important; font-size: 0.875rem; line-height: 1.9; color: var(--soft); }
+ul.required-tags { display: flex !important; flex-wrap: wrap; gap: 0; list-style: none; margin: 0.35rem 0 0; padding: 0; float: none; position: static !important; width: auto !important; height: auto !important; font-size: 0.875rem; color: var(--soft); }
 ul.required-tags li { display: block !important; float: none !important; margin: 0 !important; padding: 0 !important; width: auto !important; height: auto !important; background: none; position: static !important; visibility: visible !important; }
 ul.required-tags li:not(:first-child)::before { content: "\00a0\00a0|\00a0\00a0"; color: var(--line-2); font-weight: 300; white-space: pre; } /* same bar and spacing as the stats row */
 ul.required-tags li:has(.warnings) { display: none !important; } /* warnings already appear in the tag list below */
@@ -414,7 +414,7 @@ dl.stats {
   float: none; width: auto; text-align: left; line-height: 1.9; border: 0; background: none;
 }
 /* Label and value stay together; a thin bar separates one stat from the next and never starts a line */
-dl.stats dt { display: inline !important; float: none !important; width: auto !important; margin: 0 0.3rem 0 0 !important; padding: 0 !important; border: 0 !important; font-weight: 400; white-space: nowrap; line-height: inherit; }
+dl.stats dt { display: inline !important; float: none !important; width: auto !important; margin: 0 0.3rem 0 0 !important; padding: 0 !important; border: 0 !important; white-space: nowrap; line-height: inherit; }
 dl.stats dd { display: inline !important; float: none !important; width: auto !important; margin: 0 !important; padding: 0 !important; border: 0 !important; white-space: nowrap; line-height: inherit; }
 dl.stats dd a { color: inherit; }
 dl.stats dd::after { content: "\00a0\00a0|\00a0\00a0\200b"; color: var(--line-2); font-weight: 300; }
@@ -449,7 +449,7 @@ form.filters { font-size: 0.9375rem; background: none !important; border: 0 !imp
 form.filters .heading, form.filters h3, form.filters legend, form.filters dt, form.filters label { font-family: var(--f-ui); font-size: 0.875rem; font-weight: 500; color: var(--muted); border: 0 !important; background: none !important; text-decoration: none; letter-spacing: 0; margin-bottom: 0.25rem; }
 form.filters .expander, form.filters a.expander { color: var(--ink); }
 form.filters dd, form.filters dl, form.filters ul { background: none; border: 0; }
-form.filters fieldset { border: 0; border-top: 1px solid var(--line); border-radius: 0; box-shadow: none !important; background: none !important; padding: 0.75rem 0 0.25rem; margin: 0 0 0.5rem; }
+form.filters fieldset { border: 0; border-top: 1px solid var(--line); border-radius: 0; box-shadow: none !important; background: none !important; }
 form.filters dl dt { margin-top: 0.5rem; }
 form.filters input[type="text"], form.filters select { width: 100%; }
 form.filters .submit input { width: 100%; }
@@ -464,10 +464,9 @@ form.filters .submit input { width: 100%; }
 ul.work.navigation { display: flex; flex-wrap: wrap; gap: 0.25rem 1rem; list-style: none; margin: 0 0 1.5rem; padding: 0; float: none; }
 ul.work.navigation li { float: none; margin: 0; padding: 0; }
 ul.work.navigation li a, ul.work.navigation li button {
-  background: none; border: 0; padding: 0.15rem 0; color: var(--muted); font-weight: 500; font-size: 0.9375rem; border-radius: 0;
+  background: none; border: 0; padding: 0.15rem 0; color: var(--muted); font-weight: 500; border-radius: 0;
 }
 ul.work.navigation li a:hover, ul.work.navigation li button:hover { color: var(--ink); background: none; text-decoration: none; }
-ul.work.navigation li.download { position: relative; }
 /* The action row belongs to the work: it sits right above the info box (which has its own border), without a line of its own */
 ul.work.navigation { align-items: center; padding-bottom: 0; margin-bottom: 1rem; border-bottom: 0; }
 ul.work.navigation li a, ul.work.navigation li button { font-size: 0.875rem; }
@@ -583,8 +582,8 @@ li.comment, li.comment.group { background: none; border: 0; border-top: 1px soli
 ol.thread ol.thread > li.comment { border-top: 0; }
 li.comment .header, li.comment h4.heading { font-size: 0.9375rem; margin: 0 0 0.4rem; font-weight: 600; }
 li.comment .datetime, li.comment .posted { color: var(--muted); font-weight: 400; font-size: 0.875rem; }
-li.comment blockquote.userstuff { font: 400 1rem/1.6 var(--f-ui); margin: 0 0 0.6rem; padding: 0; border: 0; background: none; max-width: 40rem; }
-li.comment ul.actions { display: flex; flex-wrap: wrap; gap: 0.75rem; list-style: none; margin: 0.25rem 0 0.5rem; padding: 0; }
+li.comment blockquote.userstuff { font: 400 1rem/1.6 var(--f-ui); margin: 0 0 0.6rem; border: 0; max-width: 40rem; }
+li.comment ul.actions { display: flex; flex-wrap: wrap; list-style: none; margin: 0.25rem 0 0.5rem; padding: 0; }
 li.comment ul.actions li { float: none; margin: 0; padding: 0; }
 li.comment ul.actions a, li.comment ul.actions button { background: none; border: 0; padding: 0; color: var(--muted); font-size: 0.875rem; border-radius: 0; }
 li.comment ul.actions a:hover { color: var(--link); background: none; }
@@ -621,7 +620,7 @@ li.comment .icon, li.comment .user .icon, .icon img { border-radius: 50%; }
 
 /* News posts */
 ul.news li.post { background: none; border: 0; border-bottom: 1px solid var(--line); border-radius: 0; box-shadow: none; margin: 0; padding: 1.5rem 0; float: none; width: auto; }
-ul.news li.post .header.module { margin: 0 0 0.5rem; padding: 0; background: none; border: 0; }
+ul.news li.post .header.module { padding: 0; background: none; border: 0; }
 ul.news li.post h4.heading { font-size: 1.125rem; font-weight: 600; margin: 0; line-height: 1.3; letter-spacing: -0.01em; }
 ul.news li.post h4.heading a { color: var(--ink); }
 ul.news li.post p.meta, ul.news li.post .meta span { font-family: var(--f-ui) !important; font-size: 0.875rem; color: var(--muted); margin: 0.25rem 0 0; }
@@ -900,7 +899,7 @@ form.search > fieldset:first-of-type > p.submit input[type="submit"] { padding: 
 /* Fandom / tag index pages: the A-Z row and the little back-to-top arrows */
 ul#alphabet, ul.alphabet { display: flex; flex-wrap: wrap; justify-content: flex-start; gap: 0.35rem; list-style: none; margin: 1rem 0 2rem; padding: 0; float: none; }
 ul#alphabet li, ul.alphabet li { float: none; margin: 0; padding: 0; background: none; border: 0; }
-ul#alphabet li a, ul.alphabet li a { display: inline-block; min-width: 2rem; box-sizing: border-box; text-align: center; padding: 0.3rem 0.5rem !important; background: var(--bg) !important; background-image: none !important; border: 1px solid var(--line-2) !important; border-radius: 6px !important; color: var(--ink) !important; box-shadow: none !important; font: 500 0.875rem/1.2 var(--f-ui) !important; text-decoration: none; text-shadow: none; }
+ul#alphabet li a, ul.alphabet li a { min-width: 2rem; box-sizing: border-box; text-align: center; background: var(--bg) !important; background-image: none !important; border: 1px solid var(--line-2) !important; border-radius: 6px !important; color: var(--ink) !important; box-shadow: none !important; font: 500 0.875rem/1.2 var(--f-ui) !important; text-decoration: none; text-shadow: none; }
 ul#alphabet li a, ul.alphabet li a { display: inline-flex !important; align-items: center; justify-content: center; min-height: 2rem; height: auto !important; margin: 0 !important; position: static !important; top: auto !important; line-height: 1.2 !important; padding: 0.25rem 0.5rem !important; vertical-align: top; }
 ul#alphabet li a:hover, ul.alphabet li a:hover { background: var(--bg-2) !important; text-decoration: none; }
 h3.heading span.action.top, span.action.top { display: inline-block; border: 0 !important; background: none !important; box-shadow: none !important; padding: 0 0 0 0.6rem !important; color: var(--muted) !important; font-size: 0.9375rem !important; font-weight: 400; letter-spacing: 0; text-transform: none; width: auto !important; height: auto !important; }
