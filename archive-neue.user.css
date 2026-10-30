@@ -45,10 +45,10 @@
   --mode: calc(min(var(--theme, 0), 2) - 1 - var(--paper));
   --dark: calc((var(--mode) * (var(--mode) + 1) / 2) + (var(--mode) * (var(--mode) - 1) / 2) * var(--sys));
 
-  --bg:     color-mix(in srgb, #f5ede1 calc(var(--paper) * 100%), color-mix(in srgb, #272e3d calc(var(--slate) * 100%), color-mix(in srgb, #111113 calc(var(--dark) * 100%), #ffffff)));
+  --bg:     color-mix(in srgb, #f7f0e8 calc(var(--paper) * 100%), color-mix(in srgb, #272e3d calc(var(--slate) * 100%), color-mix(in srgb, #111113 calc(var(--dark) * 100%), #ffffff)));
   --bg-2:   color-mix(in srgb, #ede3d3 calc(var(--paper) * 100%), color-mix(in srgb, #2f3748 calc(var(--slate) * 100%), color-mix(in srgb, #19191c calc(var(--dark) * 100%), #f6f6f4)));
   --ink:    color-mix(in srgb, #2b2622 calc(var(--paper) * 100%), color-mix(in srgb, #e6e9ef calc(var(--slate) * 100%), color-mix(in srgb, #e9e9ea calc(var(--dark) * 100%), #17171a)));
-  --muted:  color-mix(in srgb, #6b6054 calc(var(--paper) * 100%), color-mix(in srgb, #9aa3b5 calc(var(--slate) * 100%), color-mix(in srgb, #9b9ba3 calc(var(--dark) * 100%), #6b6b73)));
+  --muted:  color-mix(in srgb, #6b6054 calc(var(--paper) * 100%), color-mix(in srgb, #aeb6c6 calc(var(--slate) * 100%), color-mix(in srgb, #9b9ba3 calc(var(--dark) * 100%), #6b6b73)));
   /* between --muted and --ink in light mode (a bit more contrast for small text); same as --muted in dark */
   --soft:   color-mix(in srgb, var(--muted) calc(100% - (1 - var(--dark)) * 30%), var(--ink));
   --line:   color-mix(in srgb, #ddd0bb calc(var(--paper) * 100%), color-mix(in srgb, #3a4357 calc(var(--slate) * 100%), color-mix(in srgb, #303036 calc(var(--dark) * 100%), #e6e6e8)));

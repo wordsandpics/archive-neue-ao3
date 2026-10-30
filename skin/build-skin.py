@@ -23,9 +23,9 @@ THEMES = {
                   line="#e6e6e8", line2="#cfcfd4", link="#2f54eb"),
     "dark":  dict(bg="#111113", bg2="#19191c", ink="#e9e9ea", muted="#9b9ba3",
                   line="#303036", line2="#4b4b53", link="#8da4f5"),
-    "slate": dict(bg="#272e3d", bg2="#2f3748", ink="#e6e9ef", muted="#9aa3b5",
+    "slate": dict(bg="#272e3d", bg2="#2f3748", ink="#e6e9ef", muted="#aeb6c6",
                   line="#3a4357", line2="#4b556b", link="#8da4f5"),
-    "paper": dict(bg="#f5ede1", bg2="#ede3d3", ink="#2b2622", muted="#6b6054",
+    "paper": dict(bg="#f7f0e8", bg2="#ede3d3", ink="#2b2622", muted="#6b6054",
                   line="#ddd0bb", line2="#c9b99d", link="#2f54eb"),
 }
 
