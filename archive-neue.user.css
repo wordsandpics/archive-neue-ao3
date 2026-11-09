@@ -309,7 +309,7 @@ fieldset dd span.actions a:hover { background: var(--bg-2) !important; text-deco
 #main.skins-index > ul.actions:not(.navigation) > li > span.current { background: var(--bg-2) !important; font-weight: 650 !important; }
 li.skins.blurb div.icon { display: none !important; }
 /* Chapter index: the chapter titles are the links, so they are bolder; the dates are quiet */
-#main.works-navigate ol.chapter.index > li > a { font-weight: 600; }
+#main.works-navigate ol.chapter.index > li > a { font-weight: 600; color: var(--action); }
 #main.works-navigate ol.chapter.index span.datetime { color: var(--muted); font-size: 0.875rem; }
 /* "Save a bookmark" form at the end of a work: a plain outline instead of AO3's heavy border and shadow, and the Create button stays dark when pressed */
 #bookmark-form > form { border: 1px solid var(--line) !important; border-radius: 10px !important; box-shadow: none !important; background: none !important; }
@@ -551,7 +551,7 @@ h2.heading > img[src*="lockblue"] { order: 1; margin: 0 0 0 0.5em; }
 
 #chapters .chapter.preface, .chapter .preface.group { margin: 2.5rem 0 1.5rem; text-align: left; }
 #chapters h3.title, .chapter h3.title { font-family: var(--f-ui); font-size: 1.5rem; font-weight: 650; line-height: 1.25; letter-spacing: -0.02em; text-transform: none; color: var(--ink); margin: 0; text-align: left; text-wrap: balance; }
-#chapters h3.title a, .chapter h3.title a { color: var(--action); }
+#chapters h3.title a, .chapter h3.title a { color: var(--ink); }
 #chapters h3.title a:hover, .chapter h3.title a:hover { color: var(--link); text-decoration: none; }
 #chapters .chapter .chapter.preface .notes, #chapters .chapter .chapter.preface .summary { margin-top: 1.25rem; }
 #chapters > .chapter + .chapter { border-top: 1px solid var(--line); margin-top: 3.5rem; }
