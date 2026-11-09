@@ -58,7 +58,7 @@
   --btn-line: color-mix(in srgb, #a9987b calc(var(--paper) * 100%), color-mix(in srgb, #4b556b calc(var(--slate) * 100%), color-mix(in srgb, #4b4b53 calc(var(--dark) * 100%), #a9a9b2)));
   /* the colour of loud links and filled buttons: the same as --ink, except in Fannish (AO3 red) */
   --action: color-mix(in srgb, #990000 calc(var(--fannish) * 100%), var(--ink));
-  --link:   color-mix(in srgb, color-mix(in srgb, var(--hue) 55%, white) calc(var(--dark) * 100%), var(--hue));
+  --link:   color-mix(in srgb, #990000 calc(var(--fannish) * 100%), color-mix(in srgb, color-mix(in srgb, var(--hue) 55%, white) calc(var(--dark) * 100%), var(--hue)));
 }
 @media (prefers-color-scheme: dark) {
   :root { --sys: 1; }
@@ -163,7 +163,7 @@ p.kudos a:focus,
 dl.work.meta dd.series a:focus { color: var(--link); text-decoration-color: var(--link); }
 a, a:link, a:visited, a:hover, a:focus, a:active { border: 0; box-shadow: none; }
 a:hover, a:focus, a:active { background: none; }
-a.tag:hover, a.tag:focus, h5.fandoms a:hover, h5.fandoms a:focus { background: none !important; color: var(--ink) !important; text-decoration: underline; text-underline-offset: 0.2em; }
+a.tag:hover, a.tag:focus, h5.fandoms a:hover, h5.fandoms a:focus { background: none !important; color: var(--action) !important; text-decoration: underline; text-underline-offset: 0.2em; }
 a:hover, a:focus { color: var(--link); text-decoration: underline; text-underline-offset: 0.2em; }
 :focus-visible { outline: 2px solid var(--link); outline-offset: 2px; border-radius: 3px; }
 ::selection { background: color-mix(in srgb, var(--hue) 28%, transparent); }
@@ -212,7 +212,7 @@ dt { font-weight: 500; }
   background: none; border: 0; box-shadow: none; padding: 0.25rem 0;
   color: var(--muted); font-weight: 500; border-radius: 0;
 }
-#header .navigation a:hover, #header .user a:hover { color: var(--ink); text-decoration: none; }
+#header .navigation a:hover, #header .user a:hover { color: var(--action); text-decoration: none; }
 #header li.search { margin-left: auto; }
 #header li.search form, #header li.search fieldset, #header li.search p { margin: 0; padding: 0; border: 0; display: block; }
 #header li.search .tip, #header li.search .submit { display: none; }
@@ -252,13 +252,13 @@ dt { font-weight: 500; }
   display: inline-block; background: none !important; border: 0 !important; box-shadow: none !important; text-shadow: none;
   padding: 0.25rem 0; color: var(--muted); font-weight: 500; border-radius: 0; width: auto; height: auto;
 }
-#header #greeting a:hover, #header #greeting a:focus { color: var(--ink); text-decoration: none; }
+#header #greeting a:hover, #header #greeting a:focus { color: var(--action); text-decoration: none; }
 
 #header li.dropdown, #header .dropdown { position: relative; }
 #header .dropdown > a, #header .dropdown:hover > a, #header .dropdown.open > a, #header .dropdown:focus-within > a {
   background: none !important; box-shadow: none !important; border: 0 !important; text-shadow: none;
 }
-#header .dropdown:hover > a, #header .dropdown:focus-within > a { color: var(--ink) !important; }
+#header .dropdown:hover > a, #header .dropdown:focus-within > a { color: var(--action) !important; }
 #header .dropdown .menu, #header .dropdown ul.menu, #header .dropdown-menu {
   position: absolute; top: 100%; left: 0; right: auto; width: max-content; min-width: 12rem; max-width: 22rem;
   margin: 0; padding: 0.35rem; z-index: 100; list-style: none; text-align: left;
@@ -315,7 +315,7 @@ li.skins.blurb div.icon { display: none !important; }
 #bookmark-form > form { border: 1px solid var(--line) !important; border-radius: 10px !important; box-shadow: none !important; background: none !important; }
 #bookmark-form form input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]), #bookmark-form form textarea { box-shadow: none !important; }
 #bookmark-form a.bookmark_form_placement_close { background: var(--bg) !important; background-image: none !important; color: var(--ink) !important; border: 1px solid var(--btn-line) !important; border-radius: 6px !important; box-shadow: none !important; text-shadow: none !important; }
-#bookmark-form form input[type="submit"], #bookmark-form form input[type="submit"]:hover, #bookmark-form form input[type="submit"]:active, #bookmark-form form input[type="submit"]:focus { background: var(--ink) !important; background-image: none !important; color: var(--bg) !important; border: 1px solid var(--ink) !important; box-shadow: none !important; text-shadow: none !important; }
+#bookmark-form form input[type="submit"], #bookmark-form form input[type="submit"]:hover, #bookmark-form form input[type="submit"]:active, #bookmark-form form input[type="submit"]:focus { background: var(--action) !important; background-image: none !important; color: var(--bg) !important; border: 1px solid var(--action) !important; box-shadow: none !important; text-shadow: none !important; }
 #bookmark-form form input[type="submit"]:active { opacity: 0.8 !important; }
 /* AO3 leaves these labels near-black: unreadable on the dark themes */
 #bookmark-form dt label, #collection-form dt label { color: var(--muted) !important; font: 500 0.875rem/1.4 var(--f-ui) !important; }
@@ -325,8 +325,8 @@ li.skins.blurb div.icon { display: none !important; }
 /* "Add to collection" page: same plain outline and buttons */
 form#new_collection_item > dl { background: none !important; border: 1px solid var(--line) !important; border-radius: 8px !important; box-shadow: none !important; padding: 1rem !important; margin: 0 !important; }
 form#new_collection_item dd.submit.actions a { background: var(--bg) !important; background-image: none !important; color: var(--ink) !important; border: 1px solid var(--btn-line) !important; border-radius: 6px !important; box-shadow: none !important; text-shadow: none !important; padding: 0.45rem 0.8rem !important; font: 500 0.9375rem/1.2 var(--f-ui) !important; }
-input[type="submit"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
-input[type="submit"]:hover { background: var(--ink); color: var(--bg); opacity: 0.88; }
+input[type="submit"] { background: var(--action); color: var(--bg); border-color: var(--action); }
+input[type="submit"]:hover { background: var(--action); color: var(--bg); opacity: 0.88; }
 fieldset { border: 1px solid var(--line); border-radius: 8px; padding: 1rem; margin: 0 0 1rem; background: none; }
 legend { font-weight: 600; padding: 0 0.4rem; }
 label { font-weight: 500; }
@@ -372,8 +372,8 @@ li.blurb:first-child { padding-top: 0.75rem !important; }
 .blurb h4.heading { margin-right: 6.5rem !important; text-wrap: wrap !important; } /* room for the date at the top right (AO3 reserved ~84px for the icon squares; balanced wrapping also made titles break early) */
 .blurb dl.stats { float: none !important; width: auto !important; clear: both; }
 .blurb h4.heading { font-size: 1.0625rem; font-weight: 400; line-height: 1.4; margin: 0; letter-spacing: 0; color: var(--muted); }
-.blurb h4.heading a:first-child { color: var(--ink); font-weight: 650; font-size: 1.5625rem; line-height: 1.2; letter-spacing: -0.02em;  margin-right: 0.4rem;}
-.blurb h4.heading a[rel="author"] { color: var(--ink); font-weight: 500; font-size: 1.0625rem; letter-spacing: 0; }
+.blurb h4.heading a:first-child { color: var(--action); font-weight: 650; font-size: 1.5625rem; line-height: 1.2; letter-spacing: -0.02em;  margin-right: 0.4rem;}
+.blurb h4.heading a[rel="author"] { color: var(--action); font-weight: 500; font-size: 1.0625rem; letter-spacing: 0; }
 .blurb h5.fandoms.heading { font-size: 1rem; font-weight: 400; color: var(--muted); margin: 0.4rem 0 0; }
 .blurb h5.fandoms a { color: var(--muted); }
 .blurb h5.fandoms a { white-space: nowrap; } /* a long fandom list wraps between fandoms, never in the middle of a name */
@@ -438,7 +438,7 @@ ol.pagination li { float: none; margin: 0; padding: 0; background: none; border:
   display: inline-block; min-width: 1.5rem; padding: 0.35rem 0.6rem; text-align: center; border-radius: 6px;
   background: none; border: 0; color: var(--muted); box-shadow: none;
 }
-#main ol.pagination li a:hover, ol.pagination a:hover { background: var(--bg-2); color: var(--ink); text-decoration: none; }
+#main ol.pagination li a:hover, ol.pagination a:hover { background: var(--bg-2); color: var(--action); text-decoration: none; }
 #main ol.pagination li a.current, #main ol.pagination li a[aria-current], #main ol.pagination li span.current { background: var(--ink); color: var(--bg); }
 ol.pagination .disabled, ol.pagination .gap { opacity: 0.5; }
 
@@ -450,7 +450,7 @@ ol.pagination .disabled, ol.pagination .gap { opacity: 0.5; }
 #main .navigation.actions.module a, #main .navigation.actions.module span {
   background: none; border: 0; box-shadow: none; padding: 0.15rem 0; border-radius: 0; color: var(--muted); font-weight: 500;
 }
-#main .navigation.actions.module a:hover, #main .navigation.actions.module a:focus { color: var(--ink) !important; background: none !important; box-shadow: inset 0 -2px 0 var(--line-2) !important; text-decoration: none; }
+#main .navigation.actions.module a:hover, #main .navigation.actions.module a:focus { color: var(--action) !important; background: none !important; box-shadow: inset 0 -2px 0 var(--line-2) !important; text-decoration: none; }
 #main .navigation.actions.module .current, #main .navigation.actions.module li.current a, #main .navigation.actions.module a.current { color: var(--ink); background: none; box-shadow: inset 0 -2px 0 var(--ink); }
 #main .navigation.actions.module .rss img { display: none; }
 
@@ -476,7 +476,7 @@ ul.work.navigation li { float: none; margin: 0; padding: 0; }
 ul.work.navigation li a, ul.work.navigation li button {
   background: none; border: 0; padding: 0.15rem 0; color: var(--muted); font-weight: 500; border-radius: 0;
 }
-ul.work.navigation li a:hover, ul.work.navigation li button:hover { color: var(--ink); background: none; text-decoration: none; }
+ul.work.navigation li a:hover, ul.work.navigation li button:hover { color: var(--action); background: none; text-decoration: none; }
 /* The action row belongs to the work: it sits right above the info box (which has its own border), without a line of its own */
 ul.work.navigation { align-items: center; padding-bottom: 0; margin-bottom: 1rem; border-bottom: 0; }
 ul.work.navigation li a, ul.work.navigation li button { font-size: 0.875rem; }
@@ -488,7 +488,7 @@ ul.work.navigation ul.expandable.secondary li { display: block !important; float
 ul.work.navigation ul.expandable.secondary li a { display: block; padding: 0.4rem 0.65rem; color: var(--ink) !important; box-shadow: none !important; border-radius: 5px; }
 ul.work.navigation ul.expandable.secondary li a:hover { background: var(--bg-2) !important; box-shadow: none !important; }
 ul.work.navigation li a, ul.work.navigation li a:hover, ul.work.navigation li a:focus, ul.work.navigation li button:hover, ul.work.navigation li button:focus { background: none !important; background-image: none !important; box-shadow: none !important; border: 0 !important; text-shadow: none; border-radius: 0 !important; }
-ul.work.navigation li a:hover, ul.work.navigation li a:focus, ul.work.navigation li button:hover { color: var(--ink) !important; text-decoration: none; box-shadow: inset 0 -2px 0 var(--line-2) !important; }
+ul.work.navigation li a:hover, ul.work.navigation li a:focus, ul.work.navigation li button:hover { color: var(--action) !important; text-decoration: none; box-shadow: inset 0 -2px 0 var(--line-2) !important; }
 ul.work.navigation li input[type="submit"], ul.work.navigation li button { font: 500 0.9375rem/1.5 var(--f-ui) !important; height: auto; margin: 0; }
 
 dl.work.meta {
@@ -551,7 +551,7 @@ h2.heading > img[src*="lockblue"] { order: 1; margin: 0 0 0 0.5em; }
 
 #chapters .chapter.preface, .chapter .preface.group { margin: 2.5rem 0 1.5rem; text-align: left; }
 #chapters h3.title, .chapter h3.title { font-family: var(--f-ui); font-size: 1.5rem; font-weight: 650; line-height: 1.25; letter-spacing: -0.02em; text-transform: none; color: var(--ink); margin: 0; text-align: left; text-wrap: balance; }
-#chapters h3.title a, .chapter h3.title a { color: var(--ink); }
+#chapters h3.title a, .chapter h3.title a { color: var(--action); }
 #chapters h3.title a:hover, .chapter h3.title a:hover { color: var(--link); text-decoration: none; }
 #chapters .chapter .chapter.preface .notes, #chapters .chapter .chapter.preface .summary { margin-top: 1.25rem; }
 #chapters > .chapter + .chapter { border-top: 1px solid var(--line); margin-top: 3.5rem; }
@@ -624,7 +624,7 @@ li.comment .icon, li.comment .user .icon, .icon img { border-radius: 50%; }
 .splash .favorite ul { display: flex; flex-wrap: wrap; gap: 0.4rem; }
 .splash .favorite ul li a.tag:hover { background: var(--bg-2) !important; border-color: var(--line-2) !important; text-decoration: none; }
 /* "Get Invited!" on the logged-out home page: the one button there, so it is the filled kind */
-.splash .intro .account p.actions a { display: inline-block; background: var(--ink) !important; background-image: none !important; color: var(--bg) !important; border: 1px solid var(--ink) !important; border-radius: 6px !important; box-shadow: none !important; text-shadow: none !important; padding: 0.55rem 1rem !important; font: 500 0.9375rem/1.2 var(--f-ui) !important; text-decoration: none; }
+.splash .intro .account p.actions a { display: inline-block; background: var(--action) !important; background-image: none !important; color: var(--bg) !important; border: 1px solid var(--action) !important; border-radius: 6px !important; box-shadow: none !important; text-shadow: none !important; padding: 0.55rem 1rem !important; font: 500 0.9375rem/1.2 var(--f-ui) !important; text-decoration: none; }
 .splash .intro .account p.actions a:hover { opacity: 0.88; }
 .splash p.note { color: var(--muted); font-size: 0.9375rem; margin: 0 0 1rem; }
 
@@ -632,7 +632,7 @@ li.comment .icon, li.comment .user .icon, .icon img { border-radius: 50%; }
 ul.news li.post { background: none; border: 0; border-bottom: 1px solid var(--line); border-radius: 0; box-shadow: none; margin: 0; padding: 1.5rem 0; float: none; width: auto; }
 ul.news li.post .header.module { padding: 0; background: none; border: 0; }
 ul.news li.post h4.heading { font-size: 1.125rem; font-weight: 600; margin: 0; line-height: 1.3; letter-spacing: -0.01em; }
-ul.news li.post h4.heading a { color: var(--ink); }
+ul.news li.post h4.heading a { color: var(--action); }
 ul.news li.post p.meta, ul.news li.post .meta span { font-family: var(--f-ui) !important; font-size: 0.875rem; color: var(--muted); margin: 0.25rem 0 0; }
 ul.news li.post blockquote.userstuff { font: 400 0.96875rem/1.6 var(--f-read); margin: 0.5rem 0 0; padding: 0; border: 0; background: none; }
 ul.news li.post p.jump { margin: 0.5rem 0 0; font-size: 0.9375rem; text-align: left; }
@@ -673,7 +673,7 @@ li.comment blockquote.userstuff { margin-left: 0 !important; padding: 0 !importa
 li.comment blockquote.userstuff p:last-child { margin-bottom: 0.4rem; }
 li.comment ul.actions { gap: 0.25rem 1rem; align-items: center; }
 li.comment ul.actions li a, li.comment ul.actions li button, li.comment ul.actions li input[type="submit"], li.comment ul.actions li input[type="button"] { background: none !important; border: 0 !important; box-shadow: none !important; padding: 0 !important; color: var(--muted) !important; font-size: 0.875rem; font-weight: 500; border-radius: 0; }
-li.comment ul.actions li a:hover, li.comment ul.actions li button:hover, li.comment ul.actions li input[type="submit"]:hover { color: var(--ink) !important; background: none !important; text-decoration: underline; opacity: 1; }
+li.comment ul.actions li a:hover, li.comment ul.actions li button:hover, li.comment ul.actions li input[type="submit"]:hover { color: var(--action) !important; background: none !important; text-decoration: underline; opacity: 1; }
 
 /* Footer social buttons: outlined, readable */
 .resp-sharing-button, .resp-sharing-button__link { background: none !important; color: var(--ink) !important; border-radius: 6px !important; }
@@ -684,16 +684,16 @@ li.comment ul.actions li a:hover, li.comment ul.actions li button:hover, li.comm
 /* Work page: action bars, kudos, comment form */
 .datetime, .posted, li.comment .datetime { font-family: var(--f-ui) !important; }
 ul.work.navigation li input[type="submit"], ul.work.navigation li button { background: none !important; color: var(--muted) !important; border: 0 !important; padding: 0.15rem 0 !important; font-size: 0.9375rem; font-weight: 500; box-shadow: none !important; }
-ul.work.navigation li input[type="submit"]:hover { color: var(--ink) !important; background: none !important; opacity: 1; }
+ul.work.navigation li input[type="submit"]:hover { color: var(--action) !important; background: none !important; opacity: 1; }
 #feedback ul.actions li a, #feedback ul.actions li button, #feedback ul.actions li input[type="submit"]:not(#kudo_submit),
 ul.navigation.actions li.module a, ul.navigation.actions li.module button, ul.navigation.actions li.module input[type="submit"]:not(#kudo_submit) {
   background: none !important; border: 0 !important; box-shadow: none !important; padding: 0.15rem 0 !important;
   color: var(--muted) !important; font-size: 0.9375rem; font-weight: 500; border-radius: 0; text-shadow: none;
 }
-#feedback ul.actions li a:hover, #feedback ul.actions li button:hover, ul.navigation.actions li.module a:hover { color: var(--ink) !important; background: none !important; text-decoration: none; }
+#feedback ul.actions li a:hover, #feedback ul.actions li button:hover, ul.navigation.actions li.module a:hover { color: var(--action) !important; background: none !important; text-decoration: none; }
 #feedback ul.actions, ul.navigation.actions:has(li.module) { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 1.25rem; list-style: none; margin: 0 0 0.75rem; padding: 0; float: none; }
 #feedback ul.actions li, ul.navigation.actions li.module { float: none; margin: 0; padding: 0; background: none; border: 0; }
-#kudo_submit { background: var(--ink) !important; color: var(--bg) !important; border: 1px solid var(--ink) !important; border-radius: 6px; padding: 0.4rem 0.9rem !important; }
+#kudo_submit { background: var(--action) !important; color: var(--bg) !important; border: 1px solid var(--action) !important; border-radius: 6px; padding: 0.4rem 0.9rem !important; }
 #kudos, #kudos p.kudos, p.kudos, .kudos_notice { background-image: none !important; padding-left: 0 !important; min-height: 0 !important; margin-left: 0 !important; text-align: left; }
 #add_comment_placeholder, #add_comment_placeholder fieldset, #add_comment_placeholder form, #add_comment_placeholder .comment-form, #feedback fieldset { border: 0 !important; box-shadow: none !important; background: none !important; padding: 0 !important; border-radius: 0 !important; }
 #add_comment_placeholder h4.heading { font-size: 0.875rem; font-weight: 500; color: var(--muted); }
@@ -717,7 +717,7 @@ ul.navigation.actions li.module a, ul.navigation.actions li.module button, ul.na
 #dashboard ul.navigation.actions:last-of-type { border-bottom: 0 !important; }
 #dashboard ul li { float: none; display: block; margin: 0; padding: 0; background: none !important; border: 0 !important; box-shadow: none !important; text-align: left; }
 #dashboard ul li a, #dashboard ul li span { display: block; padding: 0.3rem 0 0.3rem 0.75rem; border: 0 !important; border-left: 2px solid transparent !important; background: none !important; box-shadow: none !important; color: var(--muted); font-weight: 500; border-radius: 0; text-align: left; }
-#dashboard ul li a:hover { color: var(--ink); text-decoration: none; }
+#dashboard ul li a:hover { color: var(--action); text-decoration: none; }
 #dashboard ul li span.current, #dashboard ul li.current a { color: var(--ink); border-left-color: var(--ink) !important; }
 #main.dashboard.filtered { justify-content: start !important; grid-template-columns: minmax(0, 38rem) 14rem !important; column-gap: 3rem !important; }
 #main.dashboard { max-width: none; }
@@ -785,7 +785,7 @@ input[type="checkbox"]:focus-visible, input[type="radio"]:focus-visible { outlin
 }
 #main form ul.actions li a:hover { background: var(--bg-2) !important; text-decoration: none; }
 #footer form.button_to button, #footer ul.menu button { background: none !important; border: 0 !important; padding: 0 !important; color: var(--muted) !important; font: inherit !important; text-decoration: none !important; box-shadow: none !important; }
-#footer ul.menu button:hover { color: var(--ink) !important; text-decoration: underline !important; }
+#footer ul.menu button:hover { color: var(--action) !important; text-decoration: underline !important; }
 
 /* History, series, collections, inbox */
 /* Series title: larger and light, so it reads differently from a work title */
@@ -819,7 +819,7 @@ li.comment ul.actions label { color: var(--muted); font-size: 0.875rem; font-wei
   background: none !important; background-image: none !important; border: 0 !important; box-shadow: none !important; padding: 0.15rem 0 !important; border-radius: 0 !important;
   color: var(--muted) !important; font: 500 0.9375rem/1.5 var(--f-ui) !important; text-shadow: none; opacity: 1;
 }
-#main > ul.navigation.actions > li > a:hover, #main > ul.navigation.actions > li input[type="submit"]:hover, #main > ul.navigation.actions > li button:hover { color: var(--ink) !important; background: none !important; box-shadow: inset 0 -2px 0 var(--line-2) !important; text-decoration: none; }
+#main > ul.navigation.actions > li > a:hover, #main > ul.navigation.actions > li input[type="submit"]:hover, #main > ul.navigation.actions > li button:hover { color: var(--action) !important; background: none !important; box-shadow: inset 0 -2px 0 var(--line-2) !important; text-decoration: none; }
 #main > ul.navigation.actions > li > span.current { color: var(--ink) !important; font-weight: 650 !important; box-shadow: none !important; } /* only real tabs (Works|Bookmarks, History|Marked for Later, Stats|Edit Works, subscriptions) get an underline */
 
 /* Works | Bookmarks tabs on tag, user and collection pages: real tabs with a line underneath;
@@ -830,7 +830,7 @@ li.comment ul.actions label { color: var(--muted); font-size: 0.875rem; font-wei
   display: inline-block; padding: 0.6rem 0 !important; margin: 0 0 -1px !important; border: 0 !important; border-bottom: 2px solid transparent !important; background: none !important; box-shadow: none !important;
   border-radius: 0 !important; color: var(--muted) !important; font: 500 1rem/1.2 var(--f-ui) !important; text-decoration: none; text-shadow: none;
 }
-:is(#main ul.navigation.actions:has(#go_to_filters), #main.readings-index > ul.navigation.actions, #main.stats-index > ul.navigation.actions) > li > a:not(.rss):hover, :is(#main ul.navigation.actions:has(#go_to_filters), #main.readings-index > ul.navigation.actions, #main.stats-index > ul.navigation.actions) > li > a:not(.rss):focus { color: var(--ink) !important; border-bottom-color: var(--line-2) !important; background: none !important; box-shadow: none !important; }
+:is(#main ul.navigation.actions:has(#go_to_filters), #main.readings-index > ul.navigation.actions, #main.stats-index > ul.navigation.actions) > li > a:not(.rss):hover, :is(#main ul.navigation.actions:has(#go_to_filters), #main.readings-index > ul.navigation.actions, #main.stats-index > ul.navigation.actions) > li > a:not(.rss):focus { color: var(--action) !important; border-bottom-color: var(--line-2) !important; background: none !important; box-shadow: none !important; }
 :is(#main ul.navigation.actions:has(#go_to_filters), #main.readings-index > ul.navigation.actions, #main.stats-index > ul.navigation.actions) > li > span.current { color: var(--ink) !important; border-bottom-color: var(--ink) !important; }
 :is(#main ul.navigation.actions:has(#go_to_filters), #main.readings-index > ul.navigation.actions, #main.stats-index > ul.navigation.actions) > li:not(.hidden):has(form) { margin-left: auto !important; }
 :is(#main ul.navigation.actions:has(#go_to_filters), #main.readings-index > ul.navigation.actions, #main.stats-index > ul.navigation.actions) > li form { margin: 0; padding: 0; }
@@ -874,7 +874,7 @@ ul.statistics.index ul.index { margin: 0 !important; padding: 0 !important; list
 ul.statistics.index ul.index > li { background: none !important; border: 0 !important; border-bottom: 1px solid var(--line) !important; padding: 1.1rem 0 !important; margin: 0 !important; }
 ul.statistics.index ul.index > li > dl { margin: 0; padding: 0; background: none; }
 ul.statistics.index ul.index > li > dl > dt { float: none; width: auto; margin: 0; padding: 0; font-size: 1.25rem; font-weight: 650; letter-spacing: -0.015em; line-height: 1.3; }
-ul.statistics.index ul.index > li > dl > dt a { color: var(--ink); }
+ul.statistics.index ul.index > li > dl > dt a { color: var(--action); }
 ul.statistics.index ul.index > li > dl > dt a:hover { color: var(--link); }
 ul.statistics.index ul.index > li > dl > dt span.words { font-size: 0.875rem; font-weight: 400; letter-spacing: 0; color: var(--muted); margin-left: 0.5rem; }
 ul.statistics.index ul.index > li > dl > dd { float: none; width: auto; margin: 0; padding: 0; }
@@ -891,14 +891,14 @@ ul.statistics.index dd dl.stats { margin: 0.4rem 0 0; }
 #main.subscriptions-index > ul.navigation.actions { display: flex !important; flex-wrap: nowrap; align-items: flex-end; gap: 0 1.4rem; list-style: none; margin: 0 0 1.5rem !important; padding: 0 !important; border: 0 !important; border-bottom: 1px solid var(--line) !important; background: none !important; float: none; }
 #main.subscriptions-index > ul.navigation.actions > li { display: flex; align-items: center; float: none; margin: 0 !important; padding: 0 !important; background: none !important; border: 0 !important; }
 #main.subscriptions-index > ul.navigation.actions > li > a, #main.subscriptions-index > ul.navigation.actions > li > span.current { display: inline-block; white-space: nowrap; padding: 0.6rem 0 !important; margin: 0 0 -1px !important; border: 0 !important; border-bottom: 2px solid transparent !important; background: none !important; box-shadow: none !important; border-radius: 0 !important; color: var(--muted) !important; font: 500 0.9375rem/1.2 var(--f-ui) !important; text-decoration: none; text-shadow: none; }
-#main.subscriptions-index > ul.navigation.actions > li > a:hover { color: var(--ink) !important; border-bottom-color: var(--line-2) !important; background: none !important; }
+#main.subscriptions-index > ul.navigation.actions > li > a:hover { color: var(--action) !important; border-bottom-color: var(--line-2) !important; background: none !important; }
 #main.subscriptions-index > ul.navigation.actions > li > span.current { color: var(--ink) !important; border-bottom-color: var(--ink) !important; }
 #main.subscriptions-index > ul.navigation.actions > li:last-child { margin-left: auto !important; }
 #main.subscriptions-index > ul.navigation.actions > li:last-child > a { font-size: 0.875rem !important; font-weight: 400 !important; }
 dl.subscription.index { display: grid; grid-template-columns: minmax(0, 1fr) auto; column-gap: 1.5rem; margin: 1rem 0 0; padding: 0; border: 0; background: none; float: none; width: auto; }
 dl.subscription > dt, dl.subscription > dd { float: none; width: auto; margin: 0; padding: 1rem 0; border: 0; border-bottom: 1px solid var(--line); background: none !important; }
 dl.subscription > dt { display: block; font-size: 0.875rem; color: var(--muted); line-height: 1.5; }
-dl.subscription > dt > a:first-child { display: block; font-size: 1.125rem; font-weight: 600; color: var(--ink); line-height: 1.3; letter-spacing: -0.01em; margin-bottom: 0.15rem; }
+dl.subscription > dt > a:first-child { display: block; font-size: 1.125rem; font-weight: 600; color: var(--action); line-height: 1.3; letter-spacing: -0.01em; margin-bottom: 0.15rem; }
 dl.subscription > dt > a:first-child:hover { color: var(--link); }
 dl.subscription > dt > a:not(:first-child) { color: var(--muted); }
 dl.subscription > dd { display: flex; align-items: center; justify-content: flex-end; }
@@ -940,7 +940,7 @@ li.letter.listbox ul.tags.index > li { margin: 0.2rem 1.5rem 0.2rem 0 !important
 li.user.short.blurb { border: 0 !important; border-bottom: 1px solid var(--line) !important; padding: 1.1rem 0 !important; background: none !important; box-shadow: none !important; border-radius: 0 !important; min-height: 0 !important; }
 li.user.short.blurb .header.module { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.15rem 0.75rem; margin: 0 !important; padding: 0 !important; }
 li.user.short.blurb h5.byline.heading { flex: 1 1 auto; margin: 0 !important; font-size: 0.9375rem; font-weight: 400; color: var(--muted); }
-li.user.short.blurb h5.byline a { font-size: 1.0625rem; font-weight: 700; color: var(--ink); text-decoration: none; }
+li.user.short.blurb h5.byline a { font-size: 1.0625rem; font-weight: 700; color: var(--action); text-decoration: none; }
 li.user.short.blurb h5.byline a:hover { color: var(--link); text-decoration: underline; }
 li.user.short.blurb p.datetime { margin: 0 0 0 auto !important; font-size: 0.875rem; color: var(--muted); }
 li.user.short.blurb p.status { flex-basis: 100%; margin: 0 !important; font-size: 0.8125rem; color: var(--muted); }
@@ -986,7 +986,7 @@ dl.work.meta dd.freeform.tags, dl.work.meta dd.freeform.tags a.tag { font-size: 
 /* Visited links inside the headings of a "listbox" (e.g. the fandom line of a work on a user page): AO3 forces them to #2a2a2a, which vanishes on dark */
 .listbox .heading a:visited, .listbox .heading a.tag:visited { color: var(--link) !important; }
 .listbox .blurb h5.fandoms.heading a:visited, .listbox .blurb h5.fandoms.heading a.tag:visited { color: var(--muted) !important; }
-.listbox .blurb h4.heading a:first-child:visited { color: var(--ink) !important; }
+.listbox .blurb h4.heading a:first-child:visited { color: var(--action) !important; }
 .listbox .blurb h4.heading a[rel="author"]:visited, .listbox .blurb h4.heading a:not(:first-child):visited { color: var(--muted) !important; }
 
 .kudos_error, .kudos_notice { padding: 0.75rem 1rem; margin: 0 0 1rem; } /* the kudos message under a work, same spacing as the other notices */
@@ -1080,7 +1080,7 @@ pre { padding: 0.75rem 1rem; overflow-x: auto; }
 #footer h3.heading, #footer .module h4 { font-size: 0.8125rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); margin: 0 0 0.5rem; }
 #footer ul { list-style: none; }
 #footer a { color: var(--muted); }
-#footer a:hover { color: var(--ink); }
+#footer a:hover { color: var(--action); }
 #footer ul.navigation, #footer .module { background: none; border: 0; }
 #footer ul.navigation { align-items: flex-start !important; }
 
