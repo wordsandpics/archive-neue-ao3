@@ -56,6 +56,8 @@
   --line-2: color-mix(in srgb, #c9b99d calc(var(--paper) * 100%), color-mix(in srgb, #4b556b calc(var(--slate) * 100%), color-mix(in srgb, #4b4b53 calc(var(--dark) * 100%), #cfcfd4)));
   /* outline of buttons: a step darker than --line-2 on the light themes, so buttons stand apart from tags */
   --btn-line: color-mix(in srgb, #a9987b calc(var(--paper) * 100%), color-mix(in srgb, #4b556b calc(var(--slate) * 100%), color-mix(in srgb, #4b4b53 calc(var(--dark) * 100%), #a9a9b2)));
+  /* the colour of loud links and filled buttons: the same as --ink, except in Fannish (AO3 red) */
+  --action: color-mix(in srgb, #990000 calc(var(--fannish) * 100%), var(--ink));
   --link:   color-mix(in srgb, color-mix(in srgb, var(--hue) 55%, white) calc(var(--dark) * 100%), var(--hue));
 }
 @media (prefers-color-scheme: dark) {
