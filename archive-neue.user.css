@@ -193,7 +193,7 @@ dt { font-weight: 500; }
 #header {
   display: flex; flex-wrap: wrap; align-items: center;
   float: none; height: auto; margin: 0; padding: 1.25rem 0;
-  border-bottom: 1px solid var(--line);
+  border-bottom: calc(1px + var(--fannish) * 2px) solid color-mix(in srgb, #990000 calc(var(--fannish) * 100%), var(--line)); /* Fannish: a 3px red bar */
 }
 #header .clear { display: none; }
 #header h1.heading { margin: 0; padding: 0; float: none; order: 1; font-size: 1rem; }
