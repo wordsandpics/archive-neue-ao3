@@ -729,6 +729,8 @@ ul.navigation.actions li.module a, ul.navigation.actions li.module button, ul.na
 #dashboard ul li a, #dashboard ul li span { display: block; padding: 0.3rem 0 0.3rem 0.75rem; border: 0 !important; border-left: 2px solid transparent !important; background: none !important; box-shadow: none !important; color: var(--muted); font-weight: 500; border-radius: 0; text-align: left; }
 #dashboard ul li a:hover { color: var(--action); text-decoration: none; }
 #dashboard ul li span.current, #dashboard ul li.current a { color: var(--ink); border-left-color: var(--ink) !important; }
+/* Pseuds list: AO3's midsize sheet gives it an inset shadow and grey fill; keep it a flat card */
+#dashboard ul.expandable.secondary, #dashboard .secondary { background: var(--bg) !important; box-shadow: none !important; border: 1px solid var(--line-2); border-radius: 8px; }
 #main.dashboard.filtered { justify-content: start !important; grid-template-columns: minmax(0, 38rem) 14rem !important; column-gap: 3rem !important; }
 #main.dashboard { max-width: none; }
 #inner:has(#dashboard) > #main { margin: 0 !important; justify-self: stretch; min-width: 0; }
