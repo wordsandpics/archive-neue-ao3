@@ -16,6 +16,7 @@
 @var range  text-width   "Text column width" [40, 28, 60, 1, 'rem']
 @var select theme        "Colour theme" ["0:Follow system*", "1:Light", "2:Dark", "3:Slate", "4:Paper", "5:Fannish"]
 @var color  accent       "Accent colour" #2f54eb
+@var checkbox collapse-tags "Collapse long tag lists (work page)" 0
 ==/UserStyle== */
 
 @import url("https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,300..700;1,300..700&family=Instrument+Sans:wght@400..700&display=swap");
@@ -301,6 +302,15 @@ button, input[type="submit"], input[type="button"], input[type="reset"],
 button:hover, input[type="submit"]:hover, input[type="button"]:hover, .actions a:hover, a.action:hover {
   background: var(--bg-2); text-decoration: none; color: var(--ink);
 }
+/* AO3 gives buttons an inset shadow and darker top and left borders on hover, focus and press: keep them flat */
+button:is(:hover, :focus), input[type="submit"]:is(:hover, :focus), input[type="button"]:is(:hover, :focus), .actions a:is(:hover, :focus), .actions button:is(:hover, :focus), .actions input:is(:hover, :focus), a.action:is(:hover, :focus), .action:is(:hover, :focus) {
+  box-shadow: none; border-color: var(--btn-line);
+}
+/* pressed: a tint of the text colour over the button, so it works on outlined and filled buttons alike */
+button:not(#_):active, input[type="submit"]:not(#_):active, input[type="button"]:not(#_):active, input[type="reset"]:not(#_):active, .actions a:not(#_):active, a.action:not(#_):active {
+  box-shadow: none !important;
+  background-image: linear-gradient(color-mix(in srgb, currentColor 16%, transparent), color-mix(in srgb, currentColor 16%, transparent)) !important;
+}
 /* Buttons inside a form row (e.g. "Public Site Skins" on the preferences page): AO3 gives them a grey gradient */
 fieldset dd span.actions a { background: var(--bg) !important; background-image: none !important; color: var(--ink) !important; border: 1px solid var(--btn-line) !important; border-radius: 6px !important; box-shadow: none !important; text-shadow: none !important; padding: 0.45rem 0.8rem !important; font: 500 0.9375rem/1.2 var(--f-ui) !important; }
 fieldset dd span.actions a:hover { background: var(--bg-2) !important; text-decoration: none; }
@@ -326,7 +336,7 @@ li.skins.blurb div.icon { display: none !important; }
 form#new_collection_item > dl { background: none !important; border: 1px solid var(--line) !important; border-radius: 8px !important; box-shadow: none !important; padding: 1rem !important; margin: 0 !important; }
 form#new_collection_item dd.submit.actions a { background: var(--bg) !important; background-image: none !important; color: var(--ink) !important; border: 1px solid var(--btn-line) !important; border-radius: 6px !important; box-shadow: none !important; text-shadow: none !important; padding: 0.45rem 0.8rem !important; font: 500 0.9375rem/1.2 var(--f-ui) !important; }
 input[type="submit"] { background: var(--action); color: var(--bg); border-color: var(--action); }
-input[type="submit"]:hover { background: var(--action); color: var(--bg); opacity: 0.88; }
+input[type="submit"]:hover, input[type="submit"]:focus { background: var(--action); color: var(--bg); border-color: var(--action); opacity: 0.88; }
 fieldset { border: 1px solid var(--line); border-radius: 8px; padding: 1rem; margin: 0 0 1rem; background: none; }
 legend { font-weight: 600; padding: 0 0.4rem; }
 label { font-weight: 500; }
@@ -980,6 +990,21 @@ ul.work.navigation li > a, ul.work.navigation li > button, ul.work.navigation li
 
 /* A work's info block: the long "Additional Tags" list set small (12px) */
 dl.work.meta dd.freeform.tags, dl.work.meta dd.freeform.tags a.tag { font-size: 0.75rem !important; line-height: 1.65; }
+/* Very long lists of additional tags show about 3 lines with a fade and "more"; hovering or tabbing into the list opens it.
+   Userstyle only; off unless the "Collapse long tag lists" setting is ticked. Needs a browser that knows scroll-state container queries (Chrome 133+): elsewhere the list stays open. */
+@supports (container-type: scroll-state) {
+  dl.work.meta dd.freeform.tags { container-type: scroll-state; max-height: calc(4.6rem + (1 - var(--collapse-tags, 0)) * 65.4rem); overflow: hidden; transition: max-height 0.3s ease; }
+  dl.work.meta dd.freeform.tags::after { content: none; }
+  @container scroll-state(scrollable: bottom) {
+    dl.work.meta dd.freeform.tags::after {
+      content: "more \25BE"; display: block; position: sticky; bottom: 0; height: 1.3rem; margin-top: -1.3rem; padding-top: 0.45rem; box-sizing: border-box;
+      text-align: right; font-size: 0.75rem; line-height: 1; color: var(--muted); pointer-events: none;
+      background: linear-gradient(to bottom, transparent, var(--bg) 70%);
+    }
+  }
+  dl.work.meta dd.freeform.tags:hover, dl.work.meta dd.freeform.tags:focus-within { max-height: 70rem; }
+}
+@media (prefers-reduced-motion: reduce) { dl.work.meta dd.freeform.tags { transition: none !important; } }
 /* ...and the same 12px for additional tags (the "freeforms") in work lists */
 .blurb ul.tags li.freeforms, .blurb ul.tags li.freeforms a.tag { font-size: 0.75rem !important; }
 
