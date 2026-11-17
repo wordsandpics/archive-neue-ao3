@@ -25,6 +25,7 @@ hr { border: 0 !important; border-top: 1px solid #8a8a8a !important; }
 #header li.search form, #header li.search fieldset, #header li.search p { margin: 0 !important; padding: 0 !important; border: 0 !important; background: none !important; display: block !important; width: 100% !important; }
 #header li.search .tip, #header li.search .submit { display: none !important; }
 #site_search, #header li.search input.text { display: block !important; width: 100% !important; max-width: 100% !important; height: 2.75rem !important; margin: 0 !important; box-sizing: border-box !important; border: 1px solid #5a5a5a !important; border-radius: 8px !important; background: #ffffff !important; color: #000000 !important; box-shadow: none !important; padding: 0 0.8rem !important; font-size: 1rem !important; }
+#header #search input:focus, #header li.search input.text:focus { color: #000000 !important; }
 #greeting img, #greeting img.icon { width: 1.5rem !important; height: 1.5rem !important; border-radius: 50% !important; vertical-align: middle !important; }
 .dropdown .menu, .dropdown ul.menu { background: #ffffff !important; background-image: none !important; border: 1px solid #5a5a5a !important; border-radius: 8px !important; box-shadow: none !important; padding: 0.35rem !important; }
 .dropdown .menu li, .dropdown .menu li a { display: block !important; background: none !important; background-image: none !important; border: 0 !important; box-shadow: none !important; color: #000000 !important; }

@@ -219,6 +219,7 @@ dt { font-weight: 500; }
 #header li.search .tip, #header li.search .submit { display: none; }
 #site_search, #header li.search input.text { height: auto; background: var(--bg) !important; border: 1px solid var(--line-2) !important; border-radius: 6px !important; box-shadow: none !important; color: var(--ink); padding: 0.4rem 0.6rem !important; }
 #header li.search .submit, #header li.search input[type="submit"] { display: none !important; }
+#header #search input:focus, #header li.search input.text:focus { color: var(--ink) !important; } /* AO3 sets dark grey on focus */
 
 .dropdown .menu, .dropdown ul.menu, #small_login, ul.expandable.secondary {
   background: var(--bg); border: 1px solid var(--line-2); border-radius: 8px;
@@ -554,9 +555,8 @@ dl.work.meta a.tag:hover { color: var(--link); }
 #series.module span.divider::after { content: "|"; color: var(--line-2); margin: 0 0.5em; }
 /* Restricted-work padlock: AO3's blue bitmap becomes an outlined icon in the text colour */
 img[src*="lockblue"] { width: 0.85em !important; height: 0.85em !important; margin: 0 0 0 0.4em; vertical-align: -0.1em !important; object-fit: none; object-position: 9999px 0 !important; background-color: var(--muted); -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='6' y='11' width='12' height='10' rx='2'/%3E%3Cpath d='M8.5 11V8a3.5 3.5 0 0 1 7 0v3'/%3E%3C/svg%3E") center / contain no-repeat; mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='6' y='11' width='12' height='10' rx='2'/%3E%3Cpath d='M8.5 11V8a3.5 3.5 0 0 1 7 0v3'/%3E%3C/svg%3E") center / contain no-repeat; }
-/* On work pages AO3 puts the padlock before the title; move it after */
-h2.heading:has(> img[src*="lockblue"]) { display: flex; align-items: center; flex-wrap: wrap; }
-h2.heading > img[src*="lockblue"] { order: 1; margin: 0 0 0 0.5em; }
+/* On work pages the padlock stays before the title, as in AO3 (a flex row pushed it onto its own line on two-line titles) */
+h2.heading > img[src*="lockblue"] { margin: 0; vertical-align: -0.02em !important; }
 #workskin .module blockquote.userstuff { margin: 0; padding: 0; border: 0; background: none; font-size: 1rem; line-height: 1.6; }
 
 #chapters .chapter.preface, .chapter .preface.group { margin: 2.5rem 0 1.5rem; text-align: left; }
