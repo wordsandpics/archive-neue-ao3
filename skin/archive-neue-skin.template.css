@@ -130,6 +130,17 @@ div.user.home div.primary.header.module p.icon a { position: static; display: bl
 div.user.home div.primary.header.module p.icon img.icon { position: static; top: auto; left: auto; width: 3.5rem; height: 3.5rem; max-width: 100%; border: 0; border-radius: 50%; display: block; }
 div.user.home div.primary.header.module ul.navigation.actions { float: none; margin: 0; padding: 0; text-align: left; }
 div.user.home div.primary.header.module ul.navigation.actions li { display: inline-block; float: none; margin: 0 0.4rem 0.4rem 0; padding: 0; }
+/* A collection's home page: the name once, in the content area (the header's blue banner is hidden), with the avatar beside it */
+#header h2.collections { display: none; }
+#main.collections-show div.primary.header.module { background: none; border: 0; box-shadow: none; margin: 0 0 2rem; padding: 0 0 0 4.5rem; min-height: 3.75rem; float: none; width: auto; position: relative; }
+#main.collections-show div.primary.header.module > h2.heading { float: none; text-align: left; margin: 0.25rem 0 0.4rem; padding: 0; border: 0; font-size: 1.6rem; background: none; }
+#main.collections-show div.primary.header.module > div.icon { position: absolute; left: 0; top: 0.25rem; float: none; width: auto; height: auto; margin: 0; padding: 0; background: none; border: 0; box-shadow: none; }
+#main.collections-show div.primary.header.module > div.icon a { position: static; display: block; margin: 0; padding: 0; border: 0; background: none; }
+#main.collections-show div.primary.header.module > div.icon img { position: static; width: 3.5rem; height: 3.5rem; max-width: 100%; border: 0; border-radius: 50%; box-shadow: none; display: block; }
+#main.collections-show div.primary.header.module > ul.navigation.actions { float: none; margin: 0; padding: 0; text-align: left; }
+#main.collections-show div.primary.header.module > ul.navigation.actions li { display: inline-block; float: none; margin: 0 0.4rem 0.4rem 0; padding: 0; background: none; border: 0; }
+#main.collections-show div.primary.header.module > ul.navigation.actions form { display: inline; margin: 0; padding: 0; }
+#main.collections-show div.primary.header.module > blockquote.userstuff, #main.collections-show div.primary.header.module > p.type { margin-left: -4.5rem; }
 
 /* Series page: the series title is bigger and lighter than the story titles below it */
 #main.series-show > h2.heading { font-size: 2.25rem; font-weight: 400; line-height: 1.15; letter-spacing: -0.025em; margin: 0 0 1.5rem; }

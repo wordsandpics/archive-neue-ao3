@@ -755,6 +755,24 @@ ul.navigation.actions li.module a, ul.navigation.actions li.module button, ul.na
 }
 .blurb ul.actions li a:hover, .blurb ul.actions li button:hover, .user.home > .primary.header ul.navigation.actions a:hover { background: var(--bg-2) !important; text-decoration: none; }
 .blurb ul.actions { display: flex; flex-wrap: wrap; gap: 0.5rem; list-style: none; margin: 1rem 0 0; padding: 0; float: none; }
+
+/* A collection's home page: the name once, in the content area (the blue banner in the header is hidden), laid out like the profile header */
+#header h2.collections { display: none !important; }
+#main.collections-show .primary.header.module { display: grid; grid-template-columns: 4rem minmax(0, 1fr); grid-template-areas: 'icon name' 'icon actions' 'desc desc' 'type type'; column-gap: 1.25rem; align-items: center; background: none !important; border: 0 !important; box-shadow: none !important; padding: 0 !important; margin: 0 0 2.5rem !important; }
+#main.collections-show .primary.header.module > h2.heading { grid-area: name; text-align: left; margin: 0; padding: 0; border: 0 !important; font-size: 1.75rem; font-weight: 650; letter-spacing: -0.02em; line-height: 1.2; background: none; }
+#main.collections-show .primary.header.module > div.icon { grid-area: icon; position: static !important; float: none; margin: 0; padding: 0; width: 4rem; height: 4rem; background: none; border: 0; box-shadow: none; }
+#main.collections-show .primary.header.module > div.icon a { display: block; }
+#main.collections-show .primary.header.module > div.icon img { width: 4rem !important; height: 4rem !important; border-radius: 50%; border: 0 !important; box-shadow: none !important; display: block; object-fit: cover; }
+#main.collections-show .primary.header.module > ul.navigation.actions { grid-area: actions; display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; list-style: none; margin: 0.5rem 0 0; padding: 0; float: none; text-align: left; }
+#main.collections-show .primary.header.module > ul.navigation.actions li { float: none; margin: 0; padding: 0; background: none; border: 0; }
+#main.collections-show .primary.header.module > ul.navigation.actions form { margin: 0; padding: 0; }
+#main.collections-show .primary.header.module > ul.navigation.actions :is(a, button, input[type="submit"]) {
+  background: var(--bg) !important; background-image: none !important; color: var(--ink) !important; border: 1px solid var(--btn-line) !important;
+  border-radius: 6px !important; box-shadow: none !important; padding: 0.45rem 0.8rem !important; font: 500 0.9375rem/1.2 var(--f-ui) !important; text-shadow: none; opacity: 1; text-decoration: none;
+}
+#main.collections-show .primary.header.module > ul.navigation.actions :is(a, button, input[type="submit"]):is(:hover, :focus) { background: var(--bg-2) !important; }
+#main.collections-show .primary.header.module > blockquote.userstuff { grid-area: desc; margin: 1.5rem 0 0; padding: 0; }
+#main.collections-show .primary.header.module > p.type { grid-area: type; margin: 0.75rem 0 0; color: var(--muted); font-size: 0.9375rem; }
 .blurb ul.actions li { float: none; margin: 0; padding: 0; }
 .listbox, .listbox.group { background: none !important; border: 0 !important; box-shadow: none !important; padding: 0 !important; margin: 0 0 3rem !important; float: none !important; width: auto !important; }
 #user-fandoms, .fandom.listbox { width: auto !important; max-width: none !important; margin-left: 0 !important; margin-right: 0 !important; position: static !important; overflow: visible !important; }
