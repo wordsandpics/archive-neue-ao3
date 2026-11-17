@@ -874,9 +874,10 @@ li.collection.blurb p.type { color: var(--muted); font-size: 0.875rem; margin: 0
 #main .wrapper dl.statistics dd { display: inline; white-space: nowrap; }
 #main .wrapper dl.statistics dd::after { content: "\00a0\00a0|\00a0\00a0\200b"; color: var(--line-2); font-weight: 300; }
 #main .wrapper dl.statistics dd:last-of-type::after { content: none; }
-#main div.actions.module { background: none !important; border: 0 !important; box-shadow: none !important; padding: 0 !important; margin: 0 0 2rem; text-align: left; }
-#main div.actions.module ul, #main div.actions.module ol { display: flex; flex-wrap: wrap; gap: 0.4rem; list-style: none; margin: 0 0 0.75rem; padding: 0; float: none; text-align: left; }
+#main div.actions.module { background: none !important; border: 0 !important; box-shadow: none !important; padding: 0 !important; margin: 0 0 2rem; text-align: left; float: none; } /* AO3 floats it, so the list below covered the buttons and swallowed clicks */
+#main div.actions.module ul, #main div.actions.module ol { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem; list-style: none; margin: 0 0 0.75rem; padding: 0; float: none; text-align: left; }
 #main div.actions.module li { float: none; margin: 0; padding: 0; background: none; border: 0; }
+#main div.actions.module h4.heading { margin: 0; } /* the "Sort By" label, centred against the buttons */
 #main div.actions.module a, #main div.actions.module span, #main div.actions.module button { display: inline-block; background: var(--bg) !important; background-image: none !important; color: var(--ink) !important; border: 1px solid var(--btn-line) !important; border-radius: 6px !important; box-shadow: none !important; padding: 0.3rem 0.7rem !important; font: 500 0.875rem/1.2 var(--f-ui) !important; text-shadow: none; }
 #main div.actions.module span.current, #main div.actions.module a.current, #main div.actions.module .current { background: var(--bg-2) !important; font-weight: 650 !important; }
 ul.statistics.index { list-style: none; margin: 2rem 0 0; padding: 0; }
