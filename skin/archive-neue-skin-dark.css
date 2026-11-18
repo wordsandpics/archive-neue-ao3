@@ -127,6 +127,7 @@ dl.series.meta dl.stats { margin: 0.25rem 0 0 !important; font-size: 0.8rem !imp
 ul.work.navigation { list-style: none !important; float: none !important; margin: 0 0 1.25rem !important; padding: 0 0 1rem !important; border-bottom: 1px solid #303036 !important; }
 ul.work.navigation li { display: inline-block !important; float: none !important; margin: 0 1rem 0 0 !important; padding: 0 !important; }
 ul.work.navigation li a, ul.work.navigation li button, ul.work.navigation li input { background: none !important; border: 0 !important; box-shadow: none !important; padding: 0.2rem 0 !important; color: #9b9ba3 !important; font-weight: 500 !important; font-size: 0.9rem !important; }
+ul.work.navigation #chapter_index input[type="submit"] { background: #111113 !important; color: #e9e9ea !important; border: 1px solid #4b4b53 !important; border-radius: 6px !important; padding: 0.35rem 0.8rem !important; }
 dl.work.meta { background: none !important; border: 0 !important; border-bottom: 1px solid #303036 !important; box-shadow: none !important; float: none !important; width: auto !important; margin: 0 0 1.5rem !important; padding: 0 0 1rem !important; font-size: 0.9rem !important; }
 dl.work.meta > dt { float: none !important; width: auto !important; margin: 0.6rem 0 0 !important; padding: 0 !important; color: #9b9ba3 !important; font-weight: 400 !important; text-align: left !important; }
 dl.work.meta > dd { float: none !important; width: auto !important; margin: 0 !important; padding: 0 !important; }

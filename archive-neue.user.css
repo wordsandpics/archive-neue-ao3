@@ -1008,6 +1008,9 @@ ol.pagination { align-items: center; }
    - actions (Bookmark, Subscribe, Share, Download, Clear...) are quiet text links with a flat hover underline;
    - nothing in these rows has rounded corners. */
 ul.work.navigation li > a, ul.work.navigation li > button, ul.work.navigation li input[type="submit"] { border-radius: 0 !important; }
+/* Chapter index dropdown: Go is a real button */
+ul.work.navigation #chapter_index input[type="submit"] { background: var(--bg) !important; color: var(--ink) !important; border: 1px solid var(--btn-line) !important; border-radius: 6px !important; padding: 0.35rem 0.8rem !important; box-shadow: none !important; cursor: pointer; }
+ul.work.navigation #chapter_index input[type="submit"]:hover { background: var(--bg-2) !important; color: var(--ink) !important; }
 #main#main.readings-index > ul.navigation.actions > li:last-child { margin-left: auto !important; }
 #main#main.readings-index > ul.navigation.actions > li:last-child > a { font-size: 0.8125rem !important; font-weight: 400 !important; }
 
