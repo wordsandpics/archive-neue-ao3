@@ -228,6 +228,8 @@ li.comment ul.actions a, li.comment ul.actions button, li.comment ul.actions inp
 li.collection.blurb { position: relative; }
 li.collection.blurb div.icon { position: absolute; right: 0; top: 2.6rem; float: none; width: 3rem; height: 3rem; margin: 0; padding: 0; background: none; border: 0; box-shadow: none; }
 li.collection.blurb .icon img { position: static; width: 3rem; height: 3rem; border-radius: 50%; border: 0; box-shadow: none; }
+/* Skins page: the preview picture sits on top of the title, so leave it out (same as the userstyle) */
+li.skins.blurb div.icon { display: none; }
 
 /* Save-bookmark panel: its text colours were left dark; legends are plain labels, not boxes over the fields */
 #bookmark-form form, #bookmark-form label, #bookmark-form dt, #bookmark-form dd, #bookmark-form p { color: {{ink}}; }
