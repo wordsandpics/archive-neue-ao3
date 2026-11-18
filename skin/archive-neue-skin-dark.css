@@ -49,6 +49,7 @@ input[type="submit"] { background: #e9e9ea !important; color: #111113 !important
 fieldset { border: 0 !important; border-top: 1px solid #303036 !important; border-radius: 0 !important; box-shadow: none !important; background: none !important; }
 legend { background: none !important; border: 0 !important; box-shadow: none !important; font-size: 0.75rem !important; text-transform: uppercase !important; letter-spacing: 0.06em !important; color: #9b9ba3 !important; }
 div.post.comment, .post.comment { background: none !important; border: 1px solid #303036 !important; border-radius: 10px !important; box-shadow: none !important; }
+#add_comment_placeholder fieldset, div.post.comment fieldset { border: 0 !important; border-top: 0 !important; padding-top: 0 !important; box-shadow: none !important; }
 div.flash { background: none !important; border: 0 !important; padding: 0 !important; margin: 0 !important; }
 .flash.notice, .flash.error, .flash.caution, div.notice, div.error, p.notice { background: #19191c !important; border: 1px solid #303036 !important; border-radius: 8px !important; color: #e9e9ea !important; }
 div.flash.notice, div.flash.error, div.flash.caution, div.flash.alert { padding: 0.75rem 1rem !important; margin: 0 0 1rem !important; box-shadow: none !important; background-image: none !important; text-shadow: none !important; }
