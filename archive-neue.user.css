@@ -679,6 +679,8 @@ li.comment h4.byline > a:first-child, li.comment h4.byline a[rel="author"] { fon
 li.comment h4.byline .datetime, li.comment h4.byline .posted { margin-left: auto; background: none !important; font-size: 0.875rem; color: var(--muted); padding: 0 !important; }
 li.comment div.icon { position: absolute !important; left: 0; top: 1.6rem; float: none !important; width: 2.5rem !important; height: 2.5rem !important; margin: 0 !important; padding: 0 !important; background: none !important; border: 0 !important; box-shadow: none !important; }
 li.comment .icon img, li.comment img.icon { width: 2.5rem !important; height: 2.5rem !important; object-fit: cover; border-radius: 50%; border: 0 !important; box-shadow: none !important; }
+/* Guest commenters have no <img>: AO3 paints the default icon as a background on a span */
+li.comment span.visitor.icon { display: block; width: 2.5rem !important; height: 2.5rem !important; margin: 0 !important; border-radius: 50%; border: 0 !important; box-shadow: none !important; background-size: contain !important; background-position: center !important; background-repeat: no-repeat !important; background-color: var(--bg) !important; }
 li.comment blockquote.userstuff { margin-left: 0 !important; padding: 0 !important; background: none !important; }
 li.comment blockquote.userstuff p:last-child { margin-bottom: 0.4rem; }
 li.comment ul.actions { gap: 0.25rem 1rem; align-items: center; }
