@@ -419,8 +419,10 @@ ul.required-tags a.help.symbol.question, ul.required-tags a.help.symbol.question
   display: inline-block; padding: 0.04rem 0.45rem; border: 1px solid var(--line) !important; border-radius: 5px;
   background: none !important; color: var(--soft); font-weight: 400; text-decoration: none;
 }
-.blurb ul.tags li.relationships a.tag { color: var(--ink); border-color: var(--line-2) !important; }
-.blurb ul.tags li.warnings a.tag { color: var(--ink); font-weight: 500; }
+/* Tag types by fill, not hue: warnings a faint accent tint, relationships and characters a grey fill with an outline, additional tags stay plain; a little extra space between the groups */
+.blurb ul.tags li.warnings + li, .blurb ul.tags li.relationships + li.characters, .blurb ul.tags li.relationships + li.freeforms, .blurb ul.tags li.characters + li.freeforms { margin-left: 0.5rem; }
+.blurb ul.tags li.relationships a.tag, .blurb ul.tags li.characters a.tag { color: var(--ink); background: var(--bg-2) !important; border-color: var(--line-2) !important; }
+.blurb ul.tags li.warnings a.tag { color: var(--ink); font-weight: 500; background: color-mix(in srgb, var(--action) 9%, var(--bg)) !important; border-color: color-mix(in srgb, var(--action) 22%, var(--bg)) !important; }
 .blurb ul.tags li a.tag:hover, .blurb ul.tags li a.tag:focus {
   background: var(--bg-2) !important; color: var(--ink); border-color: var(--line-2) !important; text-decoration: none;
 }
