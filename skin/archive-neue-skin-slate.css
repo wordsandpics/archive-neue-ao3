@@ -82,7 +82,9 @@ ul.required-tags .rating .text { color: #e6e9ef !important; }
 .blurb ul.tags li:after { content: none !important; }
 .blurb ul.tags li { display: inline-block !important; background: none !important; border: 0 !important; padding: 0 !important; margin: 0 0.3rem 0.3rem 0 !important; font-size: 0.8rem !important; }
 .blurb ul.tags li a.tag, .blurb ul.tags li strong a.tag { display: inline-block !important; padding: 0 0.55rem !important; border: 1px solid #3a4357 !important; border-radius: 5px !important; background: none !important; color: #aeb6c6 !important; font-weight: 400 !important; }
-.blurb ul.tags li.relationships a.tag { color: #e6e9ef !important; border-color: #4b556b !important; }
+.blurb ul.tags li.warnings + li, .blurb ul.tags li.relationships + li.characters, .blurb ul.tags li.relationships + li.freeforms, .blurb ul.tags li.characters + li.freeforms { margin-left: 0.5rem !important; }
+.blurb ul.tags li.relationships a.tag, .blurb ul.tags li.characters a.tag { color: #e6e9ef !important; background: #2f3748 !important; border-color: #4b556b !important; }
+.blurb ul.tags li.warnings a.tag { color: #e6e9ef !important; font-weight: 500 !important; background: rgba(230,233,239,0.09) !important; border-color: rgba(230,233,239,0.28) !important; }
 .blurb blockquote.summary, .blurb blockquote.userstuff { font-family: -apple-system, system-ui, "Helvetica Neue", sans-serif !important; font-size: 1rem !important; font-weight: 400 !important; line-height: 1.6 !important; margin: 1.75rem 0 0 !important; padding: 0 !important; border: 0 !important; background: none !important; text-align: left !important; }
 dl.stats { float: none !important; width: auto !important; margin: 0.9rem 0 0 !important; padding: 0 !important; font-size: 0.8rem !important; line-height: 1.8 !important; color: #aeb6c6 !important; text-align: left !important; }
 dl.stats dt { display: inline-block !important; float: none !important; margin: 0 0.25rem 0 0 !important; font-weight: 400 !important; }

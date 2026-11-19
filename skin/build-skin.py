@@ -38,6 +38,11 @@ RULE = re.compile(r"([^{}]+)\{([^{}]*)\}")
 
 def fill(template, colours):
     css = template
+    def tint(m):                                           # {{ink@9}} = that colour at 9% opacity
+        h = colours[m.group(1)].lstrip("#")
+        r, g, b = (int(h[i:i + 2], 16) for i in (0, 2, 4))
+        return f"rgba({r},{g},{b},{int(m.group(2)) / 100})"
+    css = re.sub(r"\{\{(\w+)@(\d+)\}\}", tint, css)
     for key, value in colours.items():
         css = css.replace("{{" + key + "}}", value)
     assert "{{" not in css, "unfilled placeholder"
