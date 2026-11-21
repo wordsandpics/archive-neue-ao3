@@ -7,7 +7,7 @@ html { background: #f7f0e8 !important; }
 #inner { margin: 0 !important; padding: 0 !important; }
 #main { margin: 0 !important; padding: 1.25rem 0 3rem !important; float: none !important; width: auto !important; }
 a, a:link, a:visited { color: #2f54eb !important; text-decoration: none !important; border: 0 !important; }
-a:hover, a:focus { color: #2f54eb !important; text-decoration: underline !important; background: none !important; border: 0 !important; }
+a:hover, a:focus, a:visited:hover, a:visited:focus { color: #2f54eb !important; text-decoration: underline !important; background: none !important; border: 0 !important; }
 h1, h2, h3, h4, h5, h6, .heading, .heading a { font-family: -apple-system, system-ui, "Helvetica Neue", sans-serif !important; color: #2b2622 !important; font-weight: 600 !important; line-height: 1.25 !important; background: none !important; border: 0 !important; }
 h2.heading { font-size: 1.4rem !important; margin: 0 0 1rem !important; }
 hr { border: 0 !important; border-top: 1px solid #ddd0bb !important; }

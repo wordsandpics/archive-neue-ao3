@@ -12,7 +12,7 @@ html { background: {{bg}}; }
 #main { margin: 0; padding: 1.25rem 0 3rem; float: none; width: auto; }
 
 a, a:link, a:visited { color: {{link}}; text-decoration: none; border: 0; }
-a:hover, a:focus { color: {{link}}; text-decoration: underline; background: none; border: 0; }
+a:hover, a:focus, a:visited:hover, a:visited:focus { color: {{link}}; text-decoration: underline; background: none; border: 0; }
 h1, h2, h3, h4, h5, h6, .heading, .heading a { font-family: -apple-system, system-ui, "Helvetica Neue", sans-serif; color: {{ink}}; font-weight: 600; line-height: 1.25; background: none; border: 0; }
 h2.heading { font-size: 1.4rem; margin: 0 0 1rem; }
 hr { border: 0; border-top: 1px solid {{line}}; }
