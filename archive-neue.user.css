@@ -165,7 +165,7 @@ dl.work.meta dd.series a:focus { color: var(--link); text-decoration-color: var(
 a, a:link, a:visited, a:hover, a:focus, a:active { border: 0; box-shadow: none; }
 a:hover, a:focus, a:active { background: none; }
 a.tag:hover, a.tag:focus, h5.fandoms a:hover, h5.fandoms a:focus { background: none !important; color: var(--action) !important; text-decoration: underline; text-underline-offset: 0.2em; }
-a:hover, a:focus { color: var(--link); text-decoration: underline; text-underline-offset: 0.2em; }
+a:hover, a:focus, a:visited:hover, a:visited:focus { color: var(--link); text-decoration: underline; text-underline-offset: 0.2em; } /* AO3 turns visited links #111 on hover */
 :focus-visible { outline: 2px solid var(--link); outline-offset: 2px; border-radius: 3px; }
 ::selection { background: color-mix(in srgb, var(--hue) 28%, transparent); }
 
