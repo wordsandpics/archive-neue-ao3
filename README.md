@@ -18,7 +18,7 @@ The style is also listed on [userstyles.world](https://userstyles.world/style/31
 
 Stylus checks for new versions on its own. Other style extensions are untested and may not read the file or its settings.
 
-**Settings:** click the Stylus icon, then the gear next to Archive Neue. You can change the colour theme (follow system, light, dark, slate or paper), reading font, interface font, reading size, line height, text column width and accent colour.
+**Settings:** click the Stylus icon, then the gear next to Archive Neue. You can change the colour theme (follow system, light, dark, slate or paper), reading font, interface font, reading size, line height, text column width and accent colour. There is also a "Collapse long tag lists (work page)" option, off by default.
 
 **Fonts:** the style loads Bitter (reading) and Instrument Sans (interface) from Google Fonts, so your browser contacts Google when an AO3 page loads. Both fonts are open-licensed. To use other fonts, change the font names in the settings (and the `@import` line at the top of the file if the font comes from Google Fonts).
 

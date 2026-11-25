@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.7.2
+- **Tags in work lists:** warnings, relationships and characters, and additional tags now look different from each other, with a little space between the groups (userstyle and skins).
+- **Work info on the skins:** easier to scan, with smaller labels and a thin line above the stats.
+- **Visited links:** hovering one keeps the theme's link colour (it turned near-black on dark themes).
+- **Guest comments:** a small round avatar, like everyone else's.
+- **Chapter index:** "Go" looks like a button.
+- **Skin menus:** the header menus stay open when you move the mouse into them, are no longer covered by page links, and fit their text.
+- **Skin fixes:** the Skins page picture no longer covers titles, the comment box has no extra line, and a chapter's summary sits a little below its title.
+
 ## 0.7.1
 - **Stats page:** the sort buttons are clickable again, and "Sort By" lines up with them.
 - **Search box:** the text keeps the theme colour while you type (it turned dark grey on dark themes).
