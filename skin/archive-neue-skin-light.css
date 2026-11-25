@@ -34,7 +34,8 @@ hr { border: 0 !important; border-top: 1px solid #e6e6e8 !important; }
 #header #greeting p.icon a { display: inline-block !important; padding: 0 !important; border: 0 !important; background: none !important; }
 #header #greeting img, #header #greeting img.icon { width: 1.5rem !important; height: 1.5rem !important; border-radius: 50% !important; vertical-align: middle !important; }
 ul.work.navigation, ul.navigation.actions, #main ul.navigation.actions, #main div.navigation.actions, #main .navigation.actions.module ul { text-align: left !important; }
-#header .dropdown .menu { box-sizing: border-box !important; left: 0 !important; right: auto !important; width: 100% !important; margin: 0.25rem 0 0 !important; }
+#header { position: relative !important; z-index: 60 !important; }
+#header .dropdown .menu { box-sizing: border-box !important; left: 0 !important; right: auto !important; width: 100% !important; min-width: 12rem !important; margin: 0 !important; }
 #header .dropdown .menu li { display: block !important; float: none !important; margin: 0 !important; padding: 0 !important; border: 0 !important; }
 #header .dropdown .menu li a { display: block !important; padding: 0.45rem 0.65rem !important; color: #17171a !important; font-size: 1rem !important; font-weight: 400 !important; }
 #header #greeting ul.user { display: inline !important; }

@@ -44,7 +44,9 @@ hr { border: 0; border-top: 1px solid {{line}}; }
 #header #greeting img, #header #greeting img.icon { width: 1.5rem; height: 1.5rem; border-radius: 50%; vertical-align: middle; }
 ul.work.navigation, ul.navigation.actions, #main ul.navigation.actions, #main div.navigation.actions, #main .navigation.actions.module ul { text-align: left; }
 /* Header menus (opened by tapping the greeting): a vertical list that fits the page width. The selectors are long on purpose, to beat the header link rules above */
-#header .dropdown .menu { box-sizing: border-box; left: 0; right: auto; width: 100%; margin: 0.25rem 0 0; }
+/* No gap under the button (crossing one closes a hovered menu), wide enough for its longest item, and above the page content (the dashboard's pseud list is z-index 54) */
+#header { position: relative; z-index: 60; }
+#header .dropdown .menu { box-sizing: border-box; left: 0; right: auto; width: 100%; min-width: 12rem; margin: 0; }
 #header .dropdown .menu li { display: block; float: none; margin: 0; padding: 0; border: 0; }
 #header .dropdown .menu li a { display: block; padding: 0.45rem 0.65rem; color: {{ink}}; font-size: 1rem; font-weight: 400; }
 /* The avatar sits after "Log Out" on the same line (AO3 skins may not use gap, flex or order, so the list is inline) */
