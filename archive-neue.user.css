@@ -420,7 +420,8 @@ ul.required-tags a.help.symbol.question, ul.required-tags a.help.symbol.question
   background: none !important; color: var(--soft); font-weight: 400; text-decoration: none;
 }
 /* Tag types by fill, not hue: warnings a faint accent tint, relationships and characters a grey fill with an outline, additional tags stay plain; a little extra space between the groups */
-.blurb ul.tags li.warnings + li, .blurb ul.tags li.relationships + li.characters, .blurb ul.tags li.relationships + li.freeforms, .blurb ul.tags li.characters + li.freeforms { margin-left: 0.5rem; }
+/* The extra space sits after the last tag of a group, so a wrapped line never starts indented */
+.blurb ul.tags li.warnings:has(+ li:not(.warnings)), .blurb ul.tags li.relationships:has(+ li.characters), .blurb ul.tags li.relationships:has(+ li.freeforms), .blurb ul.tags li.characters:has(+ li.freeforms) { margin-right: 0.5rem; }
 .blurb ul.tags li.relationships a.tag, .blurb ul.tags li.characters a.tag { color: var(--ink); background: var(--bg-2) !important; border-color: var(--line-2) !important; }
 .blurb ul.tags li.warnings a.tag { color: var(--ink); font-weight: 500; background: color-mix(in srgb, var(--action) 9%, var(--bg)) !important; border-color: color-mix(in srgb, var(--action) 22%, var(--bg)) !important; }
 .blurb ul.tags li a.tag:hover, .blurb ul.tags li a.tag:focus {

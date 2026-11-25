@@ -83,7 +83,7 @@ ul.required-tags .rating .text { color: #2b2622 !important; }
 .blurb ul.tags li:after { content: none !important; }
 .blurb ul.tags li { display: inline-block !important; background: none !important; border: 0 !important; padding: 0 !important; margin: 0 0.3rem 0.3rem 0 !important; font-size: 0.8rem !important; }
 .blurb ul.tags li a.tag, .blurb ul.tags li strong a.tag { display: inline-block !important; padding: 0 0.55rem !important; border: 1px solid #ddd0bb !important; border-radius: 5px !important; background: none !important; color: #6b6054 !important; font-weight: 400 !important; }
-.blurb ul.tags li.warnings + li, .blurb ul.tags li.relationships + li.characters, .blurb ul.tags li.relationships + li.freeforms, .blurb ul.tags li.characters + li.freeforms { margin-left: 0.5rem !important; }
+.blurb ul.tags li.warnings:has(+ li:not(.warnings)), .blurb ul.tags li.relationships:has(+ li.characters), .blurb ul.tags li.relationships:has(+ li.freeforms), .blurb ul.tags li.characters:has(+ li.freeforms) { margin-right: 0.8rem !important; }
 .blurb ul.tags li.relationships a.tag, .blurb ul.tags li.characters a.tag { color: #2b2622 !important; background: #ede3d3 !important; border-color: #c9b99d !important; }
 .blurb ul.tags li.warnings a.tag { color: #2b2622 !important; font-weight: 500 !important; background: rgba(43,38,34,0.09) !important; border-color: rgba(43,38,34,0.28) !important; }
 .blurb blockquote.summary, .blurb blockquote.userstuff { font-family: -apple-system, system-ui, "Helvetica Neue", sans-serif !important; font-size: 1rem !important; font-weight: 400 !important; line-height: 1.6 !important; margin: 1.75rem 0 0 !important; padding: 0 !important; border: 0 !important; background: none !important; text-align: left !important; }

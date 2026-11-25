@@ -106,7 +106,8 @@ ul.required-tags .rating .text { color: {{ink}}; }
 .blurb ul.tags li { display: inline-block; background: none; border: 0; padding: 0; margin: 0 0.3rem 0.3rem 0; font-size: 0.8rem; }
 .blurb ul.tags li a.tag, .blurb ul.tags li strong a.tag { display: inline-block; padding: 0 0.55rem; border: 1px solid {{line}}; border-radius: 5px; background: none; color: {{muted}}; font-weight: 400; }
 /* Tag types by fill, not hue: warnings a stronger outline, relationships and characters a grey fill, additional tags plain; a little extra space between the groups */
-.blurb ul.tags li.warnings + li, .blurb ul.tags li.relationships + li.characters, .blurb ul.tags li.relationships + li.freeforms, .blurb ul.tags li.characters + li.freeforms { margin-left: 0.5rem; }
+/* The extra space sits after the last tag of a group, so a wrapped line never starts indented */
+.blurb ul.tags li.warnings:has(+ li:not(.warnings)), .blurb ul.tags li.relationships:has(+ li.characters), .blurb ul.tags li.relationships:has(+ li.freeforms), .blurb ul.tags li.characters:has(+ li.freeforms) { margin-right: 0.8rem; }
 .blurb ul.tags li.relationships a.tag, .blurb ul.tags li.characters a.tag { color: {{ink}}; background: {{bg2}}; border-color: {{line2}}; }
 .blurb ul.tags li.warnings a.tag { color: {{ink}}; font-weight: 500; background: {{ink@9}}; border-color: {{ink@28}}; }
 .blurb blockquote.summary, .blurb blockquote.userstuff { font-family: -apple-system, system-ui, "Helvetica Neue", sans-serif; font-size: 1rem; font-weight: 400; line-height: 1.6; margin: 1.75rem 0 0; padding: 0; border: 0; background: none; text-align: left; }
