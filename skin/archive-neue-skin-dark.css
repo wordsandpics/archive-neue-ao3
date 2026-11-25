@@ -154,6 +154,7 @@ dl.work.meta dd.stats dl.stats dd { display: inline-block !important; margin: 0 
 #chapters .chapter.preface, .chapter .preface.group { margin: 2.5rem 0 1.25rem !important; text-align: left !important; }
 #chapters h3.title, .chapter h3.title { font-size: 1.4rem !important; font-weight: 650 !important; line-height: 1.25 !important; color: #e9e9ea !important; margin: 0 !important; text-align: left !important; }
 #chapters h3.title a, .chapter h3.title a { color: #e9e9ea !important; }
+#chapters .chapter.preface .summary.module, #chapters .chapter.preface .notes.module { margin-top: 1.5rem !important; }
 #workskin .userstuff, .chapter .userstuff.module, #chapters .userstuff { font-family: -apple-system, system-ui, "Helvetica Neue", sans-serif !important; font-size: 1.125rem !important; line-height: 1.7 !important; color: #e9e9ea !important; background: none !important; border: 0 !important; padding: 0 !important; margin: 0 !important; overflow-wrap: break-word !important; }
 #chapters .userstuff p { margin: 0 0 1em !important; padding: 0 !important; text-align: left !important; }
 #chapters .userstuff h3.landmark { display: none !important; }

@@ -186,6 +186,8 @@ dl.work.meta dd.stats dl.stats dd { display: inline-block; margin: 0 0.9rem 0 0;
 #chapters .chapter.preface, .chapter .preface.group { margin: 2.5rem 0 1.25rem; text-align: left; }
 #chapters h3.title, .chapter h3.title { font-size: 1.4rem; font-weight: 650; line-height: 1.25; color: {{ink}}; margin: 0; text-align: left; }
 #chapters h3.title a, .chapter h3.title a { color: {{ink}}; }
+/* A chapter's own summary or notes sit as far below the chapter title as the work's summary sits below the author */
+#chapters .chapter.preface .summary.module, #chapters .chapter.preface .notes.module { margin-top: 1.5rem; }
 #workskin .userstuff, .chapter .userstuff.module, #chapters .userstuff { font-family: -apple-system, system-ui, "Helvetica Neue", sans-serif; font-size: 1.125rem; line-height: 1.7; color: {{ink}}; background: none; border: 0; padding: 0; margin: 0; overflow-wrap: break-word; }
 #chapters .userstuff p { margin: 0 0 1em; padding: 0; text-align: left; }
 #chapters .userstuff h3.landmark { display: none; }
