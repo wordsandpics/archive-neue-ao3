@@ -59,9 +59,14 @@ form.filters dt.filter-toggle { margin: 0 !important; padding: 0 !important; bac
 form.filters button.expander, form.filters dt.filter-toggle button { display: block !important; width: 100% !important; text-align: left !important; background: none !important; background-image: none !important; border: 0 !important; border-top: 1px solid #ddd0bb !important; border-radius: 0 !important; box-shadow: none !important; padding: 0.8rem 0 !important; margin: 0 !important; font-weight: 600 !important; font-size: 1rem !important; color: #2b2622 !important; }
 form.filters h4.heading { margin: 1.75rem 0 0.25rem !important; font-size: 0.75rem !important; letter-spacing: 0.06em !important; text-transform: uppercase !important; color: #6b6054 !important; font-weight: 500 !important; border: 0 !important; }
 form.filters dt label, form.filters dt.sort label { display: block !important; margin: 1rem 0 0.35rem !important; font-size: 0.8125rem !important; font-weight: 500 !important; color: #6b6054 !important; }
-form.filters dd.submit.actions input[type="submit"] { width: 100% !important; padding: 0.8rem 1rem !important; font-size: 1rem !important; }
+form.filters dd.submit.actions input[type="submit"] { width: 100% !important; padding: 0.8rem 0.25rem !important; font-size: 0.95rem !important; white-space: nowrap !important; box-sizing: border-box !important; }
 form.filters select, form.filters input.text, form.filters input[type="text"] { width: 100% !important; box-sizing: border-box !important; height: 2.75rem !important; padding: 0 0.8rem !important; font-size: 1rem !important; }
-ol.index, ul.index, ol.work.index, ol.bookmark.index { list-style: none !important; margin: 0 !important; padding: 0 !important; width: auto !important; float: none !important; }
+form.filters fieldset { margin-left: 0 !important; margin-right: 0 !important; padding-left: 0.75rem !important; padding-right: 0.75rem !important; min-width: 0 !important; }
+form.filters dl, form.filters dt, form.filters dd { margin-left: 0 !important; margin-right: 0 !important; padding-left: 0 !important; padding-right: 0 !important; min-width: 0 !important; }
+form.filters select, form.filters input.text, form.filters input[type="text"] { min-width: 0 !important; max-width: 100% !important; padding: 0 0.4rem !important; }
+form.filters select { font-size: 0.875rem !important; padding: 0 0.25rem !important; }
+ol.index, ul.index, ol.work.index, ol.bookmark.index { list-style: none !important; margin: 0 !important; padding: 0 !important; }
+#main:not(.filtered) ol.index, #main:not(.filtered) ul.index { width: auto !important; float: none !important; }
 li.blurb { background: none !important; border: 0 !important; border-bottom: 1px solid #c9b99d !important; border-radius: 0 !important; box-shadow: none !important; margin: 0 !important; padding: 2rem 0 !important; float: none !important; width: auto !important; list-style: none !important; min-height: 0 !important; }
 .blurb .header.module { margin: 0 0 0.35rem !important; padding: 0 !important; min-height: 0 !important; background: none !important; border: 0 !important; }
 .blurb h4.heading, .blurb h5.heading, .blurb .datetime, .blurb ul.tags, .blurb dl.stats { margin-left: 0 !important; padding-left: 0 !important; }

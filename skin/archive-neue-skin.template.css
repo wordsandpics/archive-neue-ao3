@@ -79,11 +79,18 @@ form.filters dt.filter-toggle { margin: 0; padding: 0; background: none; border:
 form.filters button.expander, form.filters dt.filter-toggle button { display: block; width: 100%; text-align: left; background: none; background-image: none; border: 0; border-top: 1px solid {{line}}; border-radius: 0; box-shadow: none; padding: 0.8rem 0; margin: 0; font-weight: 600; font-size: 1rem; color: {{ink}}; }
 form.filters h4.heading { margin: 1.75rem 0 0.25rem; font-size: 0.75rem; letter-spacing: 0.06em; text-transform: uppercase; color: {{muted}}; font-weight: 500; border: 0; }
 form.filters dt label, form.filters dt.sort label { display: block; margin: 1rem 0 0.35rem; font-size: 0.8125rem; font-weight: 500; color: {{muted}}; }
-form.filters dd.submit.actions input[type="submit"] { width: 100%; padding: 0.8rem 1rem; font-size: 1rem; }
+form.filters dd.submit.actions input[type="submit"] { width: 100%; padding: 0.8rem 0.25rem; font-size: 0.95rem; white-space: nowrap; box-sizing: border-box; }
 form.filters select, form.filters input.text, form.filters input[type="text"] { width: 100%; box-sizing: border-box; height: 2.75rem; padding: 0 0.8rem; font-size: 1rem; }
+/* The filter column is narrow on desktop: little side padding, and nothing wider than the column */
+form.filters fieldset { margin-left: 0; margin-right: 0; padding-left: 0.75rem; padding-right: 0.75rem; min-width: 0; }
+form.filters dl, form.filters dt, form.filters dd { margin-left: 0; margin-right: 0; padding-left: 0; padding-right: 0; min-width: 0; }
+form.filters select, form.filters input.text, form.filters input[type="text"] { min-width: 0; max-width: 100%; padding: 0 0.4rem; }
+form.filters select { font-size: 0.875rem; padding: 0 0.25rem; }
 
 /* Lists of works */
-ol.index, ul.index, ol.work.index, ol.bookmark.index { list-style: none; margin: 0; padding: 0; width: auto; float: none; }
+ol.index, ul.index, ol.work.index, ol.bookmark.index { list-style: none; margin: 0; padding: 0; }
+/* Full width only where there is no filter column: on filtered pages AO3's own rules place the list and the filters (two columns, or a slide-out on phones) */
+#main:not(.filtered) ol.index, #main:not(.filtered) ul.index { width: auto; float: none; }
 li.blurb { background: none; border: 0; border-bottom: 1px solid {{line2}}; border-radius: 0; box-shadow: none; margin: 0; padding: 2rem 0; float: none; width: auto; list-style: none; min-height: 0; }
 .blurb .header.module { margin: 0 0 0.35rem; padding: 0; min-height: 0; background: none; border: 0; }
 .blurb h4.heading, .blurb h5.heading, .blurb .datetime, .blurb ul.tags, .blurb dl.stats { margin-left: 0; padding-left: 0; }
