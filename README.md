@@ -26,7 +26,13 @@ Stylus checks for new versions on its own. Other style extensions are untested a
 
 ## Install the skin
 
-Pick **one** file: `skin/archive-neue-skin-light.css` (light), `skin/archive-neue-skin-dark.css` (dark), `skin/archive-neue-skin-slate.css` (blue-grey), `skin/archive-neue-skin-paper.css` (warm beige) or `skin/archive-neue-skin-contrast.css` (light with black text and darker lines, good for e-ink readers or if you prefer stronger contrast).
+Pick **one**. Each link opens the file as plain text, ready to select all and copy:
+
+- [Light](https://raw.githubusercontent.com/wordsandpics/archive-neue-ao3/main/skin/archive-neue-skin-light.css): white background
+- [Dark](https://raw.githubusercontent.com/wordsandpics/archive-neue-ao3/main/skin/archive-neue-skin-dark.css): near-black background
+- [Slate](https://raw.githubusercontent.com/wordsandpics/archive-neue-ao3/main/skin/archive-neue-skin-slate.css): dark blue-grey
+- [Paper](https://raw.githubusercontent.com/wordsandpics/archive-neue-ao3/main/skin/archive-neue-skin-paper.css): warm beige
+- [Contrast](https://raw.githubusercontent.com/wordsandpics/archive-neue-ao3/main/skin/archive-neue-skin-contrast.css): light, with black text and darker lines; good for e-ink readers or if you prefer stronger contrast
 
 1. Log in to AO3, open your name, then **Preferences**, then **Skins & Archive Interface**, then **Create Site Skin**.
 2. Give it a title and paste the whole file into the CSS box. AO3 does not allow the word "Archive" in a skin title, so use something like "Neue Light" or "Neue Dark".
