@@ -7,7 +7,7 @@
 body { background: {{bg}}; color: {{ink}}; margin: 0; font-family: -apple-system, system-ui, "Helvetica Neue", sans-serif; font-size: 16px; font-weight: 400; line-height: 1.55; -webkit-text-size-adjust: 100%; }
 html { background: {{bg}}; }
 #outer, #inner, #main, #header, #footer, .wrapper { background: none; border: 0; box-shadow: none; text-shadow: none; }
-#outer { max-width: 44rem; width: auto; margin: 0 auto; padding: 0 1rem; box-sizing: border-box; float: none; }
+#outer { max-width: 62em; width: auto; margin: 0 auto; padding: 0 1rem; box-sizing: border-box; float: none; }
 #inner { margin: 0; padding: 0; }
 #main { margin: 0; padding: 1.25rem 0 3rem; float: none; width: auto; }
 
@@ -173,6 +173,8 @@ dl.series.meta blockquote.userstuff { font-family: -apple-system, system-ui, "He
 dl.series.meta dl.stats { margin: 0.25rem 0 0; font-size: 0.8rem; }
 
 /* A work */
+/* The page fills a tablet screen; from the title down, the story and its comments keep a comfortable line length */
+#workskin, #feedback { max-width: 42rem; margin-left: auto; margin-right: auto; }
 ul.work.navigation { list-style: none; float: none; margin: 0 0 1.25rem; padding: 0 0 1rem; border-bottom: 1px solid {{line}}; }
 ul.work.navigation li { display: inline-block; float: none; margin: 0 1rem 0 0; padding: 0; }
 ul.work.navigation li a, ul.work.navigation li button, ul.work.navigation li input { background: none; border: 0; box-shadow: none; padding: 0.2rem 0; color: {{muted}}; font-weight: 500; font-size: 0.9rem; }

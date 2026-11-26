@@ -3,7 +3,7 @@
 body { background: #f7f0e8 !important; color: #2b2622 !important; margin: 0 !important; font-family: -apple-system, system-ui, "Helvetica Neue", sans-serif !important; font-size: 16px !important; font-weight: 400 !important; line-height: 1.55 !important; -webkit-text-size-adjust: 100% !important; }
 html { background: #f7f0e8 !important; }
 #outer, #inner, #main, #header, #footer, .wrapper { background: none !important; border: 0 !important; box-shadow: none !important; text-shadow: none !important; }
-#outer { max-width: 44rem !important; width: auto !important; margin: 0 auto !important; padding: 0 1rem !important; box-sizing: border-box !important; float: none !important; }
+#outer { max-width: 62em !important; width: auto !important; margin: 0 auto !important; padding: 0 1rem !important; box-sizing: border-box !important; float: none !important; }
 #inner { margin: 0 !important; padding: 0 !important; }
 #main { margin: 0 !important; padding: 1.25rem 0 3rem !important; float: none !important; width: auto !important; }
 a, a:link, a:visited { color: #2f54eb !important; text-decoration: none !important; border: 0 !important; }
@@ -137,6 +137,7 @@ dl.series.meta > dd { float: none !important; width: auto !important; margin: 0 
 dl.series.meta a { color: #2b2622 !important; }
 dl.series.meta blockquote.userstuff { font-family: -apple-system, system-ui, "Helvetica Neue", sans-serif !important; font-size: 0.9rem !important; line-height: 1.6 !important; margin: 0 !important; padding: 0 !important; border: 0 !important; background: none !important; }
 dl.series.meta dl.stats { margin: 0.25rem 0 0 !important; font-size: 0.8rem !important; }
+#workskin, #feedback { max-width: 42rem !important; margin-left: auto !important; margin-right: auto !important; }
 ul.work.navigation { list-style: none !important; float: none !important; margin: 0 0 1.25rem !important; padding: 0 0 1rem !important; border-bottom: 1px solid #ddd0bb !important; }
 ul.work.navigation li { display: inline-block !important; float: none !important; margin: 0 1rem 0 0 !important; padding: 0 !important; }
 ul.work.navigation li a, ul.work.navigation li button, ul.work.navigation li input { background: none !important; border: 0 !important; box-shadow: none !important; padding: 0.2rem 0 !important; color: #6b6054 !important; font-weight: 500 !important; font-size: 0.9rem !important; }
