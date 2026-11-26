@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.7.3
+Skin fixes (the userstyle is unchanged).
+- **Filters:** on work lists the filter panel is beside the list again, not at the bottom of the page.
+- **Tablets:** the page fills the screen; the story and its comments keep a comfortable width.
+- **Skin edit page:** the Media checkboxes show again, and "Add parent skin" is no longer cut off.
+
 ## 0.7.2
 - **Tags in work lists:** warnings, relationships and characters, and additional tags now look different from each other, with a little space between the groups (userstyle and skins).
 - **Work info on the skins:** easier to scan, with smaller labels and a thin line above the stats.
