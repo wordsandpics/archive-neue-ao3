@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.7.4
+Skin fix (the userstyle is unchanged).
+- **Buttons:** the mouse pointer turns into a hand over every button, not only over some.
+
 ## 0.7.3
 Skin fixes (the userstyle is unchanged).
 - **Filters:** on work lists the filter panel is beside the list again, not at the bottom of the page.
