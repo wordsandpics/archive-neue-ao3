@@ -47,6 +47,7 @@ input[type="text"], input[type="search"], input[type="password"], input[type="em
 textarea { width: 100% !important; box-sizing: border-box !important; }
 button, input[type="submit"], .actions a, .actions button, a.action { font-family: -apple-system, system-ui, "Helvetica Neue", sans-serif !important; font-size: 0.9rem !important; font-weight: 500 !important; line-height: 1.2 !important; color: #17171a !important; background: #ffffff !important; background-image: none !important; border: 1px solid #a9a9b2 !important; border-radius: 6px !important; box-shadow: none !important; text-shadow: none !important; padding: 0.5rem 0.8rem !important; }
 input[type="submit"] { background: #17171a !important; color: #ffffff !important; border-color: #17171a !important; }
+button, input[type="submit"], input[type="button"], input[type="reset"] { cursor: pointer !important; }
 fieldset { border: 0 !important; border-top: 1px solid #e6e6e8 !important; border-radius: 0 !important; box-shadow: none !important; background: none !important; }
 legend { background: none !important; border: 0 !important; box-shadow: none !important; font-size: 0.75rem !important; text-transform: uppercase !important; letter-spacing: 0.06em !important; color: #6b6b73 !important; }
 div.post.comment, .post.comment { background: none !important; border: 1px solid #e6e6e8 !important; border-radius: 10px !important; box-shadow: none !important; }

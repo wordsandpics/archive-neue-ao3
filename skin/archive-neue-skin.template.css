@@ -63,6 +63,8 @@ input[type="text"], input[type="search"], input[type="password"], input[type="em
 textarea { width: 100%; box-sizing: border-box; }
 button, input[type="submit"], .actions a, .actions button, a.action { font-family: -apple-system, system-ui, "Helvetica Neue", sans-serif; font-size: 0.9rem; font-weight: 500; line-height: 1.2; color: {{ink}}; background: {{bg}}; background-image: none; border: 1px solid {{btn}}; border-radius: 6px; box-shadow: none; text-shadow: none; padding: 0.5rem 0.8rem; }
 input[type="submit"] { background: {{ink}}; color: {{bg}}; border-color: {{ink}}; }
+/* Browsers keep the arrow over buttons; show the hand on anything that can be clicked, as links do */
+button, input[type="submit"], input[type="button"], input[type="reset"] { cursor: pointer; }
 fieldset { border: 0; border-top: 1px solid {{line}}; border-radius: 0; box-shadow: none; background: none; }
 legend { background: none; border: 0; box-shadow: none; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; color: {{muted}}; }
 /* The comment box at the end of a work: AO3's pale 1px outline is too bright on a dark page */
